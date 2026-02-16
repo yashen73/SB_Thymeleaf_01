@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="home.css">
+</head>
+<body class="body">
+
+<h2 id="maintopic"><u>Student Management System</u></h2>
+
+
+<div class="maincontainer">
+
+
+    <div class="registercontainer">
+        <form action="end">
+
+            <h4>Register on System ... </h4>
+
+            <label>Student's name : </label>
+            <input type="text"  name="name" class="sdetails_input">
+            <br><br>
+            <label>Student's id : </label>
+            <input type="text"  name ="id" class="sdetails_input">
+            <br><br>
+            <label>Level : </label>
+            <input type="text"  name ="level" class="sdetails_input">
+
+            <br><br>
+            <div id="buttoncontainer">
+                <button type="submit" id="registerbutton">Register</button>
+            </div>
+        </form>
+
+    </div>
+
+
+    <br><br><br>
+    <div class="findcontainer">
+        <h3>Search any student : </h3>
+        <form action="findStudent">
+            <label>Enter Student's Id : </label>
+            <input type="text" name="findid" class="find_input">
+            <br><br>
+            <button type="submit" id="findButton">Find</button>
+
+        </form>
+
+    </div>
+
+</div>
+</body>
+</html>
