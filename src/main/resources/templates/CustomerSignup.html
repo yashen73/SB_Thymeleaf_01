@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Clora Customer Signup</title>
 </head>
 <body>
 
-  <form action="signup" method="post">
-    <input type="email" placeholder="Enter your Email" name="mail" required>
-    <input type="text" placeholder="Enter Your Name" name="name" required>
-    <input type="tel" placeholder="Mobile Number" name="tele" required>
-    <input type="password" placeholder="Enter a Password" name="password" required>
+  <form th:action="@{/signup}" th:object ="${customer}" method="post" >
+
+    <input type="email"  placeholder="Enter your Email" name="mail" required>
+    <input type="text"  placeholder="Enter Your Name" name="name" required>
+    <input type="tel"  placeholder="Mobile Number" name="tele" required>
+    <input type="password"  placeholder="Enter a Password" name="password" required>
     <input type="password" placeholder="Confirm your password here">
 
     <button type="submit"> Submit</button>
   </form>
+
+<p th:text="${message}"></p>
  </body>
 </html>

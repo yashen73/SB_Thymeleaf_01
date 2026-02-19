@@ -1,13 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Customer Login</title>
 </head>
 <body>
-<input type="email" placeholder="Enter Your Email" name="customerLoginEmail">
-<input type="password" placeholder="Enter Your Password" name="customerLoginPassword">
+    <form th:action="@{/login}" method="post">
 
+        <input type="email" placeholder="Enter Your Email" name="customerLoginEmail">
+        <input type="password" placeholder="Enter Your Password" name="customerLoginPassword">
+
+        <button type="submit">Log in</button>
+    </form>
 <p>If you haven't sign up still. hurry sign up <a href="CustomerSignup">here.</a> </p>
+
+
+<p th:text="${alertmessage}"></p>
 </body>
 </html>
