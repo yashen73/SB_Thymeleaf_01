@@ -48,9 +48,10 @@ public class CustomerController {
             model.addAttribute("message" ,"Registration is successful...");
             System.out.println("Registration Successfull .....");
 
-            return "dashbaord";
+            return "dashboard";
         }
     }
+
 
     @RequestMapping("/CustomerLogin")
     public String CustomerLogin(){
@@ -58,8 +59,11 @@ public class CustomerController {
         return "CustomerLogin";
     }
 
+
     @PostMapping("/login")
     public String login(@RequestParam String mail, @RequestParam String password, HttpSession session, Model model){
+        System.out.println("Login post mapping in controller is called .... ");
+
         String loginResult = loginservice.customerlogincheckup(mail, password);
 
         if (loginResult == "Login Successful"){
@@ -81,8 +85,6 @@ public class CustomerController {
 
             return "CustomerLogin";
         }
-
-
     }
 
 }

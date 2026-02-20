@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapPlaywriteis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playwrite+AT:ital,wght@0,100..400;1,100..400&family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Betania+Patmos+In&display=swap');
+
+
+.body{
+    
+    background-image: url("/images/loginshirts.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+
+#clora{
+    margin-bottom: 30px;
+    font-family: "Betania Patmos In", cursive;
+    font-size: 75px !important;
+    color: rgb(250, 250, 250);
+    background-color: black;
+    padding: 10px;
+    width: 100%;
+}
+
+
+h2{
+    font-family: "Playwrite AT", cursive;
+    font-weight: 900 !important;
+    font-size: 50px !important;
+    padding: 20px;
+    margin: 20px;
+    margin-bottom: 40px !important;
+    color: rgb(238, 209, 209);
+}
+
+.container{
+    display: block;
+    justify-content: center;
+}
+
+.logincontainer{
+    font-family:  "Montserrat", sans-serif;
+    background-color: rgb(129, 146, 146);
+    padding: 10px;
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.logincontainer:hover{
+    transition: all 1s ease;
+    transform: scale(1.1);
+}
+
+.signuplink{
+    margin: 10px;
+    font-size: 15px;
+    font-weight:600;
+}
+
+.inputarea{
+    display: block;
+    max-width: 300px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.inputarea:hover{
+    transition: all 0.5s ease;
+    transform: scaleX(1.1);
+    background: linear-gradient(rgb(255, 255, 255),rgb(141, 235, 211));
+}
+
+.buttonarea{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button{
+    margin: 20px;
+    padding: 6px;
+    border-radius: 10px;
+    color: rgb(179, 172, 172);
+    background-color: rgb(0, 0, 0);
+
+}
+
+.button:hover{
+    transition: all 0.5s ease;
+    color: rgb(0, 0, 0);
+    background-color: rgb(152, 146, 146);
+    transform: scale(1.2);
+}

@@ -20,9 +20,10 @@ public class LoginService {
     private PasswordEncoder passwordEncoder;
     
     public String customerlogincheckup(String mail, String password){
-
+        System.out.println("Customer Login checkup in Login SERVICE is called for "+ mail);
         Optional<Customer> loginCustomer = repoForLogin.findByMail(mail);
-        
+        System.out.println(loginCustomer);
+
         if(loginCustomer.isEmpty()){
             return "user not found";
         } else if (!passwordEncoder.matches(password, loginCustomer.get().getPassword()) ) {
