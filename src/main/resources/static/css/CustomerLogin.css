@@ -9,6 +9,25 @@
     background-size: cover;
 }
 
+.cloraalert {
+    margin: 5px;
+    font-family: "Betania Patmos In", cursive;
+    font-size: 35px;
+    display: flex;
+    justify-content: center;
+}
+
+.alert.alert-success{
+    margin-top: 60px;
+    width: 100%;
+    justify-content: center;
+    color: white;
+    position: absolute;
+    display: none;
+    background-color: rgba(121, 121, 120, 0.9);  /* semi-transparent black */
+}
+
+
 
 #clora{
     margin-bottom: 30px;

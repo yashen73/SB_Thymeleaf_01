@@ -8,7 +8,14 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"></head>
 <body class="body">
 
-<p id="clora"><link rel="stylesheet" href="">Clora</p>
+<div th:value="${SignupSucceedMessage}" class="alert alert-success" id="successmessage" role="alert">
+    <h4 class="alert-heading">Well done!</h4>
+    <p>Aww yeah, you have successfully completed Signup. Please Login Again.</p>
+    <hr>
+    <p class="cloraalert">Clora</p>
+</div>
+
+<p id="clora">Clora</p>
 
     <div class="container">
 
@@ -38,7 +45,8 @@
     </div>
 
 
-<p th:text="${alertmessage}"></p>
+
+
 <script src="js/CustomerLogin.js"></script>
 </body>
 </html>
