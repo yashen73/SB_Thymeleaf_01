@@ -28,7 +28,7 @@ public class CustomerController {
     @RequestMapping("/")
     public String index(){
         System.out.println("index page is calling...");
-        return "index";
+        return "CustomerLogin";
     }
 
     @RequestMapping("/CustomerSignup")
@@ -64,23 +64,23 @@ public class CustomerController {
 
 
     @PostMapping("/login")
-    public String login(@RequestParam String mail, @RequestParam String password, HttpSession session, Model model){
+    public String login(@RequestParam String mail, @RequestParam String password, HttpSession session, Model model, RedirectAttributes redirectAttributes){
         System.out.println("Login post mapping in controller is called .... ");
 
         String loginResult = loginservice.customerlogincheckup(mail, password);
 
-        if (loginResult == "Login Successful"){
+        if ("Login Successful".equals(loginResult)){
 
             System.out.println("Login is Successful & Customer "+mail+" is login....");
             session.setAttribute("loggedCustomer", mail);
 
             return "dashboard";
 
-        }else if(loginResult == "Invalid login"){
-
+        }else if("Invalid login".equals(loginResult)){
+            System.out.println("login is invalid due to missmatch of password and email. . . ");
             model.addAttribute("alertmessage", loginResult);
-
-            return "CustomerLogin";
+            redirectAttributes.addFlashAttribute("SingupFailedMessage", "failed");
+            return "redirect:/CustomerLogin";
 
         }else{
 

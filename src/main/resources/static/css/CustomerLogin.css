@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapPlaywriteis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playwrite+AT:ital,wght@0,100..400;1,100..400&family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Betania+Patmos+In&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Cascadia+Mono:ital,wght@0,200..700;1,200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Cascadia+Mono:ital,wght@0,200..700;1,200..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 
 .body{
     
-    background-image: url("/images/loginshirts.jpg");
     background-position: center;
     background-size: cover;
+    background-color: rgb(247, 199, 206);
 }
 
 .cloraalert {
@@ -17,7 +18,17 @@
     justify-content: center;
 }
 
-.alert.alert-success{
+#successmessage {
+    margin-top: 60px;
+    width: 100%;
+    justify-content: center;
+    color: white;
+    position: absolute;
+    display: none;
+    background-color: rgba(121, 121, 120, 0.9);  /* semi-transparent black */
+}
+
+#failedmessage {
     margin-top: 60px;
     width: 100%;
     justify-content: center;
@@ -28,26 +39,25 @@
 }
 
 
-
 #clora{
     margin-bottom: 30px;
     font-family: "Betania Patmos In", cursive;
     font-size: 75px !important;
     color: rgb(250, 250, 250);
-    background-color: black;
+    background-color:rgb(16, 44, 38);
     padding: 10px;
     width: 100%;
 }
 
 
 h2{
-    font-family: "Playwrite AT", cursive;
+    font-family: "Bungee", sans-serif;
     font-weight: 900 !important;
     font-size: 50px !important;
     padding: 20px;
     margin: 20px;
     margin-bottom: 40px !important;
-    color: rgb(238, 209, 209);
+    color: rgb(18, 19, 19);
 }
 
 .container{
@@ -56,8 +66,9 @@ h2{
 }
 
 .logincontainer{
-    font-family:  "Montserrat", sans-serif;
-    background-color: rgb(129, 146, 146);
+    font-family:  "Roboto Mono", monospace;
+    background-color: #102C26;
+    color:black;
     padding: 10px;
     padding-top: 20px;
     display: flex;
