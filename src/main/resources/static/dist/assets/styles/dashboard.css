@@ -1,0 +1,294 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playwrite+AT:ital,wght@0,100..400;1,100..400&family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=M+PLUS+Rounded+1c&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=M+PLUS+Rounded+1c&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+
+:root {
+    --clora-theme-font : "Playwrite AT", cursive;
+    --banner-color: #6995B1;
+    --banner-description-font: "Pacifico", cursive;
+    --banner-discount-font: "Source Serif 4", serif;
+    --swiper-slide-background : #e6f3fb;
+    --block-2-3-description-font : "Inconsolata", monospace;
+    --banner-2-3-btn-color-hover : #03182c;
+    --banner1-description-color : #012649;
+    --btn-link-font : "M PLUS Rounded 1c", sans-serif;
+    --swiper-prenext-btn-color : #ec9b22;
+    --h2-h3-h4-h5-font : "Josefin Sans", sans-serif;
+    --footer-menu-font-color: rgb(78, 78, 78);
+}
+
+
+#cloracontainer {
+    background-color: black;
+    border-radius: 5px;
+}
+
+#iconinstrip {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+
+.clora {
+
+    font-family: var(--clora-theme-font);
+    font-size: 60px;
+    color: bisque;
+    padding: 10px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+
+}
+
+
+.bi.bi-search {
+    font-size: 20px;
+    color: antiquewhite;
+    margin-right: 10px;
+}
+
+.bi.bi-person {
+    font-size: 25px;
+    color: antiquewhite;
+    margin-right: 20px;
+}
+
+.Cloraintro{
+    font-family: "Bungee", sans-serif;
+    font-size: 45px;
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    background-color: antiquewhite;
+    color: rgb(103, 102, 102);
+    padding: 20px;
+
+}
+
+
+/* Banner Block*/
+.block-1 { grid-area: 1 / 1 / 3 / 8;}
+.block-2 { grid-area: 1 / 8 / 2 / 13;}
+.block-3 { grid-area: 2 / 8 / 3 / 13;}
+
+.banner-ad{
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-blocks {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 2rem;
+    margin-top: 10px;
+}
+
+.banner-discount {
+    font-family: var(--banner-discount-font);
+    font-size: 40px;
+    padding: 15px;
+}
+
+.banner-description {
+    font-family: var(--banner-description-font);
+    font-size: 40px;
+    font-weight: 300;
+    color: var(--banner1-description-color);
+}
+
+.large-banner-img {
+    width: 300px;
+    height: 400px;
+}
+
+/* swipper Slides */
+.banner-ad .swiper-slide {
+    background: var(--swiper-slide-background);
+    margin-left: 1px;
+    min-height: 630px;
+    display: flex;
+}
+
+.banner-ad {
+    border-radius: 12px;
+    position: relative;
+}
+
+/* Paginations */
+.banner-ad .swiper-pagination {
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    position: relative;
+    margin-top: 20px;
+}
+
+.banner-ad .swiper-pagination .swiper-pagination-bullet{
+    position: relative;
+    width: 16px;
+    height: 16px;
+    margin: 4px ;
+    background: #c6bbbb !important;
+    opacity: 1 !important;
+}
+
+.banner-ad .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background: #FFC43F !important;
+}
+.large-banner-img {
+    padding: 10px;
+    border-radius: 15px;
+    opacity: 1;
+}
+
+@media screen and (max-width:1140px) {
+    .banner-blocks {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+    }
+    .block-1 {grid-area: 1 / 1 / 3 / 2;}
+    .block-2 {grid-area: 3 / 1 / 4 / 2;}
+    .block-3 {grid-area: 4 / 1 / 5 / 2;}
+}
+
+/* Block 2 & 3 banner*/
+
+.banner2 {
+    background-image: url(/images/bannerImages/block2.jpg) ;
+    background-repeat: no-repeat;
+    background-position: 200px 20px;
+    display: relative;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+
+.banner3 {
+    background-image: url(/images/bannerImages/block3.jpg) ;
+    background-repeat: no-repeat;
+    background-position: 300px 45px;
+    display: relative;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+
+.block-2-3-description{
+    font-family: var(--block-2-3-description-font);
+    font-size: 25px;
+}
+
+.banner-2-3-btn {
+    margin-top: 40px;
+    margin-left: 20px;
+    border: 1px solid black;
+    display: inline-block;
+    padding: 5px;
+    border-radius: 5px;
+}
+.banner-2-3-btn:hover {
+    color: #e6f3fb;
+    background-color: var(--banner-2-3-btn-color-hover);
+    transition: all 0.3s ease;
+}
+
+/* brands category carousel section ..... */
+.btn-link {
+    color: black;
+    font-size: 20px;
+    font-family: var(--btn-link-font);
+    font-weight: 700;
+}
+
+.swiper-prev,
+.swiper-next {
+    width: 38px;
+    height: 38px;
+    line-height: 26px;
+    background: #e6f3fb;
+    color: black;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.swiper-prev:hover, .swiper-next:hover {
+    background: var(--swiper-prenext-btn-color);
+}
+
+.category-carousel .category-item {
+    background: white;
+    border: 1px solid #FBFBFB;
+    box-shadow: 0px 5px 22px rgba(0.04);
+    padding: 60px 20px;
+    margin: 20px 0;
+    transition: box-shadow 0.3s ease-out, transform 0.3s ease-out;
+}
+
+
+/* Freaquantly searching categories  . . .. */
+.freq-searching-category h2 {
+    font-family: var(--h2-h3-h4-h5-font);
+}
+
+.btn-warning{
+    background-color: #f8f8f8;
+    border: none;
+    font-size: 20px;
+    margin: 5px;
+}
+.btn-warning:hover {
+    background-color: #f1efef;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+    margin: 8px;
+}
+
+/*Card Body*/
+.card-body{
+    font-size: 19px;
+}
+
+.card-text {
+    color: #868686;
+}
+
+.footer-container {
+    width: 100%;
+    height:auto;
+    background-color: #fdfdfd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clora-footer-Logo {
+    font-family: var(--clora-theme-font);
+    color: #868686;
+    font-size: 50px;
+    font-weight: 800;
+    padding: 10px;
+
+}
+
+.footer-menu-container {
+    display:flex;
+    justify-content: center;
+}
+
+.footer-menu {
+    color: var(--footer-menu-font-color);
+    text-decoration: none;
+    font-family: var(--h2-h3-h4-h5-font);
+    font-size: 20px;
+    margin: 20px;
+}
+
+.footer-menu-container:hover {
+
+}

@@ -25,7 +25,7 @@ public class RegisterCustomer {
 
             registerCustomerRepo.save(customer);
 
-            return "Customer registered Successfuly!";
+            return "Customer registered Successfully!";
         }
     }
 }
