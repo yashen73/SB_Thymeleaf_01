@@ -74,7 +74,7 @@ public class CustomerController {
             System.out.println("Login is Successful & Customer "+mail+" is login....");
             session.setAttribute("loggedCustomer", mail);
 
-            return "dashboard";
+            return "index";
 
         }else if("Invalid login".equals(loginResult)){
             System.out.println("login is invalid due to missmatch of password and email. . . ");
