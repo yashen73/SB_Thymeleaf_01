@@ -36,9 +36,6 @@ public class AdminController {
 
     }
 
-    @GetMapping("/addProductOnTrendingItems")
-    public String addProductOnTrendingItems(@ModelAttribute Availableitems availbleItems) {
-        System.out.println(availbleItems);
-        return
-    }
+
+
 }

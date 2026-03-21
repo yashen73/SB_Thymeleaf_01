@@ -25,8 +25,13 @@
     </div>
 
     <div class="col-6" id="iconinstrip">
-        <i class="bi bi-person"></i>
-        <i class="bi bi-search"></i>
+        <a href="#"><i class="bi bi-person"></i></a>
+        <i onclick="showSearchBox()" class="bi bi-search"></i>
+
+        <div id="search-box" class="search-box floating">
+            <input  class="search-box-input" type="text">
+            <i onclick="Search()" class="bi bi-arrow-right-circle-fill"></i>
+        </div>
     </div>
 </div>
 
@@ -155,7 +160,7 @@
                         <h3>Moose</h3>
                     </a>
                     <a href="#" class="nav-link category-item swiper-slide">
-                        <h3>Levis</h3>_
+                        <h3>Levis</h3>
                     </a>
                     <a href="#" class="nav-link category-item swiper-slide">
                         <h3>Crocodile</h3>

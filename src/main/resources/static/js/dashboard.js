@@ -38,6 +38,21 @@
     initSwiper();
 })(jQuery);
 
+function showSearchBox() {
+    let searchbox = document.getElementById("search-box")
+    if(searchbox.style.display === "none") {
+        searchbox.style.display ="block";
+    } else {
+        searchbox.style.display ="none";
+    }
+}
+
+
+function Search(){
+    const query = document.querySelector(".search-box input").value;
+    alert("Searching for: "+query);
+}
+
 
 
 
@@ -53,18 +68,15 @@ fetch("http://localhost:8080/item/showAllItems")
 
     data.forEach(item =>{
 
-    console.log( "ID: " + item.item_id + ", Brand ID: " + item.brand_item_id + ", quantity: " + item.item_quantity + ", Item Price : " + item.item_price)
-
-
         html += `
                 <div class="col">
                     <div class="product-item">
                         <figure>
                             <a href="#">
-                                <img src="images/product-thumbnails/item1_1.jpg" class="tab-image">
+                                <img src="images/product-thumbnails/${item.item_thumbnailimg_name}" class="tab-image">
                             </a>
                         </figure>
-                        <h3>Shirt_01</h3>
+                        <h3>${item.item_name}</h3>
                         <span class="qty">${item.item_quantity}pcs</span>
                         <span class="price">${item.item_price}/=</span>
                     </div>
@@ -74,3 +86,4 @@ fetch("http://localhost:8080/item/showAllItems")
     })
     productitem.innerHTML = html;
 })
+
