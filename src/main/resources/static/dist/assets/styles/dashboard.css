@@ -291,6 +291,10 @@
     font-size: 22px;
 }
 
+.product-item #itemID {
+    display: none;
+}
+
 
 /* Freaquantly searching categories  . . .. */
 .freq-searching-category h2 {

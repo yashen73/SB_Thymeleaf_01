@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -16,6 +17,8 @@ public class ProductController {
 
     @Autowired
     public ItemsService trendingItem;
+    @Autowired
+    public ItemsService findAnyItem;
 
     //Save Trending items Send from JS
     @PostMapping("/addProductOnTrendingItems")
@@ -27,6 +30,20 @@ public class ProductController {
             return ResponseEntity.ok(ResponsToSave);
         }catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @GetMapping("productdetail/{productid}")
+    public String getProductdetail(@PathVariable Long productid, Model model){
+        System.out.println("product detail method in product controller is called...");
+
+        try{
+            Availableitems item = findAnyItem.findSpecificItem(productid);
+            model.addAttribute("item",item);
+            return "ProductDetails";
+        }catch(RuntimeException e) {
+            e.printStackTrace();
+            return "index";
         }
     }
 }

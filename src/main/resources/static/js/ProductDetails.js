@@ -37,25 +37,6 @@
 
     initSwiper();
 })(jQuery);
-
-function showSearchBox() {
-    let searchbox = document.getElementById("search-box")
-    if(searchbox.style.display === "none") {
-        searchbox.style.display ="block";
-    } else {
-        searchbox.style.display ="none";
-    }
-}
-
-
-function Search(){
-    const query = document.querySelector(".search-box input").value;
-    alert("Searching for: "+query);
-}
-
-
-
-
 fetch("http://localhost:8080/item/showAllItems")
 .then(response => response.json())
 .then(data => {
@@ -73,7 +54,7 @@ fetch("http://localhost:8080/item/showAllItems")
                     <div class="product-item" onclick="viewItem(${item.item_id})">
                         <figure>
                             <a href="#">
-                                <img src="images/product-thumbnails/${item.item_thumbnailimg_name}" class="tab-image">
+                                <img src="/images/product-thumbnails/${item.item_thumbnailimg_name}" class="tab-image">
                             </a>
                         </figure>
                         <span id="itemID" class="itemID">${item.item_id}</span>
@@ -88,9 +69,3 @@ fetch("http://localhost:8080/item/showAllItems")
     })
     productitem.innerHTML = html;
 })
-
-function viewItem(id) {
-        //Redirect with ID
-        window.location.href = "product/productdetail/" +id;
-}
-

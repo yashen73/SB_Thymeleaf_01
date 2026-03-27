@@ -10,4 +10,7 @@ import java.util.List;
 public interface ItemsRepository extends JpaRepository<Availableitems, Long> {
 
     List<Availableitems> findAll();
+
+
 }
+
