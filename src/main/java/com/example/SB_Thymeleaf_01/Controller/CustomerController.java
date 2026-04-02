@@ -1,7 +1,9 @@
 package com.example.SB_Thymeleaf_01.Controller;
 
+import com.example.SB_Thymeleaf_01.Availableitems;
 import com.example.SB_Thymeleaf_01.Customer;
 import com.example.SB_Thymeleaf_01.Service.CustomerSerivce;
+import com.example.SB_Thymeleaf_01.Service.ItemsService;
 import com.example.SB_Thymeleaf_01.Service.LoginService;
 import com.example.SB_Thymeleaf_01.Service.RegisterCustomer;
 import jakarta.servlet.http.HttpSession;
@@ -20,6 +22,8 @@ public class CustomerController {
     private LoginService loginservice;
     @Autowired
     private RegisterCustomer registercustomer;
+    @Autowired
+    private ItemsService findAnyItem;
 
     public CustomerController(CustomerSerivce service){
         this.service = service;
@@ -28,7 +32,7 @@ public class CustomerController {
     @RequestMapping("/")
     public String index(){
         System.out.println("index page is calling...");
-        return "CustomerLogin";
+        return "index";
     }
 
     @RequestMapping("/CustomerSignup")
@@ -46,7 +50,6 @@ public class CustomerController {
             System.out.println("rejected due to existing email . . . ");
             return "CustomerLogin";
         }else {
-
             System.out.println("Registration Successfull .....");
 
             // Send success message after redirect
@@ -87,6 +90,20 @@ public class CustomerController {
             model.addAttribute("alertmessage", loginResult);
 
             return "CustomerLogin";
+        }
+    }
+
+    @GetMapping("/product/productdetail/{productid}")
+    public String getProductdetail(@PathVariable Long productid, Model model){
+        System.out.println("product detail method in product controller is called...");
+
+        try{
+            Availableitems item = findAnyItem.findSpecificItem(productid);
+            model.addAttribute("item",item);
+            return "ProductDetails";
+        }catch(RuntimeException e) {
+            e.printStackTrace();
+            return "index";
         }
     }
 

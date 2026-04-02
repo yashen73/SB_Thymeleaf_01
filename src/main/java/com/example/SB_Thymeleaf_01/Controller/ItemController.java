@@ -4,6 +4,7 @@ import com.example.SB_Thymeleaf_01.Availableitems;
 import com.example.SB_Thymeleaf_01.Repositories.ItemsRepository;
 import com.example.SB_Thymeleaf_01.Service.ItemsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,20 @@ public class ItemController {
         private ItemsService serviceForItems; //serviceforItems - to represent all availble items.
         @Autowired
         private ItemsService findAnyItem;
+
+    //Save Trending items Send from JS
+    @PostMapping("/addProductOnTrendingItems")
+    public ResponseEntity<String> addProductOnTrendingItems(@RequestBody Availableitems availbleItems) {
+        System.out.println(availbleItems);//Show the item sends from JS
+
+        try{
+            String ResponsToSave = serviceForItems.SaveItem(availbleItems);    //calling ItemsService.class to save items
+            return ResponseEntity.ok(ResponsToSave);
+        }catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
 
         @GetMapping("/showAllItems")
         public List<Availableitems> showAllItems(Model model){

@@ -19,3 +19,30 @@ console.log(status)
     },5000);
     }
 }
+
+document.getElementById("customerLoginForm").addEventListener("submit",  async function(e){
+    e.preventDefault();
+    const btn = document.querySelector("button");
+    btn.disabled = true;
+    btn.innerText = "Processing";
+
+   fetch("http://localhost:8080/auth/login", {
+    method : "POST",
+    headers : {"Content-Type" : "application/json"},
+    body : JSON.stringify({
+        mail : document.getElementById("usermail").value,
+        password : document.getElementById("password").value
+    })
+   })
+   .then(res => res.text())
+   .then(token => {
+        console.log("JWT: ", token)
+        localStorage.setItem("jwt", token);
+        alert("Loged In !");
+        window.location.href = "http://localhost:8080/";
+   })
+   .catch ( err => console.error(err));
+
+   btn.disabled = false;
+   btn.innerText = "Login"
+})
