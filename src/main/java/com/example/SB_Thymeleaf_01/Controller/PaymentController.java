@@ -1,5 +1,6 @@
 package com.example.SB_Thymeleaf_01.Controller;
 
+import com.example.SB_Thymeleaf_01.ItemPaymentRequest;
 import com.example.SB_Thymeleaf_01.Service.StripeService;
 import com.stripe.exception.StripeException;
 import com.stripe.model.PaymentIntent;
@@ -16,8 +17,9 @@ public class PaymentController {
         this.stripeService = stripeService;
     }
 
-    @PostMapping("/create")
-    public PaymentIntent createPayment(@RequestParam Long amount) throws StripeException {
-        return stripeService.createPaymentIntent(amount);
+    @PostMapping("/create-intent")
+    public PaymentIntent createPayment(@RequestBody ItemPaymentRequest request, @RequestHeader("Authorization") String token) throws StripeException {
+
+        return stripeService.createPaymentIntent(request, token);
     }
 }

@@ -72,4 +72,44 @@ fetch("http://localhost:8080/item/showAllItems")
 
 
 
-document.getElementById()
+document.getElementById("purchaseButton").addEventListner("click", async function(e) {
+    e.preventDefault();
+
+    const btn = this;
+    btn.innerText = "Processing...";
+    btn.style.pointerEvents = "none";
+
+    try {
+        await pay();
+    }catch (err) {
+    console.error(err);
+    alert("Payment Failed.");
+
+    btn.inneText ="Purchase";
+    btn.style.pointerEvents =" auto";
+    }
+})
+
+asyn function pay(){
+    const amount = document.getElementById("insert-price").value;
+    const quantity = document.getElementById("").value;
+    const res = await fetch("", {
+        method : "POST",
+        headers: {
+            "Content-Type": "aplication/json"
+        },
+        body: JSON.stringify({
+        amount:amount
+
+        })
+    });
+    const data = await res.json();
+
+    const stripe = Stripe("pk_test_51SUjs3FWCjv2i6cESz4HrbXETu5RIuiP4yVycQ0JnbWptm7v7FpCH0qCuKEx49jwuZ5DGDr3pMNhPMNehDRer5N0003XOotCqv");
+
+    await stripe.confirmCarpayment(data.client_secret, {
+    payment_method: {
+        card: cardElement
+    }
+    })
+}
