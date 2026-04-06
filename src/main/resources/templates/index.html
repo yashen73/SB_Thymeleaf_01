@@ -20,12 +20,16 @@
 
 <div class="row" id="cloracontainer">
 
-    <div class="col-6">
+    <div class="cloracontainer-partition-1">
         <span class="clora">Clora</span>
     </div>
 
-    <div class="col-6" id="iconinstrip">
-        <a href="/CustomerLogin"><i class="bi bi-person"></i></a>
+    <div class="cloracontainer-partition-2 cloraintrospace">
+        <span class="cloraintro">Clora for your comfort</span>
+    </div>
+
+    <div class="cloracontainer-partition-3" id="iconinstrip">
+        <a href="#"><i class="bi bi-person"></i></a>
         <i onclick="showSearchBox()" class="bi bi-search"></i>
 
         <div id="search-box" class="search-box floating">
@@ -35,12 +39,7 @@
     </div>
 </div>
 
-<div class="mainconainer">
-    <div class="Cloraintro">
-        <p class="blink">Clora for your comfort</p>
-    </div>
 
-</div>
 
 
 <div class="container-top">
@@ -138,7 +137,7 @@
                     <h2 class="section-title">Brands</h2>
 
                     <div class="d-flex align-items-center">
-                        <a href="#" class="btn-link text-decoration-none">View All Brands →</a>
+                        <a href="http://localhost:8080/itemsforbrands" class="btn-link text-decoration-none">View All Brands →</a>
                         <div class="swipper-buttons">
                             <button class="swiper-prev category-carousel-prev btn btn-yellow">❮</button>
                             <button class="swiper-next category-carousel-next btn btn-yellow">❯</button>
@@ -294,8 +293,8 @@
 
     <div class="py-3">
         <div class="container-fluid footer-menu-container">
-            <a href="#" class="footer-menu">About us</a>
-            <a href="#" class="footer-menu">Location</a>
+            <a href="/AboutUs" class="footer-menu">About us</a>
+            <a href="/Locations" class="footer-menu">Location</a>
             <a href="#" class="footer-menu">Branches</a>
             <a href="#" class="footer-menu">Privacy policies</a>
             <a href="admin/AdminLogin" class="footer-menu">Admin Login</a>

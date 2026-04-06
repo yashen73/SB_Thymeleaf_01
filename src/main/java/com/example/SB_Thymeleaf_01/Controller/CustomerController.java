@@ -107,4 +107,20 @@ public class CustomerController {
         }
     }
 
+    @GetMapping("/itemsforbrands")
+    public  String itemsforbrands(){
+        return "BrandViseProducts";
+    }
+
+    @GetMapping("/AboutUs")
+    public String AboutUs(){
+        return "AboutUs";
+    }
+
+    @GetMapping("/Locations")
+    public String Locations(){
+        return "Locations";
+    }
+
 }
+

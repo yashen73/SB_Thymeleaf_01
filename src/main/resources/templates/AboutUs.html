@@ -1,0 +1,108 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--Bootstrap CDN version 4.1-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="css/AboutUs.css">
+</head>
+<body>
+
+        <div id="cloracontainer">
+
+            <div class="cloracontainer-partition-1">
+                <span class="clora">Clora</span>
+            </div>
+
+            <div class="cloracontainer-partition-2 cloraintrospace">
+                <span class="cloraintro">Clora for your comfort</span>
+            </div>
+
+            <div class="cloracontainer-partition-3" id="iconinstrip">
+                <a href="#"><i class="bi bi-person"></i></a>
+                <i onclick="showSearchBox()" class="bi bi-search"></i>
+
+                <div id="search-box" class="search-box floating">
+                <input  class="search-box-input" type="text">
+                <i onclick="Search()" class="bi bi-arrow-right-circle-fill"></i>
+                </div>
+            </div>
+        </div>
+
+
+    <section class="py-3 about-project">
+        <h2><u>About Us</u></h2>
+
+
+        <p class="aboutpara">
+        This e-commerce platform is a fully functional web application developed as an individual project,
+        designed to demonstrate modern full-stack development practices and real-world system integration. 
+        The project is built using Spring Boot as the core backend framework, combined with Thymeleaf for server-side rendering,
+        enabling a seamless connection between the frontend and backend layers.
+        <br><br>
+        The application follows a structured and scalable architecture, incorporating RESTful APIs to handle communication between components efficiently. 
+        Data persistence is managed using Java Persistence API (JPA), ensuring clean database interactions and object-relational mapping. 
+        The system is powered by a PostgreSQL database, providing reliability and performance for handling product and user data.
+        <br><br>
+        Security is a key aspect of this platform. 
+        User authentication and authorization are implemented using JSON Web Tokens (JWT), allowing secure login sessions and controlled access to protected resources.
+        This ensures that only authorized users and administrators can perform specific actions within the system.
+        <br><br>
+        One of the major highlights of this platform is the integration of Stripe as a payment gateway. 
+        This enables secure and real-time payment processing, making the application closer to a production-level e-commerce system. 
+        Users can browse products, add items to their cart, and complete transactions smoothly.
+        <br><br>
+        The frontend of the application is developed using HTML, CSS, and JavaScript, focusing on creating a dynamic and responsive user interface. 
+        The UI is designed to enhance user experience with interactive elements, smooth navigation, and visually appealing layouts. 
+        Dynamic content rendering ensures that users receive real-time updates such as product availability and pricing.
+        <br><br>
+        In addition to the user-facing features, a comprehensive admin portal has been implemented. 
+        This allows administrators to efficiently manage the platform by viewing product details, updating stock levels, and maintaining inventory. 
+        Admins can also monitor available stock counts and ensure that the system reflects accurate product information at all times.
+        <br><br>
+        From a user perspective, the platform includes essential e-commerce functionalities such as user registration, login, and cart management. 
+        The add-to-cart feature works seamlessly, enabling users to select and manage products before proceeding to checkout. 
+        The login system ensures personalized experiences and secure access to user-specific data.
+        <br><br>
+        Overall, this project demonstrates the integration of backend technologies, database management, frontend design, and third-party services into a single cohesive system. 
+        It reflects strong understanding of full-stack development concepts, secure application design, and real-world e-commerce workflows. 
+        This platform not only serves as a learning milestone but also showcases the ability to build scalable and production-ready web applications.
+        <br><br><br>
+
+        <span style="text-align:center;">Yashen Kavishka</span>
+    </p>
+
+    </section>
+        
+
+
+  <section class="py-5">
+    <div class="container-fluid footer-container">
+      <div class="clora-footer-Logo">
+        Clora
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="py-3">
+      <div class="container-fluid footer-menu-container">
+          <a href="/AboutUs" class="footer-menu">About us</a>
+          <a href="/Locations" class="footer-menu">Location</a>
+          <a href="#" class="footer-menu">Branches</a>
+          <a href="#" class="footer-menu">Privacy policies</a>
+          <a href="admin/AdminLogin" class="footer-menu">Admin Login</a>
+      </div>
+    </div>
+
+
+  </section>
+  
+
+    <script src="js/AboutUs.js"></script>
+</body>
+</html>

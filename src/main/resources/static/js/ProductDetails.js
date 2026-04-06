@@ -69,3 +69,7 @@ fetch("http://localhost:8080/item/showAllItems")
     })
     productitem.innerHTML = html;
 })
+
+
+
+document.getElementById()
