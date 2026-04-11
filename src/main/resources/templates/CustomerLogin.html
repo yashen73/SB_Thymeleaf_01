@@ -33,10 +33,11 @@
 
         <div class="col-sm">
             <div class="logincontainer">
-                <form th:action="@{/login}" method="post">
 
-                    <input class="inputarea" type="mail" placeholder="Enter Your Email" name="mail">
-                    <input class="inputarea" type="password" placeholder="Enter Your Password" name="password">
+                <form id="customerLoginForm">
+
+                    <input id="usermail" class="inputarea" type="mail" placeholder="Enter Your Email" name="mail">
+                    <input id="password" class="inputarea" type="password" placeholder="Enter Your Password" name="password">
 
                     <div class="buttonarea">
                     <button class="button" type="submit">Log in</button>

@@ -1,8 +1,11 @@
 package com.example.SB_Thymeleaf_01;
 
 import jakarta.persistence.Entity;
+import lombok.Builder;
+import lombok.Data;
 
-@Entity
+@Data
+@Builder
 public class PaymentResponse {
     private String clientSecret;
     private Long orderID;
@@ -17,15 +20,7 @@ public class PaymentResponse {
         return clientSecret;
     }
 
-    public void setClientSecret(String clientSecret) {
-        this.clientSecret = clientSecret;
-    }
-
     public Long getOrderID() {
         return orderID;
-    }
-
-    public void setOrderID(Long orderID) {
-        this.orderID = orderID;
     }
 }

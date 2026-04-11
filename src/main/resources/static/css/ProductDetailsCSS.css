@@ -175,6 +175,10 @@
     margin-bottom: 5px;
 }
 
+.product-detail-block .Product-id {
+    display: none;
+}
+
 .product-detail-block .price {
     font-family:  "SN Pro", sans-serif;
 }
@@ -278,6 +282,7 @@
     border: none;
     box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.4);
 }
+
 
 .addtocart-button-area {
     font-family:  "SN Pro", sans-serif;

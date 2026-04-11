@@ -29,7 +29,7 @@ public class AuthController {
         if (loginresult.equals("Login Successful")) {
             System.out.println("Customer Login is successful...");
             String token = jwtUtil.generateToken(customer.getMail());
-
+            System.out.println("The Token is:"+token);
              return token;
         } else if (loginresult.equals("user not found")) {
             throw new RuntimeException("user not Found please sign in first.");

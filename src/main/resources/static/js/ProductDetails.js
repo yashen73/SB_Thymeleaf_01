@@ -72,7 +72,7 @@ fetch("http://localhost:8080/item/showAllItems")
 
 
 
-document.getElementById("purchaseButton").addEventListner("click", async function(e) {
+document.getElementById("purchaseButton").addEventListener("click", async function(e) {
     e.preventDefault();
 
     const btn = this;
@@ -80,7 +80,16 @@ document.getElementById("purchaseButton").addEventListner("click", async functio
     btn.style.pointerEvents = "none";
 
     try {
-        await pay();
+        if(!localStorage.getItem("jwt")){
+            alert("Please Login fisrt");
+            console.log("No JWT. Login first");
+            btn.inneText ="Purchase";
+            btn.style.pointerEvents =" auto";
+        }else{
+            console.log("JWT exists and forwading to the payment")
+            await pay();
+        }
+
     }catch (err) {
     console.error(err);
     alert("Payment Failed.");
@@ -90,26 +99,27 @@ document.getElementById("purchaseButton").addEventListner("click", async functio
     }
 })
 
-asyn function pay(){
-    const amount = document.getElementById("insert-price").value;
-    const quantity = document.getElementById("").value;
-    const res = await fetch("", {
+async function pay(){
+    const productid =document.getElementById("ProductId").textContent;
+    const amount = document.getElementById("insert-price").textContent;
+    const quantity = document.getElementById("quantity-no").value;
+    console.log(productid, amount, quantity, " order is heading to the payment.")
+    const res = await fetch("http://localhost:8080/api/payment/checkout", {
         method : "POST",
         headers: {
-            "Content-Type": "aplication/json"
+            "Content-Type": "application/json",
+            "Authorization": "bearer " + localStorage.getItem("jwt")
         },
         body: JSON.stringify({
-        amount:amount
-
+               productid: productid,
+               quantity:quantity,
+               amount : amount
         })
-    });
-    const data = await res.json();
-
-    const stripe = Stripe("pk_test_51SUjs3FWCjv2i6cESz4HrbXETu5RIuiP4yVycQ0JnbWptm7v7FpCH0qCuKEx49jwuZ5DGDr3pMNhPMNehDRer5N0003XOotCqv");
-
-    await stripe.confirmCarpayment(data.client_secret, {
-    payment_method: {
-        card: cardElement
-    }
     })
+    .then(res => res.text())
+    .then( url => {
+        window.location.href = url;
+    })
+    .catch(error=> console.error(error));
+
 }

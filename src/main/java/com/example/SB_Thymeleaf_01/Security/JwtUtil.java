@@ -4,6 +4,7 @@ import io.jsonwebtoken.*;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 
+import javax.crypto.SecretKey;
 import java.security.Key;
 import java.util.Date;
 
@@ -14,7 +15,7 @@ public class JwtUtil {
 
     //This where Generate Token
     public String generateToken(String username) {
-        Key key = Keys.hmacShaKeyFor(secret.getBytes());
+        SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
         return Jwts.builder()
 
@@ -28,7 +29,7 @@ public class JwtUtil {
     //Validate token
     public String extractUsername(String token) {
         return Jwts.parser()
-                .setSigningKey(secret)
+                .setSigningKey(secret.getBytes())
                 .parseClaimsJws(token)
                 .getBody()
                 .getSubject();

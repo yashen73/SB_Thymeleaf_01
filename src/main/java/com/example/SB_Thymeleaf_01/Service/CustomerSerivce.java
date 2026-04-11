@@ -6,6 +6,8 @@ import com.example.SB_Thymeleaf_01.Repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CustomerSerivce {
 
@@ -19,6 +21,12 @@ public class CustomerSerivce {
 
     public void save(Customer customer){
         repo.save(customer);
+    }
+
+
+    public List<Customer> showCustomers() {
+        List<Customer> cust = repo.findAll();
+        return cust;
     }
 
 }

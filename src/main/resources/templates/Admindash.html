@@ -9,7 +9,7 @@
 
     <!--Bootrstap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"></head>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -17,30 +17,109 @@
     <h2 class="clora">Clora</h2>
 </div>
 
+<section class="py-5">
+    <div class="container-fluid scroll-box show-all-items p-3" style="border: 1px solid black;">
+        <h3 style="text-align: center;"><u>Item Details</u></h3>
+        <span><button id="showtrendingItems" class="btn btn-danger"  type="submit">Show Items Details</button></span>
+
+        <div class="container py-3 item-table-container">
+            <table class="table table-bordered table-striped table-hover">
+                <thead class="table-dark">
+                <tr>
+                    <th>Item-ID</th>
+                    <th>Item-Brand-ID</th>
+                    <th>Item-Name</th>
+                    <th>Item-Quantity</th>
+                    <th>Item-Unit-Price</th>
+                    <th>Item-Sold-Count</th>
+                    <th>Item-Thumbnail-image</th>
+                </tr>
+                </thead>
+                <tbody id="show-all-items-table-body">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
 
 <section class="py-5">
-    <div class="container-fluid addproductson-TrendingItems">
-        <h3>Add products on Trending items</h3>
+    <div class="container-fluid trendingItem-container">
+        <div class="row g-5">
+            <div class="col-md-4 add-item-container">
 
-        <div class="container-form">
-            <form id="trendingItemsInsertingForm" method="post">
-                <label for="">Enter product brand ID :</label>
-                <input id="brand_item_id" name="brand_item_id" class="inputarea" type="text" placeholder="ex : T1">
-                <br>
-                <label for="">Item quantity :</label>
-                <input id="item_quantity" name="item_quantity" class="inputarea" type="text" placeholder="ex : 20">
-                <br>
-                <label for="">Item price :</label>
-                <input id="item_price" name="item_price" class="inputarea"type="text" placeholder="ex : 2500">
-                <br>
-                <label for="">Item sold count :</label>
-                <input id="item_sold_count" name="item_sold_count" class="inputarea" type="text" placeholder="ex : 10">
+                <h3>Add Trending Item</h3>
 
-                <br>
-                <button type="submit" class="btn btn-secondary">Submit</button>
-                <div id="message"></div>
-            </form>
+                <div class="container-form ">
+                    <form id="trendingItemsInsertingForm" method="post">
+                        <label for="">Enter product brand ID :</label>
+                        <input id="brand_item_id" name="brand_item_id" class="inputarea" type="text" placeholder="ex : T1">
+                        <br>
+                        <label for="">Item quantity :</label>
+                        <input id="item_quantity" name="item_quantity" class="inputarea" type="text" placeholder="ex : 20">
+                        <br>
+                        <label for="">Item price :</label>
+                        <input id="item_price" name="item_price" class="inputarea"type="text" placeholder="ex : 2500">
+                        <br>
+                        <label for="">Item sold count :</label>
+                        <input id="item_sold_count" name="item_sold_count" class="inputarea" type="text" placeholder="ex : 10">
 
+                        <br>
+                        <div class="btn-area">
+                            <button type="submit" class="btn btn-secondary">Add Item</button>
+                        </div>
+                        <div id="messageforAddingItem"></div>
+                    </form>
+
+                </div>
+            </div>
+
+            <div class="col-md-4 edit-item-container">
+
+                <h3>Edit Trending Item</h3>
+
+                <div class="container-form ">
+                    <form id="trendingItemsEditingForm" method="post">
+                        <label for="">Enter product item ID :</label>
+                        <input id="editing_item_id" name="item_id" class="inputarea" type="text" placeholder="ex : 10">
+                        <br>
+                        <label for="">New item quantity :</label>
+                        <input id="editing_item_quantity" name="item_quantity" class="inputarea" type="text" placeholder="ex : 20">
+                        <br>
+                        <label for="">New price :</label>
+                        <input id="editing_item_price" name="item_price" class="inputarea"type="text" placeholder="ex : 2500">
+                        <br>
+                        <label for="">New sold count :</label>
+                        <input id="editing_item_sold_count" name="item_sold_count" class="inputarea" type="text" placeholder="ex : 10">
+
+                        <br>
+                        <div class="btn-area">
+                            <button type="submit" class="btn btn-secondary">Edit Item</button>
+                        </div>
+                        <div id="messageforEditingItem"></div>
+                    </form>
+
+                </div>
+            </div>
+
+            <div class="col-md-4 delete-item-container">
+
+                <h3>Delete an Trending Item</h3>
+
+                <div class="container-form ">
+                    <form id="trendingItemsDeletingForm" method="post">
+                        <label for="">Enter item brand ID :</label>
+                        <input id="deleting_item_id" name="brand_item_id" class="inputarea" type="text" placeholder="ex : 10">
+
+                        <br>
+                        <div class="btn-area">
+                            <button type="submit" class="btn btn-secondary">Delete Item</button>
+                        </div>
+                        <div id="messageforDeletingItem"></div>
+                    </form>
+
+                </div>
+            </div>
         </div>
 
     </div>
@@ -51,7 +130,7 @@
     <div class="container-fluid addprodcution-bannerproducts">
 
         <div class="banner01">
-            
+
         </div>
 
         <div class="banner02">
@@ -62,6 +141,33 @@
 
         </div>
 
+    </div>
+</section>
+
+<section class="py-2">
+    <div class="container-fluid sold-item-container">
+
+
+    </div>
+</section>
+
+<section class="py-3">
+    <div class="container-fluid customer-details-container">
+        <h3 class="py-3" style="text-align: center;"><u>Customer details</u></h3>
+        <button id="showAllCustomers" class="btn btn-danger mb-3">Show All customers</button>
+        <table class="table table-bordered table-striped table-hover">
+            <thead class="table-dark">
+            <tr>
+                <th>Cust-ID</th>
+                <th>Cust-name</th>
+                <th>Cust-mail</th>
+                <th>Cust-phone</th>
+            </tr>
+            </thead>
+            <tbody id="show-all-customers">
+
+            </tbody>
+        </table>
     </div>
 </section>
 

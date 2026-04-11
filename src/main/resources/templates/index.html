@@ -29,8 +29,15 @@
     </div>
 
     <div class="cloracontainer-partition-3" id="iconinstrip">
-        <a href="#"><i class="bi bi-person"></i></a>
-        <i onclick="showSearchBox()" class="bi bi-search"></i>
+
+        <div>
+            <a href="/CustomerLogin"><i class="bi bi-person"></i></a>
+            <span id="login-indicator" class="indicator"></span>
+        </div>
+
+        <div>
+            <i onclick="showSearchBox()" class="bi bi-search"></i>
+        </div>
 
         <div id="search-box" class="search-box floating">
             <input  class="search-box-input" type="text">
@@ -50,19 +57,19 @@
 
                 <div class="banner-ad large bg-inf0 block-1">
 
-                    <div class="swiper main-swiper">
+                    <div class="swiper main-swiper" style="height: 100%;">
                         <div class="swiper-wrapper">
 
                             <!-- Swiper Slide 1 -->
                             <div class="swiper-slide">
                                 <div class="row banner-content p-5">
-                                    <div class="content-wrapper col-md-7">
+                                    <div class="content-wrapper col-md-6">
                                         <div class="banner-discount">50%</div>
                                         <div class="banner-description">Upgrade Your Wardrobe Today.</div>
                                         <a href="#" class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1 px-4 py-3 mt-3">shop now</a>
                                     </div>
-                                    <div class="img-wrapper col-md-5">
-                                        <img th:src="@{/images/bannerImages/block1.jpg}" alt="" class="large-banner-img">
+                                    <div class="img-wrapper col-md-6" style="display: flex; align-items: center;">
+                                        <img th:src="@{/images/bannerImages/block1-1.png}" alt="" class="large-banner-img" style="display: flex; align-items: center;">
                                     </div>
                                 </div>
                             </div>
@@ -70,13 +77,13 @@
                             <!-- Swiper Slide 2 -->
                             <div class="swiper-slide">
                                 <div class="row banner-content p-5">
-                                    <div class="content-wrapper col-md-7">
+                                    <div class="content-wrapper col-md-6">
                                         <div class="banner-discount">50 %</div>
                                         <div class="banner-description">Wear the Style. Feel the Comfort.</div>
                                         <a href="#" class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1 px-4 py-3 mt-3">shop now</a>
                                     </div>
-                                    <div class="img-wrapper col-md-5">
-                                        <img th:src="@{/images/bannerImages/block1-2.jpg}" alt="" class="large-banner-img">
+                                    <div class="img-wrapper col-md-6" style="display: flex; align-items: center; justify-content:end;">
+                                        <img th:src="@{/images/bannerImages/block1-2.png}" alt="" class="large-banner-img" style="display: flex; align-items: center;">
                                     </div>
                                 </div>
                             </div>
@@ -84,13 +91,13 @@
                             <!-- Swiper Slide 3 -->
                             <div class="swiper-slide">
                                 <div class="row banner-content p-5">
-                                    <div class="content-wrapper col-md-7">
+                                    <div class="content-wrapper col-md-6">
                                         <div class="banner-discount">50 %</div>
                                         <div class="banner-description">Make Every Outfit Count.</div>
                                         <a href="#" class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1 px-4 py-3 mt-3">shop now</a>
                                     </div>
-                                    <div class="img-wrapper col-md-5">
-                                        <img th:src="@{/images/bannerImages/block1-3.jpg}" alt="" class="large-banner-img">
+                                    <div class="img-wrapper col-md-6" style="display: flex; align-items: center; justify-content:end;">
+                                        <img th:src="@{/images/bannerImages/block1-3.png}" alt="" class="large-banner-img" style="display: flex; align-items: center;">
                                     </div>
                                 </div>
                             </div>

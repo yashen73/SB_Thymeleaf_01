@@ -35,6 +35,11 @@ public class CustomerController {
         return "index";
     }
 
+    @GetMapping("/index")
+    public String indexafterlogin(){
+        return "index";
+    }
+
     @RequestMapping("/CustomerSignup")
     public String CustomerSignup(){
         System.out.println("Customer Sign Up is loaded ...");
@@ -48,7 +53,7 @@ public class CustomerController {
         if(regsitrationResult == "Email already exists"){
             model.addAttribute("message", "This Email is already has been registered . . . ");
             System.out.println("rejected due to existing email . . . ");
-            return "CustomerLogin";
+            return "auth/login";
         }else {
             System.out.println("Registration Successfull .....");
 
@@ -120,6 +125,16 @@ public class CustomerController {
     @GetMapping("/Locations")
     public String Locations(){
         return "Locations";
+    }
+
+    @GetMapping("/PaymentSuccess")
+    public String PaymentSuccess(){
+        return "PaymentSucceed";
+    }
+
+    @GetMapping("/PaymentUnsuccess")
+    public String PaymentUnsuccess(){
+        return "PaymentCancled";
     }
 
 }

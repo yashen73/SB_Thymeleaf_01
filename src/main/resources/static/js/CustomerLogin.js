@@ -39,7 +39,7 @@ document.getElementById("customerLoginForm").addEventListener("submit",  async f
         console.log("JWT: ", token)
         localStorage.setItem("jwt", token);
         alert("Loged In !");
-        window.location.href = "http://localhost:8080/";
+        window.location.href = "/index";
    })
    .catch ( err => console.error(err));
 
