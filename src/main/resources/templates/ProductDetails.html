@@ -20,25 +20,29 @@
 
 <div class="row" id="cloracontainer">
 
-    <div class="col-6">
+    <div class="cloracontainer-partition-1">
         <span class="clora">Clora</span>
     </div>
 
-    <div class="col-6" id="iconinstrip">
-        <a href="#"><i class="bi bi-person"></i></a>
-        <i onclick="showSearchBox()" class="bi bi-search"></i>
+    <div class="cloracontainer-partition-2 cloraintrospace">
+        <span class="cloraintro">Clora for your comfort</span>
+    </div>
+
+    <div class="cloracontainer-partition-3" id="iconinstrip">
+
+        <div>
+            <a href="/CustomerLogin"><i class="bi bi-person"></i></a>
+            <span id="login-indicator" class="indicator"></span>
+        </div>
+
+        <div>
+            <i onclick="showSearchBox()" class="bi bi-search"></i>
+        </div>
 
         <div id="search-box" class="search-box floating">
             <input  class="search-box-input" type="text">
             <i onclick="Search()" class="bi bi-arrow-right-circle-fill"></i>
         </div>
-    </div>
-</div>
-
-<div class="mainconainer">
-    <div class="Cloraintro">
-
-        <p class="blink">Clora for your comfort</p>
     </div>
 </div>
 
@@ -91,8 +95,8 @@
                     </div>
 
                     <div class="product-detail-block p-5">
-                        <h2>Product Name</h2>
-                        <div class="Product-id"><span id="ProductId">5</span></div>
+                        <h2><span th:text="${item.item_name}"></span></h2>
+                        <div class="Product-id"><span id="ProductId" th:text="${item.item_id}"></span></div>
                         <div class="product-description">2025 New Summer Men's Solid Color Sleeve Tshirts Casual </div>
                         <div class="review-wrapper">
                             <span class="rating"><Strong>4.4 <i class="bi bi-star-half"></i></Strong></span>
@@ -104,7 +108,7 @@
                                 <span id="product-detail-banner-discount">20% Off </span>
                             </div>
                         </div>
-                        <div class="price py-2">Price : <del><span id="insert-price">1950</span></del> <strong><span id="new-price"><span th:text ="${item.item_price}"></span>/=</span></strong></div>
+                        <div class="price py-2">Price : <del><span th:text="${item.item_price}" id="insert-price"></span></del> <strong><span id="new-price"><span th:text ="${item.item_price}"></span>/=</span></strong></div>
                         <div class="qty py-1">Quantity : <span id="insert-qty"><span th:text ="${item.item_quantity}"></span></span></div>
 
                         <div class="size py-2">
@@ -132,7 +136,7 @@
                             <button id="purchaseButton" class="purchase-button" type="submit">Purchase</button>
                         </div>
                         <div class="addtocart-button-area py-3">
-                            <a href="#" class="addtocart-button">Add to cart... <span><i class="bi bi-cart"></i></span></a>
+                            <button id="addtocart-btn" class="addtocart-button">Add to cart... <span><i class="bi bi-cart"></i></span></button>
                         </div>
                     </div>
                 </div>
@@ -211,7 +215,7 @@
                         </div>
                     </div>
 
-                    <div class="tab-content" id="nav-tabContent">
+                    <div class="tabz-content" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-all" role="tabpanel">
 
                             <div class="product-grid row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5" id="product-grid">

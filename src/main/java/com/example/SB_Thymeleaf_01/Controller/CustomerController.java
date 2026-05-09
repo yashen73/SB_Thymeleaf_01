@@ -2,10 +2,7 @@ package com.example.SB_Thymeleaf_01.Controller;
 
 import com.example.SB_Thymeleaf_01.Availableitems;
 import com.example.SB_Thymeleaf_01.Customer;
-import com.example.SB_Thymeleaf_01.Service.CustomerSerivce;
-import com.example.SB_Thymeleaf_01.Service.ItemsService;
-import com.example.SB_Thymeleaf_01.Service.LoginService;
-import com.example.SB_Thymeleaf_01.Service.RegisterCustomer;
+import com.example.SB_Thymeleaf_01.Service.*;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,16 +14,18 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class CustomerController {
 
     @Autowired
-    private CustomerSerivce service;
+    private CustomerSerivce custormerService;
     @Autowired
     private LoginService loginservice;
     @Autowired
     private RegisterCustomer registercustomer;
     @Autowired
     private ItemsService findAnyItem;
+    @Autowired
+    private CartService serviceforCart;
 
     public CustomerController(CustomerSerivce service){
-        this.service = service;
+        this.custormerService = service;
     }
 
     @RequestMapping("/")
@@ -50,6 +49,7 @@ public class CustomerController {
     public String save(@ModelAttribute Customer customer, Model model, RedirectAttributes redirectAttributes){
         System.out.println("sign up is called  . . . .");
         String regsitrationResult =registercustomer.register(customer);
+
         if(regsitrationResult == "Email already exists"){
             model.addAttribute("message", "This Email is already has been registered . . . ");
             System.out.println("rejected due to existing email . . . ");
@@ -59,7 +59,14 @@ public class CustomerController {
 
             // Send success message after redirect
             redirectAttributes.addFlashAttribute("SignupSucceedMessage", "Successful");
-            return "CustomerLogin";
+            //Calling Service to Create an cart on Cart Table....
+            String createCartResult = serviceforCart.createCart(customer);
+            if (createCartResult.equals("Success")){
+                return "CustomerLogin";
+            }else {
+                return "auth/login";
+            }
+
         }
     }
 
@@ -129,7 +136,7 @@ public class CustomerController {
 
     @GetMapping("/PaymentSuccess")
     public String PaymentSuccess(){
-        return "PaymentSucceed";
+        return "PaymentSucced";
     }
 
     @GetMapping("/PaymentUnsuccess")

@@ -6,10 +6,11 @@
 
 :root {
     --clora-theme-font : "Playwrite AT", cursive;
-    --banner-color: #6995B1;
-    --banner-description-font: "Pacifico", cursive;
+    --banner-color: #cfd2e9;
+    --large-banner-color:#ebe2f0;
+    --banner-description-font: "Saira Stencil", sans-serif;
     --banner-discount-font: "Source Serif 4", serif;
-    --swiper-slide-background : #e6f3fb;
+    --swiper-slide-background : #fdfdfd;
     --block-2-3-description-font : "Inconsolata", monospace;
     --banner-2-3-btn-color-hover : #03182c;
     --banner1-description-color : #012649;
@@ -23,14 +24,32 @@
 }
 
 
+#cloracontainer .cloracontainer-partition-1{
+    grid-area: 1/ 1/ 2/ 5;
+}
+
+#cloracontainer .cloracontainer-partition-2{
+    grid-area: 1/ 5/ 2/ 9;
+}
+
+#cloracontainer .cloracontainer-partition-3 {
+    grid-area: 1/ 9/ 2/ 13;
+}
+
 
 #cloracontainer {
-    background-color: rgb(141, 141, 141);
+    display: grid;
+    background-color: rgb(192, 192, 192);
     border-radius: 2px;
-    margin-top: 2px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
     border-radius: 10px;
     transform: translateY(-50px);
     animation: slidedown 0.5s ease forwards;
+    padding: 10px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 #iconinstrip {
@@ -41,7 +60,6 @@
 
 
 .clora {
-
     font-family: var(--clora-theme-font);
     font-size: 60px;
     font-weight: 900;
@@ -49,7 +67,15 @@
     padding: 10px;
     margin-left: 5px;
     margin-bottom: 10px;
+}
 
+.cloraintrospace {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+    font-family: "Dancing Script", cursive;
+    color: rgb(88, 38, 1);
 }
 
 
@@ -68,6 +94,17 @@
     margin-right: 20px;
     padding: 15px;
     border-radius: 40px;
+}
+
+#login-indicator {
+    position: absolute;
+    top: 35px;
+    right: 110px;
+    width: 10px;
+    height: 10px;
+    background-color: rgb(234, 234, 234);
+    border-radius: 50%;
+    display: none;
 }
 
 .search-box {

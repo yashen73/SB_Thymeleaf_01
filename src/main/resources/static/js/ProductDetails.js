@@ -37,6 +37,20 @@
 
     initSwiper();
 })(jQuery);
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const token = localStorage.getItem("jwt");
+    const indicator = document.getElementById("login-indicator");
+
+    if(token) {
+        indicator.style.display = "block";
+    }else {
+        indicator.style.display = "none";
+    }
+});
+
+
 fetch("http://localhost:8080/item/showAllItems")
 .then(response => response.json())
 .then(data => {
@@ -96,6 +110,7 @@ document.getElementById("purchaseButton").addEventListener("click", async functi
 
     btn.inneText ="Purchase";
     btn.style.pointerEvents =" auto";
+
     }
 })
 
@@ -122,4 +137,35 @@ async function pay(){
     })
     .catch(error=> console.error(error));
 
+}
+
+
+document.getElementById("addtocart-btn").addEventListener("click", async function(e) {
+    e.preventDefault();
+
+    try {
+        if(!localStorage.getItem("jwt")){
+            alert("Please Login first");
+        }else{
+            await addtocart();
+        }
+    }
+
+})
+
+await function addtocart(){
+    let itemIdforAddtoCart = document.getElementById("ProductId").textContent;
+    const tokenforAddtoCart = localStorage.getItem("jwt");
+    let itemQuantityforAddtoCart = document.getElementById("quantity-no").value;
+
+    const repondforAddtoCart =await fetch(""+itemIdforAddtoCart, {
+        method: "POST",
+        headers: {
+            "Content-Type" : "Application/json",
+            "Authorization-token" : "bearer" + token;
+        },
+        body: JSON.stringify{
+
+        }
+    })
 }

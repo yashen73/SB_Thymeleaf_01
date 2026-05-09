@@ -16,6 +16,14 @@ public class Customer {
     private int tele;
     private String password;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -51,7 +59,8 @@ public class Customer {
     @Override
     public String toString() {
         return "Customer{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", mail='" + mail + '\'' +
                 ", tele=" + tele +
                 ", password='" + password + '\'' +
