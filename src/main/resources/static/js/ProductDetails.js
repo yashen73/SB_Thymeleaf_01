@@ -76,6 +76,7 @@ fetch("http://localhost:8080/item/showAllItems")
                         <span class="qty">${item.item_quantity}pcs</span>
                         <span class="price">${item.item_price}/=</span>
 
+
                     </div>
                 </div>
             `;
@@ -149,23 +150,34 @@ document.getElementById("addtocart-btn").addEventListener("click", async functio
         }else{
             await addtocart();
         }
+    }catch (err){
+        console.error(err);
     }
 
 })
 
-await function addtocart(){
+async function addtocart(){
+
     let itemIdforAddtoCart = document.getElementById("ProductId").textContent;
     const tokenforAddtoCart = localStorage.getItem("jwt");
     let itemQuantityforAddtoCart = document.getElementById("quantity-no").value;
 
-    const repondforAddtoCart =await fetch(""+itemIdforAddtoCart, {
+    console.log(itemIdforAddtoCart);
+    console.log(tokenforAddtoCart);
+    console.log(itemQuantityforAddtoCart);
+
+    const repondforAddtoCart =await fetch("http://localhost:8080/cart/AddtoCart",
+    {
         method: "POST",
         headers: {
-            "Content-Type" : "Application/json",
-            "Authorization-token" : "bearer" + token;
+            "Content-Type" : "application/json",
+            "Authorization" : tokenforAddtoCart
         },
-        body: JSON.stringify{
-
-        }
-    })
+        body: JSON.stringify({
+            product_id : itemIdforAddtoCart,
+            quantity : itemQuantityforAddtoCart
+        })
+    });
+    const result  = await repondforAddtoCart.text();
+    console.log(result);
 }

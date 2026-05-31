@@ -20,6 +20,10 @@ public class Availableitems {
     private int item_price;
     private int item_sold_count;
     private String item_thumbnailimg_name;
+    private String item_detail_img1_name;
+    private String item_detail_img2_name;
+    private String item_views;
+    private String item_rates;
 
     public int getItem_id() {
         return item_id;
@@ -77,6 +81,38 @@ public class Availableitems {
         this.item_thumbnailimg_name = item_thumbnaimg_name;
     }
 
+    public String getItem_detail_img1_name() {
+        return item_detail_img1_name;
+    }
+
+    public void setItem_detail_img1_name(String item_detail_img1_name) {
+        this.item_detail_img1_name = item_detail_img1_name;
+    }
+
+    public String getItem_detail_img2_name() {
+        return item_detail_img2_name;
+    }
+
+    public void setItem_detail_img2_name(String item_detail_img2_name) {
+        this.item_detail_img2_name = item_detail_img2_name;
+    }
+
+    public String getItem_views() {
+        return item_views;
+    }
+
+    public void setItem_views(String item_views) {
+        this.item_views = item_views;
+    }
+
+    public String getItem_rates() {
+        return item_rates;
+    }
+
+    public void setItem_rates(String item_rates) {
+        this.item_rates = item_rates;
+    }
+
     @Override
     public String toString() {
         return "Availableitems{" +
@@ -86,7 +122,11 @@ public class Availableitems {
                 ", item_quantity=" + item_quantity +
                 ", item_price=" + item_price +
                 ", item_sold_count=" + item_sold_count +
-               ", item_thumbnailimg_name='" + item_thumbnailimg_name + '\'' +
+                ", item_thumbnailimg_name='" + item_thumbnailimg_name + '\'' +
+                ", item_detail_img1_name='" + item_detail_img1_name + '\'' +
+                ", item_detail_img2_name='" + item_detail_img2_name + '\'' +
+                ", item_views='" + item_views + '\'' +
+                ", item_rates='" + item_rates + '\'' +
                 '}';
     }
 }

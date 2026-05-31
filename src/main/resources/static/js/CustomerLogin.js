@@ -25,6 +25,8 @@ document.getElementById("customerLoginForm").addEventListener("submit",  async f
     const btn = document.querySelector("button");
     btn.disabled = true;
     btn.innerText = "Processing";
+    localStorage.clear();
+    localStorage.removeItem("jwt");
 
    fetch("http://localhost:8080/auth/login", {
     method : "POST",

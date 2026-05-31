@@ -12,10 +12,7 @@ import javax.swing.plaf.OptionPaneUI;
 import javax.xml.crypto.Data;
 import java.lang.invoke.CallSite;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class ItemsService {
@@ -43,7 +40,7 @@ public class ItemsService {
         Optional<Availableitems> item = findanyitem.findById(Itemid);
         try{
             return item.get();
-        }catch (DataAccessException e){
+        }catch (NoSuchElementException e){
             throw new RuntimeException("Not Found");
         }
     }

@@ -18,7 +18,7 @@
 </div>
 
 <section class="py-5">
-    <div class="container-fluid scroll-box show-all-items p-3" style="border: 1px solid black;">
+    <div class="container-fluid show-all-items p-3" style="border: 1px solid black;">
         <h3 style="text-align: center;"><u>Item Details</u></h3>
         <span><button id="showtrendingItems" class="btn btn-danger"  type="submit">Show Items Details</button></span>
 
@@ -51,7 +51,10 @@
                 <h3>Add Trending Item</h3>
 
                 <div class="container-form ">
-                    <form id="trendingItemsInsertingForm" method="post">
+                    <form id="trendingItemsInsertingForm">
+                        <label for="">Enter product name:</label>
+                        <input id="item_name" name="item_name" class="inputarea" type="text" placeholder="ex : shirt01">
+                        <br>
                         <label for="">Enter product brand ID :</label>
                         <input id="brand_item_id" name="brand_item_id" class="inputarea" type="text" placeholder="ex : T1">
                         <br>
@@ -63,8 +66,48 @@
                         <br>
                         <label for="">Item sold count :</label>
                         <input id="item_sold_count" name="item_sold_count" class="inputarea" type="text" placeholder="ex : 10">
+                        <br>
+                        <label for="">Thumbmnail <br> Image name:</label>
+                        <input id="thumbnail_img_name" name="item_thumbnail_img_name" class="inputarea" type="text" placeholder="block1.png">
+                        <br>
+                        <label for="">Thumbnail Image :</label>
+                        <input id="thumbnail_img" name="item_thumbnail_img" class="imageinsert" type="file" accept="image/**">
+                        <br><br>
+
+                        <!--Image preview-->
+                        <div class="preview-box">
+                            <img id="thumbnail-image-preview" alt="preview">
+                            <div class="image-name" id="thumbnail_img_display_name"></div>
+                        </div>
 
                         <br>
+                        <label for="">Detail <br> Image01 name:</label>
+                        <input id="detail_img01_name" name="item_detail_img01_name" class="inputarea" type="text" placeholder="block1.png">
+                        <br>
+                        <label for="">Detail Image01 :</label>
+                        <input id="detail_img01" name="item_detail_img01" class="imageinsert" type="file" accept="image/**">
+                        <br><br>
+
+                        <!--detailed Image preview-->
+                        <div class="preview-box">
+                            <img id="detail-image01-preview" alt="preview">
+                            <div class="image-name" id="detail_img01_display_name"></div>
+                        </div>
+
+                        <br>
+                        <label for="">Detail <br> Image02 name:</label>
+                        <input id="detail_img02_name" name="item_detail_img02_name" class="inputarea" type="text" placeholder="block1.png">
+                        <br>
+                        <label for="">Detail Image02 :</label>
+                        <input id="detail_img02" name="item_detail_img02" class="imageinsert" type="file" accept="image/**">
+                        <br><br>
+
+                        <!--detailed Image preview-->
+                        <div class="preview-box">
+                            <img id="detail-image02-preview" alt="preview">
+                            <div class="image-name" id="detail_img02_display_name"></div>
+                        </div>
+
                         <div class="btn-area">
                             <button type="submit" class="btn btn-secondary">Add Item</button>
                         </div>
@@ -78,8 +121,11 @@
 
                 <h3>Edit Trending Item</h3>
 
-                <div class="container-form ">
+                <div class="container-form">
                     <form id="trendingItemsEditingForm" method="post">
+                        <label for="">Enter product name:</label>
+                        <input id="editing_item_name" name="item_name" class="inputarea" type="text" placeholder="ex : shirt01">
+                        <br>
                         <label for="">Enter product item ID :</label>
                         <input id="editing_item_id" name="item_id" class="inputarea" type="text" placeholder="ex : 10">
                         <br>
@@ -91,8 +137,50 @@
                         <br>
                         <label for="">New sold count :</label>
                         <input id="editing_item_sold_count" name="item_sold_count" class="inputarea" type="text" placeholder="ex : 10">
+                        <br>
+
+                        <label for="">Thumbmnail <br> Image name:</label>
+                        <input id="thumbnail_img_name_forediting" name="item_thumbnail_img_name" class="inputarea" type="text" placeholder="block1.png">
+                        <br>
+                        <label for="">Thumbnail Image :</label>
+                        <input id="thumbnail_img_forediting" name="item_thumbnail_img" class="imageinsert" type="file" accept="image/**">
+                        <br><br>
+
+                        <!--Image preview-->
+                        <div class="preview-box">
+                            <img id="thumbnail-image-preview_forediting" alt="preview">
+                            <div class="image-name" id="thumbnail_img_display_name_forediting"></div>
+                        </div>
 
                         <br>
+                        <label for="">Detail <br> Image01 name:</label>
+                        <input id="detail_img01_name_forediting" name="item_detail_img01_name" class="inputarea" type="text" placeholder="block1.png">
+                        <br>
+                        <label for="">Detail Image01 :</label>
+                        <input id="detail_img01_forediting" name="item_detail_img01" class="imageinsert" type="file" accept="image/**">
+                        <br><br>
+
+                        <!--detailed Image preview-->
+                        <div class="preview-box">
+                            <img id="detail-image01-preview_forediting" alt="preview">
+                            <div class="image-name" id="detail_img01_display_name_forediting"></div>
+                        </div>
+
+                        <br>
+                        <label for="">Detail <br> Image02 name:</label>
+                        <input id="detail_img02_name_forediting" name="item_detail_img02_name" class="inputarea" type="text" placeholder="block1.png">
+                        <br>
+                        <label for="">Detail Image02 :</label>
+                        <input id="detail_img02_forediting" name="item_detail_img02" class="imageinsert" type="file" accept="image/**">
+                        <br><br>
+
+                        <!--detailed Image preview-->
+                        <div class="preview-box">
+                            <img id="detail-image02-preview_forediting" alt="preview">
+                            <div class="image-name" id="detail_img02_display_name_forediting"></div>
+                        </div>
+
+
                         <div class="btn-area">
                             <button type="submit" class="btn btn-secondary">Edit Item</button>
                         </div>
@@ -107,9 +195,9 @@
                 <h3>Delete an Trending Item</h3>
 
                 <div class="container-form ">
-                    <form id="trendingItemsDeletingForm" method="post">
-                        <label for="">Enter item brand ID :</label>
-                        <input id="deleting_item_id" name="brand_item_id" class="inputarea" type="text" placeholder="ex : 10">
+                    <form id="trendingItemsDeletingForm">
+                        <label for="">Enter item ID :</label>
+                        <input id="deleting_item_id" name="item_id" class="inputarea" type="text" placeholder="ex : 10">
 
                         <br>
                         <div class="btn-area">
@@ -154,7 +242,7 @@
 <section class="py-3">
     <div class="container-fluid customer-details-container">
         <h3 class="py-3" style="text-align: center;"><u>Customer details</u></h3>
-        <button id="showAllCustomers" class="btn btn-danger mb-3">Show All customers</button>
+        <button class="btn btn-danger mb-3">Show All customers</button>
         <table class="table table-bordered table-striped table-hover">
             <thead class="table-dark">
             <tr>
@@ -164,9 +252,6 @@
                 <th>Cust-phone</th>
             </tr>
             </thead>
-            <tbody id="show-all-customers">
-
-            </tbody>
         </table>
     </div>
 </section>

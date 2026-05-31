@@ -3,6 +3,7 @@ package com.example.SB_Thymeleaf_01.Service;
 import com.example.SB_Thymeleaf_01.Cart;
 import com.example.SB_Thymeleaf_01.CartItem;
 import com.example.SB_Thymeleaf_01.Customer;
+import com.example.SB_Thymeleaf_01.Repositories.CartItemRepo;
 import com.example.SB_Thymeleaf_01.Repositories.CartRepo;
 import com.example.SB_Thymeleaf_01.Repositories.CustomerRepository;
 import com.stripe.model.issuing.Authorization;
@@ -19,6 +20,10 @@ public class CartService {
     private CartRepo repoforCart;
     @Autowired
     private CustomerRepository custrepo;
+    @Autowired
+    private CartItemRepo cartItemRepo;
+
+
 
 
 
@@ -38,7 +43,30 @@ public class CartService {
 
 
     //Adding Item For registered customer
-    public void addItemToCart(CartItem item, Customer cust){
+    public String addItemToCart(CartItem item, String mail){
 
+        Optional<Customer> newCustomer = custrepo.findByMail(mail);
+        Optional<Cart> newCart = repoforCart.findByCustomerId(newCustomer.get().getId());
+
+        try{
+            item.setCart(newCart.get());
+            cartItemRepo.save(item);
+            return "Success";
+        }catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    //Removing Item from cart
+    public String removeItemFromCart(CartItem item, String mail){
+
+        Optional<Customer> newCustomer = custrepo.findByMail(mail);
+
+        try{
+
+            return "Success";
+        }catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

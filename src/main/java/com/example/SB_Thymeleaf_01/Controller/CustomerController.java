@@ -119,6 +119,11 @@ public class CustomerController {
         }
     }
 
+    @GetMapping("/Profile")
+    public String Profile(){
+        return "Profile";
+    }
+
     @GetMapping("/itemsforbrands")
     public  String itemsforbrands(){
         return "BrandViseProducts";
