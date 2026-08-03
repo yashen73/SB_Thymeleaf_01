@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/cart")
 public class CartController {
@@ -43,5 +45,12 @@ public class CartController {
         } catch (RuntimeException e) {
              throw new RuntimeException(e);
         }
+    }
+
+    @GetMapping("/ShowCartItems")
+    public List<Availableitems> ShowCartItems(@RequestParam("token") String token){
+        System.out.println("ShowCartItems is called in carcontorller ....");
+        String emailForCartItem =  jwtUtil.extractUsername(token);
+        return cartService.getAllItemsInCart(emailForCartItem);
     }
 }

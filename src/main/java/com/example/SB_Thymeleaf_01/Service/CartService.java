@@ -1,5 +1,6 @@
 package com.example.SB_Thymeleaf_01.Service;
 
+import com.example.SB_Thymeleaf_01.Availableitems;
 import com.example.SB_Thymeleaf_01.Cart;
 import com.example.SB_Thymeleaf_01.CartItem;
 import com.example.SB_Thymeleaf_01.Customer;
@@ -7,11 +8,15 @@ import com.example.SB_Thymeleaf_01.Repositories.CartItemRepo;
 import com.example.SB_Thymeleaf_01.Repositories.CartRepo;
 import com.example.SB_Thymeleaf_01.Repositories.CustomerRepository;
 import com.stripe.model.issuing.Authorization;
+import org.hibernate.query.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.swing.text.html.Option;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class CartService {
@@ -22,6 +27,8 @@ public class CartService {
     private CustomerRepository custrepo;
     @Autowired
     private CartItemRepo cartItemRepo;
+    @Autowired
+    private CartRepo cartRepo;
 
 
 
@@ -39,6 +46,22 @@ public class CartService {
             throw new RuntimeException(e);
         }
 
+    }
+
+    public List<Availableitems> getAllItemsInCart(String emailToFindCart) {
+        //Find Customer for Customer Id using mail....
+        Optional<Customer> customerToFindCart = custrepo.findByMail(emailToFindCart);
+        //Find Cart using Customer Id.....
+        Optional<Cart> cart = cartRepo.findByCustomerId(customerToFindCart.get().getId());
+        //Make returns of list of items....
+        if(cart.isPresent()){
+            //Find item's id according to the Cart ID.....
+            List<CartItem> listOfItems = cartItemRepo.findByCart(cart.get());
+            System.out.println(listOfItems);
+            return null;
+        }else {
+            return null;
+        }
     }
 
 

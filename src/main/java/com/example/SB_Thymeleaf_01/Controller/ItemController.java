@@ -29,50 +29,26 @@ public class ItemController {
         @Autowired
         private ItemsService findAnyItem;
 
-    //Save Trending items Send from JS
-    @PostMapping("/addProductOnTrendingItems")
-    public ResponseEntity<String> addProductOnTrendingItems(@RequestPart("addingDTO") Availableitems availbleItems,
-                                                            @RequestParam ("fileForThumbnailImg") MultipartFile thumbnailImg,
-                                                            @RequestParam("fileForDetailImg1") MultipartFile detailimg1,
-                                                            @RequestParam("fileForDetailImg2") MultipartFile detailimg2) {
-        System.out.println(availbleItems+"/n"+thumbnailImg + "/n" + detailimg1 + "/n"+detailimg2);//Show the item sends from JS
+        //Save Trending items Send from JS
+        @PostMapping("/addProductOnTrendingItems")
+        public ResponseEntity<String> addProductOnTrendingItems(@RequestPart("addingDTO") Availableitems availbleItems,
+                                                                @RequestParam ("fileForThumbnailImg") MultipartFile thumbnailImg,
+                                                                @RequestParam("fileForDetailImg1") MultipartFile detailimg1,
+                                                                @RequestParam("fileForDetailImg2") MultipartFile detailimg2) {
+            System.out.println(availbleItems+"/n"+thumbnailImg + "/n" + detailimg1 + "/n"+detailimg2);//Show the item sends from JS
 
-        //Directory path
-        String thumbnailImgPath = "C:/Users/MCTech/Downloads/SB_Thymeleaf_01/SB_Thymeleaf_01/src/main/resources/static/images/product-thumbnails/";
-        String detailImgPath = "C:/Users/MCTech/Downloads/SB_Thymeleaf_01/SB_Thymeleaf_01/src/main/resources/static/images/detail_images/";
+            try{
 
-        File directoryForThumbnailImg = new File(thumbnailImgPath);
-        File directoryForDetailImg = new File(detailImgPath);
+                String ResponsToSave = serviceForItems.SaveItem(availbleItems, thumbnailImg, detailimg1, detailimg2);    //calling ItemsService.class to save items
 
+                System.out.println("/n"+"All images saved successfully....");
 
-        if(!directoryForDetailImg.exists()) {
-                   directoryForDetailImg.mkdir();
+                return ResponseEntity.status(HttpStatus.CREATED).body(ResponsToSave);
+
+            }catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
-
-        if(!directoryForThumbnailImg.exists()) {
-            directoryForThumbnailImg.mkdir();
-        }
-
-        //files renaming and make  destination for relevant files....
-        File destinationForThumbnailImg = new File(thumbnailImgPath, availbleItems.getItem_thumbnailimg_name());
-        File destinationForDetailImg1 = new File(detailImgPath, availbleItems.getItem_detail_img1_name());
-        File destinationForDetailImg2 = new File(detailImgPath , availbleItems.getItem_detail_img2_name());
-
-        try{
-
-            String ResponsToSave = serviceForItems.SaveItem(availbleItems);    //calling ItemsService.class to save items
-            thumbnailImg.transferTo(destinationForThumbnailImg);
-            detailimg1.transferTo(destinationForDetailImg1);
-            detailimg2.transferTo(destinationForDetailImg2);
-
-            System.out.println("/n"+"All images saved successfully....");
-
-            return ResponseEntity.status(HttpStatus.CREATED).body(ResponsToSave);
-
-        }catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
 
         @GetMapping("/showAllItems")

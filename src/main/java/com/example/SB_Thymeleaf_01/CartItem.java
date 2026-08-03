@@ -2,6 +2,7 @@ package com.example.SB_Thymeleaf_01;
 
 
 import jakarta.persistence.*;
+import org.hibernate.sql.results.graph.Fetch;
 
 @Entity
 public class CartItem {
@@ -10,7 +11,7 @@ public class CartItem {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cart_id", nullable = false)
     private Cart cart;
 

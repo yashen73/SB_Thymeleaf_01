@@ -262,7 +262,6 @@
     .cloracontainer-partition-2 {
         display: none;
     }
-
 }
 
 /* Block 2 & 3 banner*/
@@ -338,6 +337,11 @@
     margin: 5px;
     transition: box-shadow 0.3s ease-out, transform 0.3s ease-out;
 }
+
+.swiper-slide {
+    position:;
+}
+
 
 .tabs-header .Section-Title {
     font-size: 40px;
@@ -441,9 +445,103 @@
     margin: 20px;
 }
 
+.footer-menu:hover {
+    transition: all 0.3s ease;
+    font-size: 24px;
+}
+
+
 .footer-menu-container:hover {
 
 }
+
+
+/* Chat Component CSS */
+.chat-box {
+    display: flex;
+    position: fixed;
+    justify-content: flex-end;
+    right: 20px;
+    bottom: 100px;
+    height: 300px;
+    margin-right: 110px;
+}
+
+.chat-widget {
+    background-color: #ede8e8;
+    display: none;
+    width: 250px;
+    height: 100%;
+    border-radius: 20px;
+    flex-direction: column;
+    word-break: break-all;
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+
+.chat-header {
+    border-radius: 20px;
+    background-color: #bdd4ea;
+    padding: 10px;
+    align-items: center;
+
+}
+
+.message-content {
+    padding: 10px;
+    width: 100%;
+}
+
+.typing-indicator {
+    top: 100px;
+}
+
+.chat-input {
+    display: flex;
+    position:fixed;
+    justify-content: flex-end;
+    align-items: center;
+    bottom: 100px;
+    gap: 1px;
+}
+
+#messageInput {
+    border: none;
+    background-color: 0, 0, 0, 0.1;
+    border-radius: 5px;
+
+}
+
+.bi.bi-arrow-up-right-circle-fill {
+    background-color: none !important;
+    font-size: 20px;
+}
+
+
+.chat-icon-space {
+    display:flex;
+    position: fixed;
+    width: 100%;
+    justify-content:flex-end;
+    align-self: end;
+    bottom: 30px;
+}
+
+
+.chat-icon {
+    position: fixed;
+    justify-self: center;
+    font-size: 40px;
+    color: #000000;
+    background-color: #dfdede;
+    right: 40px;
+    bottom: 30px;
+    padding: 10px;
+    border-radius: 20px;
+}
+/*   ..............................   */
+
+
 
 @keyframes slidedown {
     to {
@@ -458,3 +556,5 @@
         transform: translateX(0);
     }
 }
+
+

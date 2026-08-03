@@ -289,6 +289,44 @@
     </div>
 </section>
 
+<section class="chat-section">
+    <div class="chat-box container-fluid">
+        <div class="chat-widget" id="chatWidget">
+
+            <div class="chat-header">
+                Customer Support
+            </div>
+
+            <div class="chat-messages" id="chatMessages">
+                <div class="message admin">
+                    <div class="message-content">Hello how can i help you...</div>
+                </div>
+            </div>
+
+            <div class="typing-indicator" id="typingIndicator">
+                Admin is typing...
+            </div>
+
+            <div class="chat-input" id="chatInput">
+                <span><input type="text" id="messageInput" placeholder="Type here" onkeypress="handleKeyPress(event)"></span>
+                <span></span><button class="send-button" onclick="sendMessage()" style="border: none;"><i class="bi bi-arrow-up-right-circle-fill"></i></button></span>
+            </div>
+
+        </div>
+    </div>
+
+    <button class="chat-toggle" onclick="toggle()">
+        <div class="chat-icon-space">
+            <div class="chat-outerlayer">
+                <div class="chat-icon">
+                    <i class="bi bi-chat-text-fill"></i>
+                </div>
+            </div>
+        </div>
+    </button>
+</section>
+
+
 <section class="py-5">
     <div class="container-fluid footer-container">
         <div class="clora-footer-Logo">
@@ -300,17 +338,17 @@
 
     <div class="py-3">
         <div class="container-fluid footer-menu-container">
-            <a href="/AboutUs" class="footer-menu">About us</a>
-            <a href="/Locations" class="footer-menu">Location</a>
+            <a href="http://localhost:8080/AboutUs" class="footer-menu">About us</a>
+            <a href="http://localhost:8080/Locations" class="footer-menu">Location</a>
             <a href="#" class="footer-menu">Branches</a>
             <a href="#" class="footer-menu">Privacy policies</a>
-            <a href="admin/AdminLogin" class="footer-menu">Admin Login</a>
-
+            <a href="http://localhost:8080/admin/AdminLogin" class="footer-menu">Admin Login</a>
         </div>
     </div>
 
-
 </section>
+
+
 
 
 
@@ -320,6 +358,12 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="js/dashboard.js"></script>
+<!--Scripts for sockJS and StompJS-->
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7.0.0/bundles/stomp.umd.min.js"></script>
+
+<!--Chat room JS-->
+<script src="js/chat.js"></script>
 
 
 
