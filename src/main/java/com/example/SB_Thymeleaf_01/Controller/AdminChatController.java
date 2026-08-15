@@ -2,6 +2,7 @@ package com.example.SB_Thymeleaf_01.Controller;
 
 import com.example.SB_Thymeleaf_01.ChatMessage;
 import com.example.SB_Thymeleaf_01.Service.ChatService;
+import com.example.SB_Thymeleaf_01.TestSamples.MessageSamples;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,7 @@ public class AdminChatController {
     @Autowired
     private ChatService chatService;
 
+
     @GetMapping("/login")
     public String login() {
         return "admin-login";
@@ -23,6 +25,7 @@ public class AdminChatController {
     @GetMapping("/chat/{sessionId}")
     @ResponseBody
     public List<ChatMessage> getChatHistory(@PathVariable String sessionId) {
+        System.out.println(chatService.getConversation(sessionId, "admin"));
         return chatService.getConversation(sessionId, "admin");
     }
 

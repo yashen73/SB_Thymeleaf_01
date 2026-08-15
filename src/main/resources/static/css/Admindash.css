@@ -97,15 +97,15 @@
 }
 
 .chat-widget {
-    display: block;
-    background-color: #ede8e8;
-    width: 250px;
-    height: 100%;
+    display: flex;
+    position: fixed;
+    margin-top: 10px;
+    background-color: #f1e9e9;
+    width: 350px;
+    height: 300px;
     border-radius: 20px;
     flex-direction: column;
     word-break: break-all;
-    overflow-y:auto;
-    overflow-x:hidden;
 }
 
 .select-chat-header {
@@ -113,6 +113,7 @@
     background-color: #3ea2ff;
     padding: 10px;
     margin-bottom: 10px;
+    margin-top: 10px;
     align-items: center;
 }
 
@@ -125,10 +126,18 @@
 }
 
 .select-chat-person {
-    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
     background-color: #bdd4ea;
     margin-bottom: 2px;
     border-radius: 2px;
+}
+
+.muted-text {
+    right: 5px;
+    padding-left: 10px;
+    font-size: 10px;
 }
 
 .select-chat-person:hover {
@@ -138,41 +147,65 @@
     transition: 1s all ease;
 }
 
-.count-of-messages {
-    display:inline-flex;
-    justify-content: end;
-    width: 100%;
+.select-chat-person.active {
+    color: #e0e0e0;
+    background-color: #003152;
 }
 
-.message-content {
-    padding: 10px;
-    width: 100%;
+.id-of-chatter {
+    display: none;
+}
+
+.admin-message-content {
+    justify-self:baseline;
+    font-weight: 400;
+    background-color: #003152;
+    color: #dfdede;
+    margin: 5px;
+    max-width: 200px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.customer-message-content {
+    justify-self: end;
+    font-weight: 400;
+    background-color: rgb(1, 77, 21);
+    color: #eef4fb;
+    margin: 5px;
+    max-width: 200px;
+    padding: 5px;
+    border-radius: 10px;
 }
 
 .typing-indicator {
     display: none;
+    justify-self: baseline;
+    margin: 10px;
     top: 100px;
 }
 
 .chat-input {
     display: flex;
     position:fixed;
-    justify-content: flex-end;
-    align-items: center;
+    justify-items: center;
+    align-self: end;
     bottom: 100px;
     gap: 1px;
 }
 
-#messageInput {
+#adminmessageInput {
+    justify-self: center;
     border: none;
     background-color: 0, 0, 0, 0.1;
+    width: 300px;
     border-radius: 5px;
 
 }
 
 .bi.bi-arrow-up-right-circle-fill {
-    background-color: none !important;
-    font-size: 20px;
+    background: none !important;
+    font-size: 23px;
 }
 
 

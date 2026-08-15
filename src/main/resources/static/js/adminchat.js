@@ -23,11 +23,11 @@ let activechats = [
 ];
 
 function connect () {
-    const socket = new sockJS('/chat-websocket');
-    stompClient = stompClient.over(socket);
+    const socket = new SockJS('/chat-websocket');
+    stompClient = Stomp.over(socket);
 
     stompClient.connect({}, function() {
-        console.log('Adminconnected');
+        console.log('Admin connected Successfully');
         stompClient.subscribe('/user/queue/messages', onMessageReceived);
         loadActiveChats();
     }, onError)
@@ -39,65 +39,62 @@ function onError(){
 }
 
 function loadActiveChats() {
-    const container = document.getElementById('chatusers');
-    container.innerHTML= '';
+    const chatlist = document.getElementById('chatlist');
+    chatlist.innerHTML =" ";
 
     activechats.forEach(chat => {
-        const chatElement = createChatUserElement(chat);
-        container.appendChild(chatElement);
+        let oneChatNameElement = createChatUserElement(chat);
+        chatlist.appendChild(oneChatNameElement);
     });
 }
 
 function createChatUserElement(chat) {
-    const div = document.getElementById('div');
-    div.className = 'chat-user p-3 border-bottm';
-    div.onclick = () => select(chat);
-
-    div.innerHTML =`
-        <div class="">
-            <div>
-                <span class="online-indicator"></span>
-                <strong>${escapeHtml(chat.userName)}</strong>
-                ${chat.unread > 0 ? `<span class="unread-badge">${chat.unread}</span>` : ``}
-            </div>
-
-            <small class="text-muted">${chat.lastMessage ? chat.lastMessage.substring(0, 30) : 'No messages'}</small>
+    let oneChatNameElement = document.createElement('div');
+    oneChatNameElement.className = 'select-chat-person';
+    oneChatNameElement.onclick = () => selectChat(chat);
+    oneChatNameElement.innerHTML = `
+        <div class="name-of-chatter">
+            ${chat.userName}
         </div>
+        <div class="id-of-chatter">
+                    ${chat.userId}
+        </div>
+        <span class="count-of-messages">
+            ${chat.unread}
+        </span>
     `;
-
-    return div;
+    return oneChatNameElement;
 }
 
 function selectChat(chat) {
     currentChatsession = chat;
 
-    document.querySelectorAll('.chat-user').forEach(e1 => e1.classList.remove('acive'));
+    //Updating UI
+    document.querySelectorAll('.select-chat-person').forEach(el => el.classList.remove('active'));
     event.currentTarget.classList.add('active');
 
-    document.getElementById('chatHeader').innerHTML =  `
-        <h6 class="mb-0> Chatting with: ${chat.userName}</h6>
-    `;
+    document.getElementById('chatHeaderName').innerHTML = currentChatsession.userName;
 
-    loadActiveChats(chat.sessionId);
+    loadChatHistory(chat.sessionId);
 }
 
 function loadChatHistory(sessionId) {
-    fetch(`/admin/chat/${sessionId}`)
+    fetch(`/chat/${sessionId}`)
     .then(response => response.json())
-    .then(message => {
+    .then(messages => {
         const messageDiv = document.getElementById('chatMessages');
-        messagesDiv.innerHTML = '';
+        messageDiv.innerHTML = '';
 
         messages.forEach(message => {
             displayMessage(message.message, message.senderId === 'admin' ? 'admin' :'user');
         });
 
-        messageDiv.scrollTop = messagesDiv.scrollHeight;
+        messageDiv.scrollTop = messageDiv.scrollHeight;
     });
 }
 
 function sendAdminMessage() {
-    const messageContent = document.getElementById('adminMessage').value.trim();
+    const messageContent = document.getElementById('adminMessageInput').value.trim();
     if( messageContent && currentChatsession && stompClient) {
         const message = {
             senderId : adminId,
@@ -111,7 +108,7 @@ function sendAdminMessage() {
         stompClient.send("/app/chat.sendMessage", {}, JSON.stringify(message));
 
         displayMessage(messageContent, 'admin');
-        document.getElementById('adminMessage').value = '';
+        document.getElementById('adminMessageInput').value = '';
     }
 }
 
@@ -121,24 +118,21 @@ function onMessageReceived(payload) {
         displayMessage(message.message, 'user');
         markMessageAsRead(message.id);
     } else if(message.senderID !== 'admin') {
-        uodateUmreadCount(message.sessionId);
+        updateUnreadCount(message.sessionId);
     }
 }
 
 
 function displayMessage(message, sender) {
-    const messageDiv = document.getElementById('chatMessage');
+    const messageDiv = document.getElementById('chatMessages');
     const messageelement = document.createElement('div');
-    messageelement.className = `message${sender}`;
-    messageelement.className = `message ${sender}`;
+    messageelement.className = `${sender}-message-content`;
     messageelement.innerHTML = `
-        <div class="message-content">
             ${escapeHTML(meesage)}
-            <small class="" style ="">
+            <span class="muted-text">
                 ${new Date().toLocaleTimeString()}
-            </small>
-        </div>
-        `
+            </span>
+        `;
     messageDiv.appendChild(messageelement);
     messageDiv.scrollTop = messageDiv.scrollHeight;
 }
@@ -178,4 +172,4 @@ setInterval(() => {
         activeChats = chats;
         loadActiveChats();
     });
-}, 5000);
+}, 20000);

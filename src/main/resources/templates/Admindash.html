@@ -273,9 +273,9 @@
                     Select a chat
                 </div>
 
-                <div class="chat-list">
-                    <div class="select-chat-person">semon <span class="count-of-messages">2</span></div>
-                    <div class="select-chat-person">lilly <span class="count-of-messages">2</span></div>
+                <div class="chat-list" id="chatlist">
+                    <div class="select-chat-person"><div class="name-of-chatter">semon</div> <span class="count-of-messages">2</span></div>
+                    <div class="select-chat-person"><div class="name-of-chatter">lilly</div> <span class="count-of-messages">2</span></div>
 
                 </div>
             </div>
@@ -283,22 +283,25 @@
                 <div class="chat-widget" >
 
                     <div class="chat-header">
-                        Reply to the Customer
+                        Reply to <span id="chatHeaderName"> the Customer</span>
                     </div>
 
                     <div class="chat-messages" id="chatMessages">
-                        <div class="message admin">
-                            <div class="message-content">Hello how can i help you...</div>
+
+                        <div class="customer-message-content">helloc ecem eok emdckc ewcwekpm w <span class="muted-text">2.06pm</span></div>
+
+                        <div class="admin-message-content">Hiiijonewf ewoen fmewfonem ewoifnwemcv weownefmew foewni <span class="muted-text">2.06pm</span> </div>
+
+                        <div class="typing-indicator" id="typingIndicator">
+                            Customer is typing...
                         </div>
                     </div>
 
-                    <div class="typing-indicator" id="typingIndicator">
-                        Customer is typing...
-                    </div>
+
 
                     <div class="chat-input" id="chatInput">
-                        <span><input type="text" id="messageInput" placeholder="Type here" onkeypress="handleKeyPress(event)"></span>
-                        <span></span><button class="send-button" onclick="sendMessage()" style="border: none;"><i class="bi bi-arrow-up-right-circle-fill"></i></button></span>
+                        <span><input type="text" id="adminMessageInput" placeholder="Type here" onkeypress="handleAdminKeyPress(event)"></span>
+                        <button class="send-button" onclick="sendMessage()" style="border: none;"><i class="bi bi-arrow-up-right-circle-fill"></i></button></span>
                     </div>
 
                 </div>
@@ -319,6 +322,14 @@
     </div>
 </button>
 
+
+<!--sock.JS, Stomp-->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7.0.0/bundles/stomp.umd.min.js"></script>
+<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+<!--External CSS-->
 <script src="/js/AdminDash.js"></script>
 <!--Admin Chat JS-->
 <script src="/js/adminchat.js"></script>

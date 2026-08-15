@@ -3,6 +3,7 @@ package com.example.SB_Thymeleaf_01.Controller;
 
 import com.example.SB_Thymeleaf_01.ChatMessage;
 import com.example.SB_Thymeleaf_01.Service.ChatService;
+import com.example.SB_Thymeleaf_01.TestSamples.MessageSamples;
 import org.apache.logging.log4j.message.SimpleMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -19,6 +20,7 @@ public class ChatController {
 
     @Autowired
     private ChatService chatService;
+
 
     @MessageMapping("/chat.SendMessage")
     public ChatMessage SendMessage(@Payload ChatMessage chatMessage, SimpMessageHeaderAccessor headerAccessor) {
