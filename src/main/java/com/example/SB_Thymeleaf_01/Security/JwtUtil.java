@@ -9,7 +9,7 @@ import javax.crypto.SecretKey;
 import java.security.Key;
 import java.util.Date;
 
-
+@Component
 public class JwtUtil {
 
     private String secret = "YashensDevelopingSecureSecretKeyForJwtAuthenticationSystem2026";

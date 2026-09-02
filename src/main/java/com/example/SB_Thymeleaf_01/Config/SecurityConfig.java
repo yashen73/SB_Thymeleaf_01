@@ -14,15 +14,35 @@ public class SecurityConfig {
 
         http
                 .csrf(csrf -> csrf
-                        .ignoringRequestMatchers("/chat-websocket**")
+                        .ignoringRequestMatchers("/auth/login", "/chat-websocket**")
                 )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/chat-websocket/**")
+                        .requestMatchers(
+                                "/",
+                                "/index",
+                                "/auth/login",
+                                "/chat-websocket/**",
+                                "/chat-websocket-native/**",
+                                "/Profile",
+                                "/CustomerLogin",
+                                "/signup",
+                                "/AboutUs",
+                                "/product/productdetail/{productid}",
+                                "/itemsforbrands",
+                                "/item/showAllItems",
+                                "/api/payment/checkout",
+                                "/cust/ShowAllCustomers",
+                                "/api/",
+                                "/favicon.ico",
+                                "/css/**",
+                                "/js/**",
+                                "/images/**",
+                                "/webjars/**"
+                                )
                         .permitAll()
                         .anyRequest()
-                        .permitAll()
+                        .authenticated()
                 );
-
 
         return http.build();
     }

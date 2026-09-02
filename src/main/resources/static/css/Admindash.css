@@ -156,7 +156,7 @@
     display: none;
 }
 
-.admin-message-content {
+.customer-message-content {
     justify-self:baseline;
     font-weight: 400;
     background-color: #003152;
@@ -167,7 +167,7 @@
     border-radius: 10px;
 }
 
-.customer-message-content {
+.admin-message-content {
     justify-self: end;
     font-weight: 400;
     background-color: rgb(1, 77, 21);

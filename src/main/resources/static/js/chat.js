@@ -1,23 +1,36 @@
-const stompClient = null;
-const sessionId = null;
+let stompClient = null;
+let sessionId = null;
+let token = localStorage.getItem('jwt');
+let oldMessageSubscription =null;
 
-function connect (){
-    const socket = new sockJS('/chat-websocket');
-    stompClient = Stomp.over(Socket);
+async function connect() {
+        const socket = new SockJS('/chat-websocket');
+        stompClient = Stomp.over(socket);
 
-    stompClient.connect({}, onConnected, onError);
+        stompClient.connect({
+            'Authorization' : token
+        }, onConnected, onError);
 }
 
 function onConnected() {
     stompClient.subscribe('/user/queue/messages', onMessageRecieved);
 
+
     // Send join Message
     const chatMessage = {
-        senderId : 'user-'+Date.now(),
+        senderId : "user_" + Date.now(),
         senderName : 'Customer', 
         type : 'JOIN', 
-        message : 'Customer joined' 
+        message : 'Customer joined',
+        receiverId : 'admin'
     };
+    stompClient.send("/app/chat.addUser", {}, JSON.stringify(chatMessage));
+
+    setTimeout(() =>  {
+        if(!oldMessageSubscription){
+                    fetchOldMessages();
+        }
+    },1000);
 }
 
 function onError(error) {
@@ -25,23 +38,52 @@ function onError(error) {
 }
 
 function sendMessage() {
-    const messageContent =document.getElementById('messageImput').value.trim();
+    const messageContent =document.getElementById('messageInput').value.trim();
+
 
     if(messageContent && stompClient){
         const chatMessage = {
             senderId : 'user-' + Date.now(),
-            senderName : 'customer', 
-            message : 'messageContent',
+            senderName : 'Customer',
+            message : messageContent,
             type : 'CHAT',
             receiverId : 'admin'
         };
 
-        stompClient.send("app/chat.sendMessage", {}, JSON.stringify(chatMessage));
-
-        displayMessage(messageContent, 'user');
+        stompClient.send("/app/chat.SendMessage", {}, JSON.stringify(chatMessage));
+        displayMessage(messageContent, 'customer');
         document.getElementById('messageInput').value = '';
-    }   
+    }
+
 }
+
+function fetchOldMessages(){
+   oldMessageSubscription = stompClient.subscribe("/user/queue/oldMessages", function(message) {
+                     console.log("Raw Body", message.body);
+                     const oldMessages = JSON.parse(message.body);
+
+                     if(oldMessages) {
+                        console.log("Old messages exist...");
+                        oldMessages.forEach(msg => {
+                                                 if(msg.type === "JOIN"){
+                                                 }else if(msg.senderId === "admin"){
+                                                     displayMessage(msg.message, msg.senderId);
+                                                 }else{
+                                                    displayMessage(msg.message, "customer")
+                                                 }
+                                                 });
+                     }else {
+                        console.log("No Old messages to appear");
+                     }
+                 })
+
+    try{
+        stompClient.send("/app/chat.loadOldChat", {}, JSON.stringify({}));
+    }catch(error) {
+        console.error("Error loading Old Messages :", error);
+    }
+}
+
 
 function onMessageRecieved(payload) {
     const message = JSON.parse(payload.body);
@@ -50,8 +92,17 @@ function onMessageRecieved(payload) {
     }
 }
 
+function displayMessage(message, sender) {
+            const messagesDiv = document.getElementById('chatMessages');
+            const messageElement = document.createElement('div');
+            messageElement.className = `${sender}-message`;
+            messageElement.innerHTML = `${escapeHtml(message)}`;
+            messagesDiv.appendChild(messageElement);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
 function escapeHtml(text) {
-    const div = document.getElementById('div');
+    const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
 }
@@ -67,11 +118,16 @@ function toggle() {
     widget.classList.toggle('active');
 }
 
-function handleKetPress(event) {
-    if (event.key === ' Enter') {
+function handleKeyPress(event) {
+    if (event.key === 'Enter') {
         sendMessage();
        }
 }
 
-//initalize chat 
-connect();
+//initialize chat
+if(token) {
+    connect();
+}else {
+    const loginBeforeMsg = document.getElementById("loginbeforeMsg");
+    loginBeforeMsg.style.display = "flex";
+}

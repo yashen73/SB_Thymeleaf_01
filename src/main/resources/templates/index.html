@@ -9,7 +9,7 @@
 
     <!--swipper wrapper CDN-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
-    <link rel="stylesheet" href="dist/assets/styles/dashboard.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
 
     <!--Google fonts-->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
@@ -289,44 +289,6 @@
     </div>
 </section>
 
-<section class="chat-section">
-    <div class="chat-box container-fluid">
-        <div class="chat-widget" id="chatWidget">
-
-            <div class="chat-header">
-                Customer Support
-            </div>
-
-            <div class="chat-messages" id="chatMessages">
-                <div class="message admin">
-                    <div class="message-content">Hello how can i help you...</div>
-                </div>
-            </div>
-
-            <div class="typing-indicator" id="typingIndicator">
-                Admin is typing...
-            </div>
-
-            <div class="chat-input" id="chatInput">
-                <span><input type="text" id="messageInput" placeholder="Type here" onkeypress="handleKeyPress(event)"></span>
-                <span></span><button class="send-button" onclick="sendMessage()" style="border: none;"><i class="bi bi-arrow-up-right-circle-fill"></i></button></span>
-            </div>
-
-        </div>
-    </div>
-
-    <button class="chat-toggle" onclick="toggle()">
-        <div class="chat-icon-space">
-            <div class="chat-outerlayer">
-                <div class="chat-icon">
-                    <i class="bi bi-chat-text-fill"></i>
-                </div>
-            </div>
-        </div>
-    </button>
-</section>
-
-
 <section class="py-5">
     <div class="container-fluid footer-container">
         <div class="clora-footer-Logo">
@@ -348,6 +310,51 @@
 
 </section>
 
+<section class="chat-section">
+    <div class="chat-box container-fluid">
+        <div class="chat-widget" id="chatWidget">
+
+            <div class="chat-header">
+                Customer Support
+                <i class="bi bi-patch-question"></i>
+            </div>
+            <div class="secondery-area">
+
+                <div class="chat-messages" id="chatMessages">
+
+                    <div class="admin-message">Hello how can i help you...</div>
+
+                    <div class="loginbeforeMsg" id="loginbeforeMsg">Please Login</div>
+
+                    <div class="admin-message">1450/=</div>
+                    <div class="customer-message">price please</div>
+
+
+                </div>
+                <div class="admin-message typing-indicator" id="typingIndicator">
+                    Admin is typing...
+                </div>
+            </div>
+
+            <div class="chat-input" id="chatInput">
+                <span><input type="text" id="messageInput" placeholder="Type here" onkeypress="handleKeyPress(event)"></span>
+                <span></span><button class="send-button" onclick="sendMessage()" style="border: none;"><i class="bi bi-send"></i></button></span>
+            </div>
+
+        </div>
+    </div>
+
+    <button class="chat-toggle" onclick="toggle()">
+        <div class="chat-icon-space">
+            <div class="chat-outerlayer">
+                <div class="chat-icon">
+                    <i class="bi bi-chat-text-fill"></i>
+                </div>
+            </div>
+        </div>
+    </button>
+</section>
+
 
 
 
@@ -357,11 +364,11 @@
 <!--Swipper wrapper JS CDN-->
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="js/dashboard.js"></script>
 <!--Scripts for sockJS and StompJS-->
-<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7.0.0/bundles/stomp.umd.min.js"></script>
-
+<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+<!--External JS-->
+<script src="js/dashboard.js"></script>
 <!--Chat room JS-->
 <script src="js/chat.js"></script>
 

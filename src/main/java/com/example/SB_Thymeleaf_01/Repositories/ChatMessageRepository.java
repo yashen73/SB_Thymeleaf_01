@@ -10,10 +10,17 @@ import java.util.List;
 
 @Repository
 public interface ChatMessageRepository extends JpaRepository<ChatMessage, Long> {
-    List<ChatMessage> findBySenderIdAndReceiverIdOrderByTimestampAsc(String senderId, String receiverId);
+   @Query("""
+           SELECT c 
+           FROM ChatMessage c 
+           WHERE (c.senderId = :senderid AND c.receiverId = :receiverid) 
+           OR (c.senderId = :receiverid AND c.receiverId = :senderid) 
+           ORDER BY c.timestamp ASC
+           """)
+    List<ChatMessage> findConversation(@Param("senderid") String senderId,@Param("receiverid") String receiverId);
 
    List<ChatMessage> findBySessionIdOrderByTimestampAsc(String sessionId);
 
     @Query("SELECT m FROM ChatMessage m WHERE m.receiverId = :receiverId AND m.status = 'UNREAD'")
     List<ChatMessage> findUnreadMessages (@Param("receiverId") String receiverId);
-}
+   }

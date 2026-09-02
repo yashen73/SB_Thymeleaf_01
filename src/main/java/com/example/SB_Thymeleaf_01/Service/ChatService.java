@@ -33,7 +33,8 @@ public class ChatService {
     }
 
     public List<ChatMessage> getConversation(String userId, String adminId) {
-        return chatMessageRepository.findBySenderIdAndReceiverIdOrderByTimestampAsc(userId, adminId);
+
+        return chatMessageRepository.findConversation(userId, adminId);
     }
 
     public void markAsRead(Long messageId) {

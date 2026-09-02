@@ -22,6 +22,8 @@ public class AuthController {
     @PostMapping("/login")
     public String login(@RequestBody Customer customer) {
 
+        System.out.println();
+        System.out.println();
         System.out.println("Auth is called");
 
         String loginresult = loginService.customerlogincheckup(customer.getMail(), customer.getPassword());

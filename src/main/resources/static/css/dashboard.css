@@ -572,6 +572,9 @@
     font-weight: 900;
 }
 
+.chat-toggle {
+    z-index: 99999;
+}
 
 .chat-icon-space {
     display:flex;

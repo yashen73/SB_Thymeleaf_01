@@ -68,6 +68,7 @@ function createChatUserElement(chat) {
 
 function selectChat(chat) {
     currentChatsession = chat;
+    console.log("current Chat session is with", currentChatsession.userName);
 
     //Updating UI
     document.querySelectorAll('.select-chat-person').forEach(el => el.classList.remove('active'));
@@ -85,7 +86,7 @@ function loadChatHistory(sessionId) {
         const messageDiv = document.getElementById('chatMessages');
         messageDiv.innerHTML = '';
 
-        messages.forEach(message => {
+        messages.forEach(message => {``
             displayMessage(message.message, message.senderId === 'admin' ? 'admin' :'user');
         });
 
@@ -97,15 +98,15 @@ function sendAdminMessage() {
     const messageContent = document.getElementById('adminMessageInput').value.trim();
     if( messageContent && currentChatsession && stompClient) {
         const message = {
-            senderId : adminId,
-            senderName: adminName,
-            recievrId: currentChatsession.userId,
+            senderId : 1,
+            senderName: 'yash',
+            receiverId: currentChatsession.userId,
             message: messageContent,
             type: 'CHAT',
             sessionId: currentChatsession.sessionId
         };
 
-        stompClient.send("/app/chat.sendMessage", {}, JSON.stringify(message));
+        stompClient.send("/app/chat.SendMessage", {}, JSON.stringify(message));
 
         displayMessage(messageContent, 'admin');
         document.getElementById('adminMessageInput').value = '';
@@ -128,7 +129,7 @@ function displayMessage(message, sender) {
     const messageelement = document.createElement('div');
     messageelement.className = `${sender}-message-content`;
     messageelement.innerHTML = `
-            ${escapeHTML(meesage)}
+            ${escapeHTML(message)}
             <span class="muted-text">
                 ${new Date().toLocaleTimeString()}
             </span>
@@ -157,7 +158,7 @@ function handleAdminKeyPress(event) {
 }
 
 function escapeHTML(text) {
-    const div = document.getElementById('div');
+    const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
 }
