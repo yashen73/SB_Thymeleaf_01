@@ -1,7 +1,7 @@
 package com.example.SB_Thymeleaf_01.Repositories;
 
 
-import com.example.SB_Thymeleaf_01.Cart;
+import com.example.SB_Thymeleaf_01.Models.Cart;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

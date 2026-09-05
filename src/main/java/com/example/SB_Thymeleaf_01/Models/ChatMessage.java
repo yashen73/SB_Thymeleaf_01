@@ -1,10 +1,7 @@
-package com.example.SB_Thymeleaf_01;
+package com.example.SB_Thymeleaf_01.Models;
 
 import jakarta.persistence.*;
-import jdk.jfr.Enabled;
-import org.aspectj.bridge.Message;
 
-import java.awt.*;
 import java.time.LocalDateTime;
 
 @Entity

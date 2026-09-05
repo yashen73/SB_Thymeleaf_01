@@ -1,14 +1,13 @@
 package com.example.SB_Thymeleaf_01.Controller;
 
 
-import com.example.SB_Thymeleaf_01.Customer;
+import com.example.SB_Thymeleaf_01.Models.Admin;
+import com.example.SB_Thymeleaf_01.Models.Customer;
 import com.example.SB_Thymeleaf_01.Security.JwtUtil;
+import com.example.SB_Thymeleaf_01.Service.AdminLoginService;
 import com.example.SB_Thymeleaf_01.Service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
@@ -18,6 +17,8 @@ public class AuthController {
 
     @Autowired
     private LoginService loginService;
+    @Autowired
+    private AdminLoginService adminLoginService;
 
     @PostMapping("/login")
     public String login(@RequestBody Customer customer) {
@@ -37,6 +38,17 @@ public class AuthController {
             throw new RuntimeException("user not Found please sign in first.");
         }else {
             throw new RuntimeException("invalid Credentials");
+        }
+    }
+
+    @PostMapping("/AdminSignUp")
+    public String  AdminSignUp(@ModelAttribute Admin admin){
+        System.out.println("adminSignUp is called");
+        try {
+            String AdminSignUpResult = adminLoginService.AdminSignUp(admin);
+            return AdminSignUpResult;
+        }catch (Exception e){
+            throw e;
         }
     }
 }

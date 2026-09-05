@@ -1,7 +1,6 @@
 package com.example.SB_Thymeleaf_01.Service;
 
-import com.example.SB_Thymeleaf_01.Availableitems;
-import com.example.SB_Thymeleaf_01.Availableitems;
+import com.example.SB_Thymeleaf_01.Models.Availableitems;
 import com.example.SB_Thymeleaf_01.Repositories.ItemsRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,12 +8,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.swing.plaf.OptionPaneUI;
-import javax.xml.crypto.Data;
-import java.awt.*;
 import java.io.File;
-import java.lang.invoke.CallSite;
-import java.sql.SQLException;
 import java.util.*;
 import java.util.List;
 

@@ -1,24 +1,15 @@
 package com.example.SB_Thymeleaf_01.Controller;
 
-import com.example.SB_Thymeleaf_01.Availableitems;
-import com.example.SB_Thymeleaf_01.Repositories.ItemsRepository;
+import com.example.SB_Thymeleaf_01.Models.Availableitems;
 import com.example.SB_Thymeleaf_01.Service.ItemsService;
-import org.hibernate.annotations.NotFound;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.http.HttpResponse;
-import java.nio.file.Paths;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/item")

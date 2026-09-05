@@ -23,13 +23,13 @@
         <div class="col-sm-8 login-container">
             <h2 class="clora">Clora</h2>
 
-            <form th:action='@{/admin/login}' method="post">
+            <form th:action='@{/admin/AdminLogin}' method="post">
 
-                <label class="label" for="">Username </label><br>
+                <label class="label" for="username">Username </label><br>
                 <input type="text" class="inputarea" id="username" name="adminusername" placeholder="yashen73">
                 <br>
-                <label class="label" for="">Password</label><br>
-                <input type="password" class="inputarea" id="password" name="adminpassword" placeholder="@1234">
+                <label class="label" for="password">Password</label><br>
+                <input type="password" class="inputarea" id="password" name="adminPassword" placeholder="@1234">
 
                 <div class="buttonarea">
                     <button class="btn btn-primary" type="submit">Log In</button>
@@ -46,5 +46,6 @@
 
     </div>
 </div>
+<script src="/js/AdminLogin.js"></script>
 </body>
 </html>

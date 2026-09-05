@@ -71,12 +71,22 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
                         String userMail = jwtUtil.extractUsername(authHeader);
                         System.out.println("AuthHeader is Extracted and Mail is : " + userMail);
 
-                        //Setting usermails in Session Attributes . . . .
-                        accessor.getSessionAttributes().put("UserMail", userMail);
-                        Principal principal = new UsernamePasswordAuthenticationToken(userMail, null, Collections.emptyList());
-                        accessor.setUser(principal);
-                        System.out.println("Set user : " + accessor.getUser());
-                        System.out.println("set user name : " + accessor.getUser().getName());
+                        if(userMail.contains("admin")) {
+                            //Setting Usermail in Session Attribute......
+                            accessor.getSessionAttributes().put("AdminUserName", userMail);
+                            Principal principal = new UsernamePasswordAuthenticationToken(userMail, null, Collections.emptyList());
+                            accessor.setUser(principal);
+                            System.out.println("Set user: " + accessor.getUser());
+                            System.out.println("set User name : " + accessor.getUser().getName());
+                        }else {
+                            //Setting usermails in Session Attributes . . . .
+                            accessor.getSessionAttributes().put("UserMail", userMail);
+                            Principal principal = new UsernamePasswordAuthenticationToken(userMail, null, Collections.emptyList());
+                            accessor.setUser(principal);
+                            System.out.println("Set user : " + accessor.getUser());
+                            System.out.println("set user name : " + accessor.getUser().getName());
+                        }
+
                     } else {
                         throw new MessagingException("Invalid Token....");
                     }

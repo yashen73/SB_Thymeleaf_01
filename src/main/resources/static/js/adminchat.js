@@ -11,6 +11,7 @@ function toggle() {
 
 let stompClient = null;
 let currentChatsession = null;
+const token = null;
 
 //Admin information
 const adminId = 'admin';
@@ -26,7 +27,9 @@ function connect () {
     const socket = new SockJS('/chat-websocket');
     stompClient = Stomp.over(socket);
 
-    stompClient.connect({}, function() {
+    stompClient.connect({
+        'Authorization' : token;
+    }, function() {
         console.log('Admin connected Successfully');
         stompClient.subscribe('/user/queue/messages', onMessageReceived);
         loadActiveChats();
@@ -65,7 +68,7 @@ function createChatUserElement(chat) {
     `;
     return oneChatNameElement;
 }
-
+//triggers from FrontEnd
 function selectChat(chat) {
     currentChatsession = chat;
     console.log("current Chat session is with", currentChatsession.userName);
@@ -163,7 +166,29 @@ function escapeHTML(text) {
     return div.innerHTML;
 }
 
-connect();
+function getToken() {
+    const cookies = document.cookie.split(";");
+    for (let cookie of cookies) {
+        const[name, value] = cookie.trim().split("=");
+
+        if (name === 'jwt') {
+            return value;
+        }
+    }
+}
+
+try {
+    token = getToken();
+    try{
+        connect()
+    }
+    catch(error) {
+        console.error("Error connecting on Chat", error);
+    }
+}catch(error)  {
+    console.error("No token found", error);
+}
+
 
 setInterval(() => {
 

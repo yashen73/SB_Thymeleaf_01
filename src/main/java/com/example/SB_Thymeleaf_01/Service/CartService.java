@@ -1,22 +1,17 @@
 package com.example.SB_Thymeleaf_01.Service;
 
-import com.example.SB_Thymeleaf_01.Availableitems;
-import com.example.SB_Thymeleaf_01.Cart;
-import com.example.SB_Thymeleaf_01.CartItem;
-import com.example.SB_Thymeleaf_01.Customer;
+import com.example.SB_Thymeleaf_01.Models.Availableitems;
+import com.example.SB_Thymeleaf_01.Models.Cart;
+import com.example.SB_Thymeleaf_01.Models.CartItem;
+import com.example.SB_Thymeleaf_01.Models.Customer;
 import com.example.SB_Thymeleaf_01.Repositories.CartItemRepo;
 import com.example.SB_Thymeleaf_01.Repositories.CartRepo;
 import com.example.SB_Thymeleaf_01.Repositories.CustomerRepository;
-import com.stripe.model.issuing.Authorization;
-import org.hibernate.query.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class CartService {

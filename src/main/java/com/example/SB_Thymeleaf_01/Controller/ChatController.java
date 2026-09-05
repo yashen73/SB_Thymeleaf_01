@@ -1,23 +1,16 @@
 package com.example.SB_Thymeleaf_01.Controller;
 
-import com.example.SB_Thymeleaf_01.ChatMessage;
-import com.example.SB_Thymeleaf_01.Customer;
+import com.example.SB_Thymeleaf_01.Models.ChatMessage;
+import com.example.SB_Thymeleaf_01.Models.Customer;
 import com.example.SB_Thymeleaf_01.Service.ChatService;
 import com.example.SB_Thymeleaf_01.Service.CustomerSerivce;
-import com.example.SB_Thymeleaf_01.TestSamples.MessageSamples;
-import com.stripe.model.SourceTransaction;
-import com.stripe.model.issuing.Authorization;
-import org.apache.logging.log4j.message.SimpleMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 
-import javax.swing.*;
 import java.security.Principal;
 import java.util.*;
 

@@ -1,6 +1,6 @@
 package com.example.SB_Thymeleaf_01.Repositories;
 
-import com.example.SB_Thymeleaf_01.Admin;
+import com.example.SB_Thymeleaf_01.Models.Admin;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

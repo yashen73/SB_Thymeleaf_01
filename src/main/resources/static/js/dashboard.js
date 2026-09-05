@@ -2,11 +2,16 @@
 
     var initSwiper = function(){
         var swiper = new Swiper(".main-swiper",{
-            speed:500,
-            pagination: {
-                el: ".swiper-pagination",
-                clickable :true,
-            }
+            speed: 1500,
+
+                        autoplay: {
+                            delay:3000,
+                        },
+
+                        pagination: {
+                            el: ".swiper-pagination",
+                            clickable :true,
+                        }
         });
 
 

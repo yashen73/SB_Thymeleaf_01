@@ -38,6 +38,13 @@
     initSwiper();
 })(jQuery);
 
+function Search(){
+    const query = document.querySelector(".search-box input").value;
+    alert("Searching for: "+query);
+}
+
+
+
 
 document.addEventListener("DOMContentLoaded", function() {
     const token = localStorage.getItem("jwt");

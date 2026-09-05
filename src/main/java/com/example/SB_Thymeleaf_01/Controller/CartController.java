@@ -1,14 +1,12 @@
 package com.example.SB_Thymeleaf_01.Controller;
 
 
-import com.example.SB_Thymeleaf_01.Availableitems;
-import com.example.SB_Thymeleaf_01.CartItem;
+import com.example.SB_Thymeleaf_01.Models.Availableitems;
+import com.example.SB_Thymeleaf_01.Models.CartItem;
 import com.example.SB_Thymeleaf_01.Security.JwtUtil;
 import com.example.SB_Thymeleaf_01.Service.CartService;
-import com.stripe.model.issuing.Authorization;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

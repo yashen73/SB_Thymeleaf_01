@@ -1,12 +1,9 @@
 package com.example.SB_Thymeleaf_01.Controller;
 
-import com.example.SB_Thymeleaf_01.ItemPaymentRequest;
-import com.example.SB_Thymeleaf_01.PaymentResponse;
+import com.example.SB_Thymeleaf_01.Models.ItemPaymentRequest;
 import com.example.SB_Thymeleaf_01.Security.JwtUtil;
 import com.example.SB_Thymeleaf_01.Service.StripeService;
 import com.stripe.exception.StripeException;
-import com.stripe.model.PaymentIntent;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

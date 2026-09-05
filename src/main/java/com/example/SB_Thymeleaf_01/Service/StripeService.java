@@ -1,11 +1,10 @@
 package com.example.SB_Thymeleaf_01.Service;
 
 
-import com.example.SB_Thymeleaf_01.Availableitems;
-import com.example.SB_Thymeleaf_01.ItemPaymentRequest;
+import com.example.SB_Thymeleaf_01.Models.Availableitems;
+import com.example.SB_Thymeleaf_01.Models.ItemPaymentRequest;
 import com.example.SB_Thymeleaf_01.Repositories.ItemsRepository;
 import com.stripe.param.checkout.SessionCreateParams;
-import org.hibernate.tool.schema.internal.exec.ScriptTargetOutputToFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.stripe.model.checkout.Session;

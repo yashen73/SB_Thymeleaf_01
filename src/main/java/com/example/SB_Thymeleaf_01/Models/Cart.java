@@ -1,8 +1,7 @@
-package com.example.SB_Thymeleaf_01;
+package com.example.SB_Thymeleaf_01.Models;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity

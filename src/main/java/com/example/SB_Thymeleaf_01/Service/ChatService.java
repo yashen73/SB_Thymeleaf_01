@@ -1,7 +1,6 @@
 package com.example.SB_Thymeleaf_01.Service;
 
-import com.example.SB_Thymeleaf_01.ChatMessage;
-import com.example.SB_Thymeleaf_01.ChatRoom;
+import com.example.SB_Thymeleaf_01.Models.ChatMessage;
 import com.example.SB_Thymeleaf_01.Repositories.ChatMessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;

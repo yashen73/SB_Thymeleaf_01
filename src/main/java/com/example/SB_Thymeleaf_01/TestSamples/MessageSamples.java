@@ -1,14 +1,8 @@
 package com.example.SB_Thymeleaf_01.TestSamples;
 
-import com.example.SB_Thymeleaf_01.ChatMessage;
+import com.example.SB_Thymeleaf_01.Models.ChatMessage;
 import com.example.SB_Thymeleaf_01.Service.ChatService;
-import jakarta.persistence.Entity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 public class MessageSamples {
 
