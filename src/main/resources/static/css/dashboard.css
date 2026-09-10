@@ -8,14 +8,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Inconsolata:wght@200..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=M+PLUS+Rounded+1c&family=Playwrite+AT:ital,wght@0,100..400;1,100..400&family=Rubik:ital,wght@0,300..900;1,300..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Inconsolata:wght@200..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=M+PLUS+Rounded+1c&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Playwrite+AT:ital,wght@0,100..400;1,100..400&family=Rubik:ital,wght@0,300..900;1,300..900&family=Saira+Stencil:ital,wght@0,100..900;1,100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 :root {
     --clora-theme-font : "Bebas Neue", sans-serif;
     --banner-color: #cfd2e9;
     --large-banner-color:#ebe2f0;
     --banner-description-font: "Saira Stencil", sans-serif;
-    --banner-discount-font: "Source Serif 4", serif;
+    --banner-discount-font:  "Bebas Neue", sans-serif;
     --swiper-slide-background : #fdfdfd;
     --block-2-3-description-font : "Inconsolata", monospace;
     --banner-2-3-btn-color-hover : #03182c;
@@ -144,23 +144,42 @@
      transition: all 0.3s ease;
 }
 
+
 /* Banner Block*/
 .block-1 {
+    z-index: 1;
     grid-area: 1 / 1 / 3 / 8;
     background-color: #131212;
     transform: translateX(-100px);
     animation: slideside 3s ease forwards;
-
 }
+.block-1:hover {
+    transition: all 0.5s ease;
+    box-shadow: 0 10px 10px #dfdfdf;
+}
+
 .block-2 {
+    z-index: 1;
     grid-area: 1 / 8 / 2 / 13;
     transform: translateX(50px);
     animation: slideside 3s ease forwards;
 }
+
+.block-2:hover {
+    transition: all 0.5s ease;
+    box-shadow: -7px 10px 10px #dfdfdf;
+}
+
+
 .block-3 {
     grid-area: 2 / 8 / 3 / 13;
     transform: translateX(50px);
     animation: slideside 4s ease forwards;
+}
+
+.block-3:hover {
+    transition: all 0.5s ease;
+    box-shadow: -7px 10px 10px #dfdfdf;
 }
 
 .banner-ad{
@@ -172,13 +191,13 @@
     background-color: var(--large-banner-color) !important;
     height: 100% !important;
 }
-
 .banner-blocks {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(12, 90px);
     grid-template-rows: repeat(2, 250px);
     grid-gap: 1rem;
     margin-top: 10px;
+    margin-left: 7px;
     height: 100%;
 }
 
@@ -196,12 +215,32 @@
     height: 100%;
 }
 
-.banner-discount {
+.main-swiper .banner-discount {
+    font-family: var(--banner-discount-font);
+    font-size: 60px;
+    font-weight:900;
+    padding: 4px;
+    animation: blink 1.5s step-end infinite;
+    opacity: 0;
+
+}
+
+.banner2 .banner-discount {
+    font-family: var(--banner-discount-font);
+    font-size: 60px;
+    font-weight: 700;
+    padding: 4px;
+    font-weight: 800;
+
+}
+
+.banner3 .banner-discount {
     font-family: var(--banner-discount-font);
     font-size: 60px;
     font-weight: 700;
     padding: 4px;
 }
+
 
 .banner-description {
     font-family: var(--banner-description-font);
@@ -340,6 +379,10 @@
     padding: 60px 20px;
     margin: 5px;
     transition: box-shadow 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.category-item:hover{
+    box-shadow: 0px 30px 20px #ececec;
 }
 
 .swiper-slide {
@@ -645,4 +688,8 @@
     }
 }
 
+    @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+    }
 

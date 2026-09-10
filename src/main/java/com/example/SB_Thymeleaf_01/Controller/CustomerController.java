@@ -53,7 +53,7 @@ public class CustomerController {
         if(regsitrationResult == "Email already exists"){
             model.addAttribute("message", "This Email is already has been registered . . . ");
             System.out.println("rejected due to existing email . . . ");
-            return "auth/login";
+            return "auth/custlogin";
         }else {
             System.out.println("Registration Successfull .....");
 
@@ -64,7 +64,7 @@ public class CustomerController {
             if (createCartResult.equals("Success")){
                 return "CustomerLogin";
             }else {
-                return "auth/login";
+                return "auth/custlogin";
             }
 
         }
@@ -77,33 +77,6 @@ public class CustomerController {
         return "CustomerLogin";
     }
 
-
-    @PostMapping("/login")
-    public String login(@RequestParam String mail, @RequestParam String password, HttpSession session, Model model, RedirectAttributes redirectAttributes){
-        System.out.println("Login post mapping in controller is called .... ");
-
-        String loginResult = loginservice.customerlogincheckup(mail, password);
-
-        if ("Login Successful".equals(loginResult)){
-
-            System.out.println("Login is Successful & Customer "+mail+" is login....");
-            session.setAttribute("loggedCustomer", mail);
-
-            return "index";
-
-        }else if("Invalid login".equals(loginResult)){
-            System.out.println("login is invalid due to missmatch of password and email. . . ");
-            model.addAttribute("alertmessage", loginResult);
-            redirectAttributes.addFlashAttribute("SingupFailedMessage", "failed");
-            return "redirect:/CustomerLogin";
-
-        }else{
-
-            model.addAttribute("alertmessage", loginResult);
-
-            return "CustomerLogin";
-        }
-    }
 
     @GetMapping("/product/productdetail/{productid}")
     public String getProductdetail(@PathVariable Long productid, Model model){

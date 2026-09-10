@@ -82,6 +82,10 @@
 }
 
 /*chat box CSS*/
+#chatWidget {
+    display: none;
+}
+
 .chat-box {
     display: flex;
     position: fixed;
@@ -167,6 +171,19 @@
     border-radius: 10px;
 }
 
+
+.chat-messages .freespace {
+    display: flex;
+    margin-top: 70px;
+    justify-content: center;
+    align-items: center;
+}
+
+.bi.bi-send-check-fill {
+    font-size: 100px;
+    animation: slideLeft 0.7s ease-out;
+}
+
 .admin-message-content {
     justify-self: end;
     font-weight: 400;
@@ -232,3 +249,15 @@
 }
 
 
+
+@keyframes slideLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px) translateY(100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

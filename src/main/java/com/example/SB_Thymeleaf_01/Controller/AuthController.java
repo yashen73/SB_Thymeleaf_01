@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/cust")
 public class AuthController {
 
     private JwtUtil jwtUtil = new JwtUtil();
@@ -20,7 +20,7 @@ public class AuthController {
     @Autowired
     private AdminLoginService adminLoginService;
 
-    @PostMapping("/login")
+    @PostMapping("/custlogin")
     public String login(@RequestBody Customer customer) {
 
         System.out.println();

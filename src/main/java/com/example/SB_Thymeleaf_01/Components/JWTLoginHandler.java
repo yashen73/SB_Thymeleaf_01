@@ -19,6 +19,12 @@ public class JWTLoginHandler extends SavedRequestAwareAuthenticationSuccessHandl
     @Autowired
     private JwtUtil jwtUtil;
 
+    // Set default target URL in constructor or via @PostConstruct
+    public JWTLoginHandler() {
+        setDefaultTargetUrl("/admin/AdminDashboard");
+    }
+
+
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws ServletException, IOException {
 
@@ -27,7 +33,7 @@ public class JWTLoginHandler extends SavedRequestAwareAuthenticationSuccessHandl
         String jwtToken = jwtUtil.generateToken(userDetails.getUsername());
 
         Cookie jwtCookie = new Cookie("jwt", jwtToken);
-        jwtCookie.setHttpOnly(true);    //No Java script access
+        jwtCookie.setHttpOnly(false);    //No Java script access
         jwtCookie.setSecure(true);      //Only send over HTTPS
         jwtCookie.setPath("/admin/AdminDashboard");
         jwtCookie.setMaxAge(24*60*60);  //24 hours
@@ -37,8 +43,8 @@ public class JWTLoginHandler extends SavedRequestAwareAuthenticationSuccessHandl
         //send token response header for JAVASCRIPT to read
         response.setHeader("jwt", jwtToken);
 
-        //setting where response should go
-        response.sendRedirect("/admin/AdminDashboard");
+//        //setting where response should go
+//        response.sendRedirect("/admin/AdminDashboard");
 
         //store in session for quick access
         request.getSession().setAttribute("JWT_TOKEN", jwtToken);

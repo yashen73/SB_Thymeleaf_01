@@ -11,7 +11,8 @@ function toggle() {
 
 let stompClient = null;
 let currentChatsession = null;
-const token = null;
+let token = null;
+const chatlist = document.getElementById('chatlist');
 
 //Admin information
 const adminId = 'admin';
@@ -28,62 +29,114 @@ function connect () {
     stompClient = Stomp.over(socket);
 
     stompClient.connect({
-        'Authorization' : token;
+        'Authorization' : token
     }, function() {
         console.log('Admin connected Successfully');
         stompClient.subscribe('/user/queue/messages', onMessageReceived);
-        loadActiveChats();
+        loadChatHeaders();
+        //loadActiveChats();
     }, onError)
 }
 
 function onError(){
-    console.error('Connection error:', error);
+    console.error('Connection error:Z', error);
     setTimeout(connect, 5000);
 }
 
-function loadActiveChats() {
-    const chatlist = document.getElementById('chatlist');
-    chatlist.innerHTML =" ";
+function loadActiveChats(username, userId, unreadmsgcount) {
 
-    activechats.forEach(chat => {
-        let oneChatNameElement = createChatUserElement(chat);
+
+        let oneChatNameElement = createChatUserElement(username, userId, unreadmsgcount);
         chatlist.appendChild(oneChatNameElement);
-    });
 }
 
-function createChatUserElement(chat) {
+function createChatUserElement(username, userId, unreadmsgcount) {
+
     let oneChatNameElement = document.createElement('div');
     oneChatNameElement.className = 'select-chat-person';
-    oneChatNameElement.onclick = () => selectChat(chat);
+    oneChatNameElement.onclick = () => selectChat(username, userId);
     oneChatNameElement.innerHTML = `
         <div class="name-of-chatter">
-            ${chat.userName}
+            ${username}
         </div>
         <div class="id-of-chatter">
-                    ${chat.userId}
+                    ${userId}
         </div>
         <span class="count-of-messages">
-            ${chat.unread}
+            ${unreadmsgcount}
         </span>
     `;
     return oneChatNameElement;
 }
 //triggers from FrontEnd
-function selectChat(chat) {
-    currentChatsession = chat;
-    console.log("current Chat session is with", currentChatsession.userName);
+function selectChat(username, userId) {
+    currentChatSessionUserName = username;
+    console.log("current Chat session is with", currentChatSessionUserName);
 
     //Updating UI
     document.querySelectorAll('.select-chat-person').forEach(el => el.classList.remove('active'));
     event.currentTarget.classList.add('active');
 
-    document.getElementById('chatHeaderName').innerHTML = currentChatsession.userName;
+    document.getElementById('chatHeaderName').innerHTML = currentChatSessionUserName;
 
-    loadChatHistory(chat.sessionId);
+    loadChatHistory(userId);
 }
 
-function loadChatHistory(sessionId) {
-    fetch(`/chat/${sessionId}`)
+function loadChatHeaders() {
+    /*
+    try {
+        let chatHeaders = stompClient.send("/adminChat/chat.loadChatHeader", {}, JSON.stringify());
+        if(charHeaders) {
+            chatHeaders.forEach(message =>
+            )
+        }
+    }catch (error) {
+        console.error("can not fetch for Chat Headers : ", error);
+    }*/
+
+    try {
+        fetch(`/adminChat/chat/loadChatHeader`, {
+                method : 'GET',
+                headers : {
+                    'Authorization' : token
+                },
+            })
+            .then(response => response.json())
+            .then(chatheaders => {
+                chatlist.innerHTML =" ";
+                let checkedSenderIdArray = [];
+                chatheaders.forEach(chatheader => {
+
+                    if(!checkedSenderIdArray.includes(chatheader.senderId) && chatheader.type === 'JOIN'){
+
+                    }else if(!checkedSenderIdArray.includes(chatheader.senderId) && chatheader.status === 'DELIVERED' && chatheader.senderId !== 'admin'){
+
+                        let temp = chatheader.senderId; //Catching Sneder Id to catch number of unread msgs
+                        let countOfUnreadMessages = 0;  //Bucket to get count of unread messages
+
+                        //circulating object list to catch DELIVERED AND match SENDERID..
+                        chatheaders.forEach(cochatheader => {
+                            //Comparing SENDERID and msg STATUS...
+                            if(cochatheader.senderId === temp && cochatheader.status === 'DELIVERED'){
+                                countOfUnreadMessages++;
+                            }
+                        });
+
+                        //Creating Chat header.....
+                        loadActiveChats(chatheader.senderName, temp, countOfUnreadMessages);
+                        console.log("passing loadActiveChats : ", chatheader.senderName, temp, countOfUnreadMessages);
+                    }
+                    checkedSenderIdArray.push(chatheader.senderId); //Including to the checked list
+                });
+            })
+    }catch (error) {
+        console.error("can not fetch headers : ", error);
+    }
+}
+
+
+function loadChatHistory(userId) {
+    fetch(`/chat/${userId}`)
     .then(response => response.json())
     .then(messages => {
         const messageDiv = document.getElementById('chatMessages');
@@ -96,6 +149,7 @@ function loadChatHistory(sessionId) {
         messageDiv.scrollTop = messageDiv.scrollHeight;
     });
 }
+
 
 function sendAdminMessage() {
     const messageContent = document.getElementById('adminMessageInput').value.trim();
@@ -143,7 +197,7 @@ function displayMessage(message, sender) {
 
 
 function markMessageAsRead(messageId) {
-    fetch('/admin/message/read/${messageId}', { method: 'POST'});
+    fetch('/adminChat/message/read/${messageId}', { method: 'POST'});
 }
 
 function updateUnreadCount(sessionId) {
@@ -167,14 +221,15 @@ function escapeHTML(text) {
 }
 
 function getToken() {
-    const cookies = document.cookie.split(";");
+    const cookies = document.cookie.split("; ");
     for (let cookie of cookies) {
         const[name, value] = cookie.trim().split("=");
 
         if (name === 'jwt') {
-            return value;
+            return decodeURIComponent(value);
         }
     }
+    return null;
 }
 
 try {
@@ -196,6 +251,6 @@ setInterval(() => {
     .then(response => response.json())
     .then(chats => {
         activeChats = chats;
-        loadActiveChats();
+        loadChatHeaders();
     });
-}, 20000);
+}, 5000);

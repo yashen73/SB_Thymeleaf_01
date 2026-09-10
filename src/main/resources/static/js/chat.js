@@ -20,7 +20,8 @@ function onConnected() {
     const chatMessage = {
         senderId : "user_" + Date.now(),
         senderName : 'Customer', 
-        type : 'JOIN', 
+        type : 'JOIN',
+        status: 'SENT',
         message : 'Customer joined',
         receiverId : 'admin'
     };
@@ -47,6 +48,7 @@ function sendMessage() {
             senderName : 'Customer',
             message : messageContent,
             type : 'CHAT',
+            status: 'SENT',
             receiverId : 'admin'
         };
 

@@ -76,8 +76,8 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
                             accessor.getSessionAttributes().put("AdminUserName", userMail);
                             Principal principal = new UsernamePasswordAuthenticationToken(userMail, null, Collections.emptyList());
                             accessor.setUser(principal);
-                            System.out.println("Set user: " + accessor.getUser());
-                            System.out.println("set User name : " + accessor.getUser().getName());
+                            System.out.println("Set admin user: " + accessor.getUser());
+                            System.out.println("set admin User name : " + accessor.getUser().getName());
                         }else {
                             //Setting usermails in Session Attributes . . . .
                             accessor.getSessionAttributes().put("UserMail", userMail);

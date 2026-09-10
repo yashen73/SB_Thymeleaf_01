@@ -1,7 +1,9 @@
 package com.example.SB_Thymeleaf_01.Repositories;
 
+import com.example.SB_Thymeleaf_01.DTO.ChatHeaderFE;
 import com.example.SB_Thymeleaf_01.Models.ChatMessage;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -20,7 +22,19 @@ public interface ChatMessageRepository extends JpaRepository<ChatMessage, Long> 
            """)
     List<ChatMessage> findConversation(@Param("senderid") String senderId,@Param("receiverid") String receiverId);
 
-   List<ChatMessage> findBySessionIdOrderByTimestampAsc(String sessionId);
+   @Modifying
+   @Query("""
+           UPDATE ChatMessage c SET c.status = 'DELIVERED' WHERE c.status = 'SENT' AND c.receiverId = 'Admin' 
+           """)
+    int updateSentMessagestoDeliveredByAdmin();
+
+   @Modifying
+   @Query("""
+           SELECT c FROM ChatMessage c ORDER BY c.timestamp DESC
+           """)
+   List<ChatMessage> returnConversationsForChatHeader();
+
+    List<ChatMessage> findBySessionIdOrderByTimestampAsc(String sessionId);
 
     @Query("SELECT m FROM ChatMessage m WHERE m.receiverId = :receiverId AND m.status = 'UNREAD'")
     List<ChatMessage> findUnreadMessages (@Param("receiverId") String receiverId);

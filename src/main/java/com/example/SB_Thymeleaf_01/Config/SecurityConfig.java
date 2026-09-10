@@ -5,6 +5,7 @@ import com.example.SB_Thymeleaf_01.Service.AdminUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -34,12 +35,14 @@ public class SecurityConfig {
         return provider;
     }
 
+
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http
                 .csrf(csrf -> csrf
-                        .ignoringRequestMatchers("/auth/login", "/chat-websocket**")
+                        .ignoringRequestMatchers("/cust/custlogin", "/adminChat/**", "/chat-websocket**")
                 )
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
@@ -50,6 +53,7 @@ public class SecurityConfig {
                                 "/chat-websocket-native/**",
                                 "/Profile",
                                 "/CustomerLogin",
+                                "/cust/custlogin",
                                 "/signup",
                                 "/AboutUs",
                                 "/cust/seeCSRF",
@@ -64,6 +68,7 @@ public class SecurityConfig {
                                 "/item/updateAnItem",
                                 "/item/deleteAnItem",
                                 "/api",
+                                "/adminChat/chat/loadChatHeader",
                                 "/favicon.ico",
                                 "/css/**",
                                 "/js/**",
