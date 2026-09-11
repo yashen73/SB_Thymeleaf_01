@@ -125,8 +125,9 @@ function loadChatHeaders() {
                         //Creating Chat header.....
                         loadActiveChats(chatheader.senderName, temp, countOfUnreadMessages);
                         console.log("passing loadActiveChats : ", chatheader.senderName, temp, countOfUnreadMessages);
+                        checkedSenderIdArray.push(chatheader.senderId); //Including to the checked list
                     }
-                    checkedSenderIdArray.push(chatheader.senderId); //Including to the checked list
+
                 });
             })
     }catch (error) {
@@ -136,17 +137,23 @@ function loadChatHeaders() {
 
 
 function loadChatHistory(userId) {
-    fetch(`/chat/${userId}`)
+    fetch(`/adminChat/chat/${userId}`)
     .then(response => response.json())
     .then(messages => {
         const messageDiv = document.getElementById('chatMessages');
         messageDiv.innerHTML = '';
 
-        messages.forEach(message => {``
-            displayMessage(message.message, message.senderId === 'admin' ? 'admin' :'user');
+        messages.forEach(message => {
+
+            if(message.senderId === 'admin') {
+                displayMessage(message.message, 'admin');
+            }else if (message.message !== 'Customer joined'){
+                displayMessage(message.message, 'customer');
+            }
         });
 
         messageDiv.scrollTop = messageDiv.scrollHeight;
+
     });
 }
 
@@ -160,6 +167,7 @@ function sendAdminMessage() {
             receiverId: currentChatsession.userId,
             message: messageContent,
             type: 'CHAT',
+            status: 'DELIVERED',
             sessionId: currentChatsession.sessionId
         };
 
@@ -190,7 +198,7 @@ function displayMessage(message, sender) {
             <span class="muted-text">
                 ${new Date().toLocaleTimeString()}
             </span>
-        `;
+        `;``
     messageDiv.appendChild(messageelement);
     messageDiv.scrollTop = messageDiv.scrollHeight;
 }
@@ -247,10 +255,6 @@ try {
 
 setInterval(() => {
 
-    fetch('/admin/active-chats')
-    .then(response => response.json())
-    .then(chats => {
-        activeChats = chats;
         loadChatHeaders();
-    });
+
 }, 5000);

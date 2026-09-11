@@ -9,6 +9,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Inconsolata:wght@200..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=M+PLUS+Rounded+1c&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Playwrite+AT:ital,wght@0,100..400;1,100..400&family=Rubik:ital,wght@0,300..900;1,300..900&family=Saira+Stencil:ital,wght@0,100..900;1,100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+
 
 :root {
     --clora-theme-font : "Bebas Neue", sans-serif;
@@ -44,7 +46,7 @@
 
 #cloracontainer {
     display: grid;
-    background: linear-gradient(0deg, #a5a5a5, #e5e5e5 );
+    background-color: #ebf5f8;
     border-radius: 2px;
     margin-top: 5px;
     margin-bottom: 10px;
@@ -66,12 +68,10 @@
 .clora {
     font-family: var(--clora-theme-font);
     font-size: 60px;
-    font-width: 5px;
+    letter-spacing: 2px;
+    font-weight: 700;
     color: rgb(85, 85, 85);
-    padding: 10px;
     margin-left: 5px;
-    margin-bottom: 10px;
-
 }
 
 .cloraintrospace {
@@ -215,6 +215,38 @@
     height: 100%;
 }
 
+.slide-1 {
+    background-image: url('/images/backgroundimages/background4.jpg') !important;
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.slide-2 {
+    background-image: url('/images/backgroundimages/background5.jpg') !important;
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.slide-3 {
+    background-image: url('/images/backgroundimages/background1.jpg') !important;
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.slide-1 .banner-description {
+    font-family:"Caveat", cursive;
+}
+
+.slide-2 .banner-description {
+}
+
+.slide-3 .banner-description {
+    font-family:"Caveat", cursive;
+}
+
 .main-swiper .banner-discount {
     font-family: var(--banner-discount-font);
     font-size: 60px;
@@ -244,7 +276,7 @@
 
 .banner-description {
     font-family: var(--banner-description-font);
-    font-size: 60px;
+    font-size: 50px;
     font-weight: 300;
     color: var(--banner1-description-color);
 }
@@ -292,6 +324,16 @@
     opacity: 1;
 }
 
+.banner1-button {
+    margin-top: 60px !important;
+    animation: slowappear 2s ease;
+}
+
+.banner1-button:hover {
+    background-color: #dfab00;
+    border: none;
+}
+
 
 @media screen and (max-width:1140px) {
     .banner-blocks {
@@ -335,18 +377,22 @@
 }
 
 .banner-2-3-btn {
-    margin-top: 40px;
-    margin-left: 20px;
+    margin-top: 20px;
+    margin-left: 10px;
     border: 1px solid black;
     display: inline-block;
     padding: 5px;
     border-radius: 5px;
+    animation: slowappear 2s ease;
 }
 .banner-2-3-btn:hover {
     color: #e6f3fb;
-    background-color: var(--banner-2-3-btn-color-hover);
-    transition: all 0.3s ease;
+    font-weight: 400;
+    background-color: #dfab00;
+    border: none;
+    transition: all 1s ease;
 }
+
 
 /* brands category carousel section ..... */
 .btn-link {
@@ -553,6 +599,17 @@
     justify-items: center;
 }
 
+.free-space {
+    display: flex;
+    justify-content: center;
+}
+
+.bi.bi-rocket {
+    margin-top: 60px;
+    font-size: 70px;
+    animation: slideup 4s ease;
+}
+
 .bi.bi-patch-question {
     font-size: 25px;
     left: 10px;
@@ -680,6 +737,28 @@
         transform: translateY(0);
     }
 }
+
+
+@keyframes slowappear {
+    from {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideup {
+    from {
+        transform: translateY(150px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
 
 @keyframes slideside {
     to {

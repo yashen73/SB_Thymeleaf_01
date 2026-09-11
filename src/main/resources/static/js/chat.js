@@ -48,7 +48,7 @@ function sendMessage() {
             senderName : 'Customer',
             message : messageContent,
             type : 'CHAT',
-            status: 'SENT',
+            status: 'DELIVERED',
             receiverId : 'admin'
         };
 
@@ -61,7 +61,7 @@ function sendMessage() {
 
 function fetchOldMessages(){
    oldMessageSubscription = stompClient.subscribe("/user/queue/oldMessages", function(message) {
-                     console.log("Raw Body", message.body);
+
                      const oldMessages = JSON.parse(message.body);
 
                      if(oldMessages) {
@@ -74,6 +74,7 @@ function fetchOldMessages(){
                                                     displayMessage(msg.message, "customer")
                                                  }
                                                  });
+                        chatMessages.innerHTML= '';
                      }else {
                         console.log("No Old messages to appear");
                      }
