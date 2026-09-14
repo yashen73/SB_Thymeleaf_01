@@ -1,6 +1,7 @@
 package com.example.SB_Thymeleaf_01.Config;
 
 import com.example.SB_Thymeleaf_01.Components.JWTLoginHandler;
+import com.example.SB_Thymeleaf_01.Components.JwtFilter;
 import com.example.SB_Thymeleaf_01.Service.AdminUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.filter.OncePerRequestFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -86,7 +88,8 @@ public class SecurityConfig {
                         .passwordParameter("adminPassword")
                         .successHandler(jwtLoginHandler)
                         .permitAll()
-                );
+                )
+        ;
 
 
 
