@@ -44,7 +44,14 @@ public class SecurityConfig {
 
         http
                 .csrf(csrf -> csrf
-                        .ignoringRequestMatchers("/cust/custlogin", "/adminChat/**", "/chat-websocket**")
+                        .ignoringRequestMatchers(
+                                "/auth/custsignup",
+                                "/auth/custlogin",
+                                "/auth/AdminSignUp",
+                                "/auth/adminLoginCheckup",
+                                "/adminChat/**",
+                                "/chat-websocket**"
+                        )
                 )
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
@@ -55,7 +62,11 @@ public class SecurityConfig {
                                 "/chat-websocket-native/**",
                                 "/Profile",
                                 "/CustomerLogin",
-                                "/cust/custlogin",
+                                "/CustomerSignup",
+                                "/auth/custlogin",
+                                "/auth/custsignup",
+                                "/auth/AdminSignUp",
+                                "/auth/adminLoginCheckup",
                                 "/signup",
                                 "/AboutUs",
                                 "/cust/seeCSRF",
@@ -63,32 +74,28 @@ public class SecurityConfig {
                                 "/itemsforbrands",
                                 "/item/showAllItems",
                                 "/api/payment/checkout",
-                                "/cust/ShowAllCustomers",
+                                "/cust/g",
                                 "/api/payment/checkout",
                                 "/item/addProductOnTrendingItems",
                                 "/item/showAllItems",
                                 "/item/updateAnItem",
                                 "/item/deleteAnItem",
                                 "/api",
+                                "/admin/AdminLogin",
+                                "/admin/AdminDashboard",
                                 "/adminChat/chat/loadChatHeader",
                                 "/favicon.ico",
                                 "/css/**",
                                 "/js/**",
                                 "/images/**",
-                                "/webjars/**"
+                                "/webjars/**",
+                                "/error"
                                 )
                         .permitAll()
                         .anyRequest()
                         .authenticated()
                 )
-                .formLogin(form -> form
-                        .loginPage("/admin/AdminLogin") ///admin/AdminLogin
-                        .failureUrl("/admin/AdminLogin")
-                        .usernameParameter("adminusername")
-                        .passwordParameter("adminPassword")
-                        .successHandler(jwtLoginHandler)
-                        .permitAll()
-                )
+
         ;
 
 
@@ -96,3 +103,13 @@ public class SecurityConfig {
         return http.build();
     }
 }
+
+/*
+* .formLogin(form -> form
+                        .loginPage("/admin/AdminLogin") ///admin/AdminLogin
+                        .failureUrl("/admin/AdminLogin")
+                        .usernameParameter("adminusername")
+                        .passwordParameter("adminPassword")
+                        .successHandler(jwtLoginHandler)
+                        .permitAll()
+                )*/

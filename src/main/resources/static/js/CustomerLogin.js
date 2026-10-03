@@ -28,7 +28,7 @@ document.getElementById("customerLoginForm").addEventListener("submit",  async f
     localStorage.clear();
     localStorage.removeItem("jwt");
 
-   fetch("http://localhost:8080/cust/custlogin", {
+   fetch("http://localhost:8080/auth/custlogin", {
     method : "POST",
     headers : {"Content-Type" : "application/json"},
     body : JSON.stringify({
@@ -38,10 +38,10 @@ document.getElementById("customerLoginForm").addEventListener("submit",  async f
    })
    .then(res => res.text())
    .then(token => {
-        console.log("JWT: ", token)
-        localStorage.setItem("jwt", token);
-        alert("Loged In !");
-        window.location.href = "/index";
+                console.log("JWT: ", token);
+                localStorage.setItem("jwt", token);
+                alert("Loged In !");
+                window.location.href = "/index";
    })
    .catch ( err => console.error(err));
 

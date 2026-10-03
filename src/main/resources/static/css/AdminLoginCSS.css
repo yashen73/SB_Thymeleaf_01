@@ -75,3 +75,18 @@
 .btn-primary:hover {
     background-color: rgb(79, 78, 78) !important;
 }
+
+.server-error-msg{
+    font-size: 22px;
+    display: none;
+}
+
+.notfound-msg{
+    font-size: 22px;
+    display: none;
+}
+
+.invalid-msg{
+    font-size: 22px;
+    display: none;
+}

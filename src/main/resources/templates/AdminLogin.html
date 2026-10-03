@@ -23,13 +23,25 @@
         <div class="col-sm-8 login-container">
             <h2 class="clora">Clora</h2>
 
-            <form th:action='@{/admin/AdminLogin}' method="post">
+            <form id="adminLoginForm">
 
                 <label class="label" for="username">Username </label><br>
                 <input type="text" class="inputarea" id="username" name="adminusername" placeholder="yashen73">
                 <br>
                 <label class="label" for="password">Password</label><br>
                 <input type="password" class="inputarea" id="password" name="adminPassword" placeholder="@1234">
+
+                <div class="login-checkup-message" id="loginCheckUpMesssge">
+                    <div class="server-error-msg" id="serverErrorMsg">
+                        500 Internal Serever Error...
+                    </div>
+                    <div class="invalid-msg" id="invalidMsg">
+                        409 Invalid Credentials....
+                    </div>
+                    <div class="notfound-msg" id="notFoundMsg">
+                        404 Not Found....
+                    </div>
+                </div>
 
                 <div class="buttonarea">
                     <button class="btn btn-primary" type="submit">Log In</button>

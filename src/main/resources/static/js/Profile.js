@@ -19,7 +19,7 @@ let userToken = localStorage.getItem("jwt");
 fetch("http://localhost:8080/cart/ShowCartItems", {
     method: 'GET',
     headers: {
-        'Authorization': userToken,
+        'Authorization': userToken,+
         'Content-Type' : 'application/json'
     }
 })
@@ -50,3 +50,14 @@ fetch("http://localhost:8080/cart/ShowCartItems", {
     })
     productitem.innerHTML = html;
 })
+
+document.addEventListener("DOMContentLoaded", function() {
+    const token = localStorage.getItem("jwt");
+    const indicator = document.getElementById("login-indicator");
+
+    if(token) {
+        indicator.style.display = "block";
+    }else {
+        indicator.style.display = "none";
+    }
+});

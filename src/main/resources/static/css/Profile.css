@@ -41,7 +41,7 @@
 
 #cloracontainer {
     display: grid;
-    background: linear-gradient(0deg, #a5a5a5, #e5e5e5 );
+    background-color: #ebf5f8;
     border-radius: 2px;
     margin-top: 5px;
     margin-bottom: 10px;
@@ -63,12 +63,10 @@
 .clora {
     font-family: var(--clora-theme-font);
     font-size: 60px;
-    font-width: 5px;
+    letter-spacing: 2px;
+    font-weight: 700;
     color: rgb(85, 85, 85);
-    padding: 10px;
     margin-left: 5px;
-    margin-bottom: 10px;
-
 }
 
 .cloraintrospace {
@@ -100,7 +98,7 @@
 .indicator {
     position: absolute;
     top: 40px;
-    right: 105px;
+    right: 95px;
     width: 10px;
     height: 10px;
     background-color: rgb(33, 30, 30);
@@ -140,7 +138,6 @@
      background-color: #7b7b7b;
      transition: all 0.3s ease;
 }
-
 
 @media screen and (max-width:1140px) {
     .banner-blocks {
