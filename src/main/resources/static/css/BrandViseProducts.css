@@ -29,24 +29,25 @@
     grid-area: 1/ 5/ 2/ 9;
 }
 
-.cloracontainer-partition-3 {
+#cloracontainer .cloracontainer-partition-3 {
     grid-area: 1/ 9/ 2/ 13;
 }
 
+
 #cloracontainer {
     display: grid;
-    background-color: rgb(192, 192, 192);
+    background-color: #ebf5f8;
     border-radius: 2px;
     margin-top: 5px;
+    margin-bottom: 10px;
     margin-left: 10px;
     margin-right: 10px;
     border-radius: 10px;
-    transform: translateY(-50px);
-    animation: slidedown 1s ease forwards;
+    transform: translateY(-80px);
+    animation: slidedown 2.5s ease forwards;
     padding: 10px;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
 }
-
 
 #iconinstrip {
     display: flex;
@@ -54,17 +55,13 @@
     align-items: center;
 }
 
-
 .clora {
-    
     font-family: var(--clora-theme-font);
     font-size: 60px;
-    font-width: 5px;
-    color: rgb(0, 0, 0);
-    padding: 10px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: rgb(85, 85, 85);
     margin-left: 5px;
-    margin-bottom: 10px;
-    
 }
 
 .cloraintrospace {
@@ -77,47 +74,64 @@
 }
 
 .bi.bi-search {
-    font-size: 23px;
+    font-size: 20px;
     color: rgb(0, 0, 0);
     margin-right: 10px;
     padding: 15px;
     border-radius: 40px;
-
 }
 
 .bi.bi-person {
-    font-size: 25px;
+    font-size: 22px;
     color: rgb(0, 0, 0);
     margin-right: 20px;
     padding: 15px;
     border-radius: 40px;
+    transform: translateY(-50px);
 }
+
+.indicator {
+    position: absolute;
+    top: 40px;
+    right: 105px;
+    width: 10px;
+    height: 10px;
+    background-color: rgb(33, 30, 30);
+    border-radius: 50%;
+}
+
+
 .search-box {
     position: absolute;
     display: none;
-    margin-top: 140px;
+    margin-top: 80px;
     font-size: 20px;
+    z-index: 2;
 }
 
 .search-box-input{
-    padding: 10px;
+    width: 230px;
+    padding: 5px;
     border-radius: 20px 8px;
+    z-index: 99999;
 }
 
 .bi-arrow-right-circle-fill {
     position:relative;
     top: 10px;
-    font-size: 50px;
+    font-size: 30px;
 }
 
 .bi.bi-person:hover {
     color: #cacaca;
-    background-color: #434343;
+    background-color: #7b7b7b;
+    transition: all 0.3s ease;
 }
 
 .bi.bi-search:hover {
     color: #cacaca;
-     background-color: #434343;
+     background-color: #7b7b7b;
+     transition: all 0.3s ease;
 }
 
 
@@ -148,11 +162,11 @@
     align-items: center;
     width: 99%;
     height: 50px;
-    background-color: #692c00ea;
+    background-color: rgba(240, 183, 96);
     color: #ffffff;
     margin-left: 10px;
     margin-right: 50px;
-    border-radius: 5px;
+    border-radius: 20px;
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.4);
 }
 

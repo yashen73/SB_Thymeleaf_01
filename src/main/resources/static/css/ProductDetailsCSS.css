@@ -4,6 +4,19 @@
 /*"SN Pro", sans-serif*/
 @import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=Bungee&family=Cascadia+Mono:ital,wght@0,200..700;1,200..700&family=Dosis:wght@200..800&family=Quicksand:wght@300..700&family=Ribeye+Marrow&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playwrite+AT:ital,wght@0,100..400;1,100..400&family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=M+PLUS+Rounded+1c&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=M+PLUS+Rounded+1c&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=M+PLUS+Rounded+1c&family=Rubik:ital,wght@0,300..900;1,300..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Inconsolata:wght@200..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=M+PLUS+Rounded+1c&family=Playwrite+AT:ital,wght@0,100..400;1,100..400&family=Rubik:ital,wght@0,300..900;1,300..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Inconsolata:wght@200..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=M+PLUS+Rounded+1c&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Playwrite+AT:ital,wght@0,100..400;1,100..400&family=Rubik:ital,wght@0,300..900;1,300..900&family=Saira+Stencil:ital,wght@0,100..900;1,100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+
 
 :root {
     --clora-theme-font : "Bebas Neue", sans-serif;
@@ -40,15 +53,15 @@
 
 #cloracontainer {
     display: grid;
-    background: linear-gradient(0deg, #a5a5a5, #e5e5e5 );
+    background-color: #ebf5f8;
     border-radius: 2px;
     margin-top: 5px;
     margin-bottom: 10px;
     margin-left: 10px;
     margin-right: 10px;
     border-radius: 10px;
-    transform: translateY(-50px);
-    animation: slidedown 0.5s ease forwards;
+    transform: translateY(-80px);
+    animation: slidedown 2.5s ease forwards;
     padding: 10px;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
 }
@@ -59,15 +72,13 @@
     align-items: center;
 }
 
-
 .clora {
     font-family: var(--clora-theme-font);
     font-size: 60px;
-    font-weight: 900;
-    color: rgb(85, 85, 85);``
-    padding: 10px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: rgb(85, 85, 85);
     margin-left: 5px;
-    margin-bottom: 10px;
 }
 
 .cloraintrospace {
@@ -77,35 +88,6 @@
     font-size: 60px;
     font-family: "Dancing Script", cursive;
     color: rgb(88, 38, 1);
-}
-
-
-.bi.bi-search {
-    font-size: 23px;
-    color: rgb(0, 0, 0);
-    margin-right: 10px;
-    padding: 15px;
-    border-radius: 40px;
-
-}
-
-.bi.bi-person {
-    font-size: 25px;
-    color: rgb(0, 0, 0);
-    margin-right: 20px;
-    padding: 15px;
-    border-radius: 40px;
-}
-
-#login-indicator {
-    position: absolute;
-    top: 35px;
-    right: 110px;
-    width: 10px;
-    height: 10px;
-    background-color: rgb(234, 234, 234);
-    border-radius: 50%;
-    display: none;
 }
 
 .bi.bi-search {
@@ -524,9 +506,11 @@
 }
 
 
+
 @keyframes slidedown {
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
+

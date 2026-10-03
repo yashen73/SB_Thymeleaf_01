@@ -45,7 +45,6 @@ function Search(){
 
 
 
-
 document.addEventListener("DOMContentLoaded", function() {
     const token = localStorage.getItem("jwt");
     const indicator = document.getElementById("login-indicator");
@@ -56,6 +55,8 @@ document.addEventListener("DOMContentLoaded", function() {
         indicator.style.display = "none";
     }
 });
+
+
 
 
 fetch("http://localhost:8080/item/showAllItems")

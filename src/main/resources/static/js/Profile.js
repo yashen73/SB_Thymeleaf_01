@@ -19,7 +19,7 @@ let userToken = localStorage.getItem("jwt");
 fetch("http://localhost:8080/cart/ShowCartItems", {
     method: 'GET',
     headers: {
-        'Authorization': userToken,+
+        'Authorization': userToken,
         'Content-Type' : 'application/json'
     }
 })

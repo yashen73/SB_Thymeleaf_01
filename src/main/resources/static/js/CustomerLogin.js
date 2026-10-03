@@ -9,6 +9,17 @@ window.onload = function(){
     }
 }
 
+
+function showSearchBox() {
+    let searchbox = document.getElementById("search-box")
+    if(searchbox.style.display === "none") {
+        searchbox.style.display ="block";
+    } else {
+        searchbox.style.display ="none";
+    }
+}
+
+
 window.onload= function(){
 let alertBox = document.getElementById("failedmessage");
 let status = alertBox.getAttribute("failed-status");
@@ -48,3 +59,15 @@ document.getElementById("customerLoginForm").addEventListener("submit",  async f
    btn.disabled = false;
    btn.innerText = "Login"
 })
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const token = localStorage.getItem("jwt");
+    const indicator = document.getElementById("login-indicator");
+
+    if(token) {
+        indicator.style.display = "block";
+    }else {
+        indicator.style.display = "none";
+    }
+});
