@@ -60,7 +60,7 @@ public class AuthController {
             customer.setPassword(encodedPassword);
             customerSerivce.save(customer);
             return "success";
-        }catch (Exception e) {
+        }catch (DuplicateEmailException e) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, e.getMessage());
         }
     }

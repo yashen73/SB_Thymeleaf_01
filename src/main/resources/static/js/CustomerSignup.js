@@ -38,7 +38,7 @@ document.getElementById("customerSignUpForm").addEventListener("submit",  async 
 document.addEventListener("DOMContentLoaded", function() {
     const token = localStorage.getItem("jwt");
     const indicator = document.getElementById("login-indicator");
-  m
+
     if(token) {
         indicator.style.display = "block";
     }else {
