@@ -1,0 +1,95 @@
+Clora T-Shirt Web Application :
+
+    Clora is a full-stack T-shirt e-commerce web application developed as a Spring Boot practice project.
+    The main goal of this project was to gain practical experience with the Spring ecosystem, backend development,
+    database integration, authentication, payment processing, and MVC architecture.
+
+    The application provides functionality for managing T-shirts, user authentication, shopping-related operations, and payment processing using the Stripe Sandbox environment.
+
+Project Purpose :
+
+    This project was developed to improve my practical knowledge of Spring Boot and modern web application development.
+
+    Through this project, I practiced:
+
+    Building REST APIs with Spring Boot
+    Implementing MVC architecture
+    Connecting Spring Boot with PostgreSQL
+    Using Spring Data JPA for database operations
+    Implementing authentication and authorization
+    Working with JWT authentication
+    Configuring Spring Security
+    Integrating Stripe Sandbox payments
+    Developing frontend interfaces using HTML, CSS, and JavaScript
+    Connecting frontend functionality with backend APIs
+    Structuring a project using layered architecture
+    Understanding how different components of a web application communicate with each other
+
+Technologies Used :
+    Frontend
+        HTML
+        CSS3
+        JavaScript
+        Thymeleaf
+    Backend
+        Java
+        Spring Boot
+        Spring MVC
+        Spring Security
+        JWT
+        Spring Data JPA
+        Hibernate
+    Database
+        PostgreSQL
+    Payment
+        Stripe Sandbox
+    Architecture
+        Model-View-Controller (MVC)
+        Layered Architecture
+
+Main Features :
+    User authentication
+    JWT-based authentication
+    Spring Security integration
+    T-shirt/product management
+    Product images
+    Product listing
+    Shopping cart functionality
+    PostgreSQL database integration
+    JPA/Hibernate persistence
+    Stripe Sandbox payment integration
+    MVC architecture
+    Thymeleaf-based server-side rendering
+    REST API development
+    Admin-related functionality
+
+Project Status :
+    Practice / Learning Project
+
+        This project was primarily created for learning and improving my understanding of Spring Boot and full-stack web application development.
+
+        The application may continue to evolve as I learn more about Spring Boot, security, database design, software architecture, and production-level development.
+
+Future Improvements :
+
+    Some areas I may improve in the future include:
+
+    Improved exception handling
+    More comprehensive validation
+    Better API documentation
+    Improved security configuration
+    More advanced role-based access control
+    Automated testing
+    Docker containerization
+    Production database configuration
+    Improved UI/UX
+    Better logging and monitoring
+    Deployment improvements
+    Additional e-commerce features
+
+
+Author :
+
+    Yashen Kavishka
+        This project was developed as part of my personal learning and practice with
+        Java, Spring Boot, PostgreSQL, and full-stack web development.
