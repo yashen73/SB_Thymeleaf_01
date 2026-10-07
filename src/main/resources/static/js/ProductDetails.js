@@ -38,6 +38,8 @@
     initSwiper();
 })(jQuery);
 
+const loginerrormessage =  document.getElementById("loginerrormessage");
+
 function Search(){
     const query = document.querySelector(".search-box input").value;
     alert("Searching for: "+query);
@@ -98,16 +100,15 @@ fetch("http://localhost:8080/item/showAllItems")
 document.getElementById("purchaseButton").addEventListener("click", async function(e) {
     e.preventDefault();
 
-    const btn = this;
+    let btn = this;
     btn.innerText = "Processing...";
     btn.style.pointerEvents = "none";
 
     try {
         if(!localStorage.getItem("jwt")){
-            alert("Please Login fisrt");
             console.log("No JWT. Login first");
-            btn.inneText ="Purchase";
             btn.style.pointerEvents =" auto";
+            throw error;
         }else{
             console.log("JWT exists and forwading to the payment")
             await pay();
@@ -115,9 +116,8 @@ document.getElementById("purchaseButton").addEventListener("click", async functi
 
     }catch (err) {
     console.error(err);
-    alert("Payment Failed.");
-
-    btn.inneText ="Purchase";
+    btn.innerText ="Purchase";
+    loginerrormessage.style.display = "block";
     btn.style.pointerEvents =" auto";
 
     }
@@ -154,7 +154,7 @@ document.getElementById("addtocart-btn").addEventListener("click", async functio
 
     try {
         if(!localStorage.getItem("jwt")){
-            alert("Please Login first");
+            loginerrormessage.style.display = "block";
         }else{
             await addtocart();
         }

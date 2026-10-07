@@ -6,6 +6,7 @@ import com.example.SB_Thymeleaf_01.Models.Admin;
 import com.example.SB_Thymeleaf_01.Models.Customer;
 import com.example.SB_Thymeleaf_01.Security.JwtUtil;
 import com.example.SB_Thymeleaf_01.Service.AdminLoginService;
+import com.example.SB_Thymeleaf_01.Service.CartService;
 import com.example.SB_Thymeleaf_01.Service.CustomerSerivce;
 import com.example.SB_Thymeleaf_01.Service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,8 @@ public class AuthController {
     private CustomerSerivce customerSerivce;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private CartService cartService;
 
     @PostMapping("/custlogin")
     public String login(@RequestBody Customer customer) {
@@ -59,8 +62,9 @@ public class AuthController {
             String encodedPassword = passwordEncoder.encode(customer.getPassword());
             customer.setPassword(encodedPassword);
             customerSerivce.save(customer);
+            cartService.createCart(customer);
             return "success";
-        }catch (DuplicateEmailException e) {
+        }catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, e.getMessage());
         }
     }

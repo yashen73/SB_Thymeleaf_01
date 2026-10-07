@@ -259,9 +259,30 @@
     font-size: 22px;
 }
 
+.product-item .cart-dash-logo:hover {
+    background-color: #eba843;
+}
 
+.bi.bi-cart-dash {
+    font-size: 25px;
+    padding-top: 10px;
+    padding: 10px;
+    color: white;
+    font-weight: 900;
+}
 
+.no-items-error {
+    display: none;
+    color: rgb(111, 111, 111);
+    transform: translateX(100px);
+}
 
+.server-error{
+    display: none;
+    justify-self: center;
+    color: rgb(111, 111, 111);
+    transform: translateX(100px);
+}
 
 .footer-container {
     width: 100%;

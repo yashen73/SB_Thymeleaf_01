@@ -40,7 +40,8 @@ public class SecurityConfig {
 
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    @Order(1)
+    public SecurityFilterChain securityFilterChain1(HttpSecurity http) throws Exception {
 
         http
                 .csrf(csrf -> csrf
@@ -63,19 +64,13 @@ public class SecurityConfig {
                                 "/Profile",
                                 "/CustomerLogin",
                                 "/CustomerSignup",
-                                "/auth/custlogin",
-                                "/auth/custsignup",
-                                "/auth/AdminSignUp",
-                                "/auth/adminLoginCheckup",
                                 "/signup",
                                 "/AboutUs",
                                 "/cust/seeCSRF",
                                 "/product/productdetail/{productid}",
                                 "/itemsforbrands",
                                 "/item/showAllItems",
-                                "/api/payment/checkout",
                                 "/cust/g",
-                                "/api/payment/checkout",
                                 "/item/addProductOnTrendingItems",
                                 "/item/showAllItems",
                                 "/item/updateAnItem",
@@ -92,6 +87,33 @@ public class SecurityConfig {
                                 "/error"
                                 )
                         .permitAll()
+
+                        //Page Rendering
+
+
+                        //For cart
+                        .requestMatchers(
+                                "/cart/AddtoCart",
+                                "/cart/RemoveFromCart",
+                                "/cart/ShowCartItems"
+                        )
+                        .permitAll()
+
+                        //Authorization
+                        .requestMatchers(
+                                "/auth/custlogin",
+                                "/auth/custsignup",
+                                "/auth/AdminSignUp",
+                                "/auth/adminLoginCheckup"
+                        )
+                        .permitAll()
+
+                        //Paymenr Requests
+                        .requestMatchers(
+                                "/api/payment/checkout"
+                        )
+                        .permitAll()
+
                         .anyRequest()
                         .authenticated()
                 )

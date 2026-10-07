@@ -51,4 +51,5 @@ public class CartController {
         String emailForCartItem =  jwtUtil.extractUsername(token);
         return cartService.getAllItemsInCart(emailForCartItem);
     }
+
 }
