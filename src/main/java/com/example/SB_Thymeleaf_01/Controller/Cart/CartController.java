@@ -1,4 +1,4 @@
-package com.example.SB_Thymeleaf_01.Controller;
+package com.example.SB_Thymeleaf_01.Controller.Cart;
 
 
 import com.example.SB_Thymeleaf_01.Models.Availableitems;
@@ -22,8 +22,8 @@ public class CartController {
     private JwtUtil jwtUtil = new JwtUtil();
 
 
-    @PostMapping("/AddtoCart")
-    public ResponseEntity<String> AddtoCart(@RequestBody CartItem item, @RequestHeader("Authorization") String token){
+    @PostMapping("/Add_to_Cart")
+    public ResponseEntity<String> AddtoCart(@RequestHeader("Authorization") String token, @RequestBody CartItem item){
         System.out.println("AddtoCart in Cart controller is called.");
 
         String customermail = jwtUtil.extractUsername(token);
@@ -46,10 +46,15 @@ public class CartController {
     }
 
     @GetMapping("/ShowCartItems")
-    public List<Availableitems> ShowCartItems(@RequestParam("token") String token){
-        System.out.println("ShowCartItems is called in carcontorller ....");
+    public List<Availableitems> ShowCartItems(@RequestHeader("Authorization-token") String token){
+        System.out.println("ShowCartItems is called in cart contorller ....");
         String emailForCartItem =  jwtUtil.extractUsername(token);
         return cartService.getAllItemsInCart(emailForCartItem);
     }
 
+    @GetMapping("/Cart_Health")
+    public String CartHealth() {
+        System.out.println("Cart Works.....");
+        return "Cart Works >>>>>";
+    }
 }

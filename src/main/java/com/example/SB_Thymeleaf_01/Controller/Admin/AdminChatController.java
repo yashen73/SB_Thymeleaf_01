@@ -1,12 +1,9 @@
-package com.example.SB_Thymeleaf_01.Controller;
+package com.example.SB_Thymeleaf_01.Controller.Admin;
 
 import com.example.SB_Thymeleaf_01.DTO.ChatHeaderFE;
 import com.example.SB_Thymeleaf_01.Models.ChatMessage;
 import com.example.SB_Thymeleaf_01.Service.ChatService;
-import com.stripe.model.issuing.Authorization;
-import com.stripe.param.checkout.SessionCreateParams;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;

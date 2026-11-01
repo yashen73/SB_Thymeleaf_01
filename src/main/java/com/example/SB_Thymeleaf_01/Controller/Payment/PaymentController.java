@@ -1,4 +1,4 @@
-package com.example.SB_Thymeleaf_01.Controller;
+package com.example.SB_Thymeleaf_01.Controller.Payment;
 
 import com.example.SB_Thymeleaf_01.Models.ItemPaymentRequest;
 import com.example.SB_Thymeleaf_01.Security.JwtUtil;

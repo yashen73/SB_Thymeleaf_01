@@ -7,9 +7,11 @@ import com.example.SB_Thymeleaf_01.Models.Customer;
 import com.example.SB_Thymeleaf_01.Repositories.CartItemRepo;
 import com.example.SB_Thymeleaf_01.Repositories.CartRepo;
 import com.example.SB_Thymeleaf_01.Repositories.CustomerRepository;
+import com.example.SB_Thymeleaf_01.Repositories.ItemsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,6 +26,8 @@ public class CartService {
     private CartItemRepo cartItemRepo;
     @Autowired
     private CartRepo cartRepo;
+    @Autowired
+    private ItemsRepository itemsRepository;
 
 
 
@@ -44,7 +48,7 @@ public class CartService {
     }
 
     public List<Availableitems> getAllItemsInCart(String emailToFindCart) {
-        //Find Customer for Customer Id using mail....
+        //Find Customer for Customer using mail....
         Optional<Customer> customerToFindCart = custrepo.findByMail(emailToFindCart);
         //Find Cart using Customer Id.....
         Optional<Cart> cart = cartRepo.findByCustomerId(customerToFindCart.get().getId());
@@ -52,8 +56,14 @@ public class CartService {
         if(cart.isPresent()){
             //Find item's id according to the Cart ID.....
             List<CartItem> listOfItems = cartItemRepo.findByCart(cart.get());
+            //get items from available items....
+            List<Availableitems> itemsInsideTheCart = new ArrayList<>();
+            for (CartItem item: listOfItems) {
+                Optional<Availableitems> newItem = itemsRepository.findById(item.getProduct_id());
+                newItem.ifPresent(itemsInsideTheCart::add);
+            }
             System.out.println(listOfItems);
-            return null;
+            return itemsInsideTheCart;
         }else {
             return null;
         }

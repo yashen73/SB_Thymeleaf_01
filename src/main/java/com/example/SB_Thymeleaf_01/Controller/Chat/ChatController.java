@@ -1,4 +1,4 @@
-package com.example.SB_Thymeleaf_01.Controller;
+package com.example.SB_Thymeleaf_01.Controller.Chat;
 
 import com.example.SB_Thymeleaf_01.Models.ChatMessage;
 import com.example.SB_Thymeleaf_01.Models.Customer;

@@ -1,9 +1,8 @@
-package com.example.SB_Thymeleaf_01.Controller;
+package com.example.SB_Thymeleaf_01.Controller.Customer;
 
 import com.example.SB_Thymeleaf_01.Models.Availableitems;
 import com.example.SB_Thymeleaf_01.Models.Customer;
 import com.example.SB_Thymeleaf_01.Service.*;
-import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

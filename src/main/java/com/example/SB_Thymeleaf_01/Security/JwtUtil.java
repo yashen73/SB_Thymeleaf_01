@@ -21,7 +21,7 @@ public class JwtUtil {
     //This where Generate Token
     public String generateToken(String username) {
 
-        return Jwts.builder()
+        return "access_token " + Jwts.builder()
                 .setClaims(claims)
                 .setSubject(username)
                 .setIssuedAt(new Date())
@@ -32,7 +32,7 @@ public class JwtUtil {
 
     //Validate token
     public String extractUsername(String authHeader) {
-        String token = authHeader.substring(7);//removing Bearer first..
+        String token = authHeader.substring(13);//removing Bearer first..
 
         return Jwts.parserBuilder()
                 .setSigningKey(key)

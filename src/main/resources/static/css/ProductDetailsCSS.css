@@ -310,7 +310,6 @@
 }
 
 .purchase-button-area {
-    display: flex;
     margin-top: 20px;
     width: 100%;
     justify-content: center;
@@ -318,7 +317,6 @@
 
 .purchase-button {
     font-family:  "SN Pro", sans-serif;
-    display: flex;
     justify-content: center;
     text-decoration: none;
     letter-spacing: 1px;
@@ -340,7 +338,6 @@
 
 .addtocart-button-area {
     font-family:  "SN Pro", sans-serif;
-    display: flex;
     margin-top: 10px;
     width: 100%;
     justify-content: center;
@@ -517,7 +514,6 @@
     transition: all 0.3s ease;
     font-size: 24px;
 }
-
 
 
 @keyframes slidedown {

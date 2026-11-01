@@ -37,8 +37,6 @@ public class SecurityConfig {
         return provider;
     }
 
-
-
     @Bean
     @Order(1)
     public SecurityFilterChain securityFilterChain1(HttpSecurity http) throws Exception {
@@ -57,17 +55,6 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 "/",
-                                "/index",
-                                "/auth/AdminSignUp",
-                                "/chat-websocket/**",
-                                "/chat-websocket-native/**",
-                                "/Profile",
-                                "/CustomerLogin",
-                                "/CustomerSignup",
-                                "/signup",
-                                "/AboutUs",
-                                "/cust/seeCSRF",
-                                "/product/productdetail/{productid}",
                                 "/itemsforbrands",
                                 "/item/showAllItems",
                                 "/cust/g",
@@ -87,15 +74,27 @@ public class SecurityConfig {
                                 "/error"
                                 )
                         .permitAll()
-
                         //Page Rendering
-
-
+                        .requestMatchers(
+                                "/index",
+                                "/auth/AdminSignUp",
+                                "/chat-websocket/**",
+                                "/chat-websocket-native/**",
+                                "/Profile",
+                                "/CustomerLogin",
+                                "/CustomerSignup",
+                                "/signup",
+                                "/AboutUs",
+                                "/cust/seeCSRF",
+                                "/product/productdetail/{productid}"
+                        )
+                        .permitAll()
                         //For cart
                         .requestMatchers(
-                                "/cart/AddtoCart",
+                                "/cart/Add_to_Cart",
                                 "/cart/RemoveFromCart",
-                                "/cart/ShowCartItems"
+                                "/cart/ShowCartItems",
+                                "/cart/Cart_Health"
                         )
                         .permitAll()
 
@@ -108,7 +107,7 @@ public class SecurityConfig {
                         )
                         .permitAll()
 
-                        //Paymenr Requests
+                        //Payment Requests
                         .requestMatchers(
                                 "/api/payment/checkout"
                         )
@@ -116,11 +115,7 @@ public class SecurityConfig {
 
                         .anyRequest()
                         .authenticated()
-                )
-
-        ;
-
-
+                );
 
         return http.build();
     }

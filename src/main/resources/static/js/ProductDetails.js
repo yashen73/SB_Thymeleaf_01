@@ -9,7 +9,6 @@
             }
         });
 
-
     var brand_swiper = new Swiper(".category-carousel", {
         slidesPerView: 6,
         slidesBetween: 30,
@@ -38,14 +37,64 @@
     initSwiper();
 })(jQuery);
 
-const loginerrormessage =  document.getElementById("loginerrormessage");
+const loginerrormessagePurchse =  document.getElementById("loginerrormessagePurchse");
+
+async function pay(){
+    const productid =document.getElementById("ProductId").textContent;
+    const amount = document.getElementById("insert-price").textContent;
+    const quantity = document.getElementById("quantity-no").value;
+    console.log(productid, amount, quantity, " order is heading to the payment.")
+    const res = await fetch("http://localhost:8080/api/payment/checkout", {
+        method : "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "bearer " + localStorage.getItem("jwt")
+        },
+        body: JSON.stringify({
+               productid: productid,
+               quantity:quantity,
+               amount : amount
+        })
+    })
+    .then(res => res.text())
+    .then( url => {
+        window.location.href = url;
+    })
+    .catch(error=> console.error(error));
+
+}
+
+async function addtocart(){
+
+    let itemIdforAddtoCart = document.getElementById("ProductId").textContent;
+    const tokenforAddtoCart = localStorage.getItem("jwt");
+    let itemQuantityforAddtoCart = document.getElementById("quantity-no").value;
+
+    console.log(itemIdforAddtoCart);
+    console.log(tokenforAddtoCart);
+    console.log(itemQuantityforAddtoCart);
+
+    const repondforAddtoCart =await fetch("http://localhost:8080/cart/AddtoCart",
+    {
+        method: "POST",
+        headers: {
+            "Content-Type" : "application/json",
+            "Authorization" : tokenforAddtoCart
+        },
+        body: JSON.stringify({
+            product_id : itemIdforAddtoCart,
+            quantity : itemQuantityforAddtoCart
+        })
+    });
+    const result  = await repondforAddtoCart.text();
+    console.log(result);
+}
+
 
 function Search(){
     const query = document.querySelector(".search-box input").value;
     alert("Searching for: "+query);
 }
-
-
 
 document.addEventListener("DOMContentLoaded", function() {
     const token = localStorage.getItem("jwt");
@@ -57,9 +106,6 @@ document.addEventListener("DOMContentLoaded", function() {
         indicator.style.display = "none";
     }
 });
-
-
-
 
 fetch("http://localhost:8080/item/showAllItems")
 .then(response => response.json())
@@ -90,12 +136,24 @@ fetch("http://localhost:8080/item/showAllItems")
                     </div>
                 </div>
             `;
-
     })
     productitem.innerHTML = html;
 })
 
+document.getElementById("addtocart-btn").addEventListener("click", async function(e) {
+    e.preventDefault();
 
+    try {
+        if(!localStorage.getItem("jwt")){
+            loginerrormessagePurchse.style.display = "block";
+        }else{
+            await addtocart();
+        }
+    }catch (err){
+        console.error(err);
+    }
+
+})
 
 document.getElementById("purchaseButton").addEventListener("click", async function(e) {
     e.preventDefault();
@@ -106,7 +164,7 @@ document.getElementById("purchaseButton").addEventListener("click", async functi
 
     try {
         if(!localStorage.getItem("jwt")){
-            console.log("No JWT. Login first");
+            loginerrormessagePurchse.style.display = "block";
             btn.style.pointerEvents =" auto";
             throw error;
         }else{
@@ -123,69 +181,3 @@ document.getElementById("purchaseButton").addEventListener("click", async functi
     }
 })
 
-async function pay(){
-    const productid =document.getElementById("ProductId").textContent;
-    const amount = document.getElementById("insert-price").textContent;
-    const quantity = document.getElementById("quantity-no").value;
-    console.log(productid, amount, quantity, " order is heading to the payment.")
-    const res = await fetch("http://localhost:8080/api/payment/checkout", {
-        method : "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": "bearer " + localStorage.getItem("jwt")
-        },
-        body: JSON.stringify({
-               productid: productid,
-               quantity:quantity,
-               amount : amount
-        })
-    })
-    .then(res => res.text())
-    .then( url => {
-        window.location.href = url;
-    })
-    .catch(error=> console.error(error));
-
-}
-
-
-document.getElementById("addtocart-btn").addEventListener("click", async function(e) {
-    e.preventDefault();
-
-    try {
-        if(!localStorage.getItem("jwt")){
-            loginerrormessage.style.display = "block";
-        }else{
-            await addtocart();
-        }
-    }catch (err){
-        console.error(err);
-    }
-
-})
-
-async function addtocart(){
-
-    let itemIdforAddtoCart = document.getElementById("ProductId").textContent;
-    const tokenforAddtoCart = localStorage.getItem("jwt");
-    let itemQuantityforAddtoCart = document.getElementById("quantity-no").value;
-
-    console.log(itemIdforAddtoCart);
-    console.log(tokenforAddtoCart);
-    console.log(itemQuantityforAddtoCart);
-
-    const repondforAddtoCart =await fetch("http://localhost:8080/cart/AddtoCart",
-    {
-        method: "POST",
-        headers: {
-            "Content-Type" : "application/json",
-            "Authorization" : tokenforAddtoCart
-        },
-        body: JSON.stringify({
-            product_id : itemIdforAddtoCart,
-            quantity : itemQuantityforAddtoCart
-        })
-    });
-    const result  = await repondforAddtoCart.text();
-    console.log(result);
-}

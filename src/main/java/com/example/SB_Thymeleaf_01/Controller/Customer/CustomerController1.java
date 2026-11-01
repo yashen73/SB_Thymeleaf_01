@@ -1,4 +1,4 @@
-package com.example.SB_Thymeleaf_01.Controller;
+package com.example.SB_Thymeleaf_01.Controller.Customer;
 
 import com.example.SB_Thymeleaf_01.Models.Customer;
 import com.example.SB_Thymeleaf_01.Service.CustomerSerivce;

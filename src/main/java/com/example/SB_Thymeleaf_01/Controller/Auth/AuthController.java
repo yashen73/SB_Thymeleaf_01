@@ -1,7 +1,6 @@
-package com.example.SB_Thymeleaf_01.Controller;
+package com.example.SB_Thymeleaf_01.Controller.Auth;
 
 
-import com.example.SB_Thymeleaf_01.Exceptions.DuplicateEmailException;
 import com.example.SB_Thymeleaf_01.Models.Admin;
 import com.example.SB_Thymeleaf_01.Models.Customer;
 import com.example.SB_Thymeleaf_01.Security.JwtUtil;
@@ -14,8 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-
-import java.sql.SQLException;
 
 @RestController
 @RequestMapping("/auth")
