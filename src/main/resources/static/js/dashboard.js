@@ -61,7 +61,7 @@ function Search(){
 
 
 
-fetch("http://localhost:8080/item/showAllItems")
+fetch("/item/showAllItems")
 .then(response => response.json())
 .then(data => {
 

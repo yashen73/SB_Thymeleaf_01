@@ -7,7 +7,7 @@ document.getElementById("customerSignUpForm").addEventListener("submit",  async 
     localStorage.removeItem("jwt");
 
     try{
-        const signUpResponse = await fetch("http://localhost:8080/auth/custsignup", {
+        const signUpResponse = await fetch("/auth/custsignup", {
             method : "POST",
             headers : {"Content-Type" : "application/json"},
             body : JSON.stringify({

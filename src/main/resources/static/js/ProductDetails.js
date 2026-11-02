@@ -74,7 +74,7 @@ async function addtocart(){
     console.log(tokenforAddtoCart);
     console.log(itemQuantityforAddtoCart);
 
-    const repondforAddtoCart =await fetch("http://localhost:8080/cart/AddtoCart",
+    const repondforAddtoCart =await fetch("/cart/AddtoCart",
     {
         method: "POST",
         headers: {
@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-fetch("http://localhost:8080/item/showAllItems")
+fetch("/item/showAllItems")
 .then(response => response.json())
 .then(data => {
 
@@ -142,6 +142,9 @@ fetch("http://localhost:8080/item/showAllItems")
 
 document.getElementById("addtocart-btn").addEventListener("click", async function(e) {
     e.preventDefault();
+    let btn = this;
+    btn.innerText = "Processing...";
+    btn.style.pointerEvents = "none";
 
     try {
         if(!localStorage.getItem("jwt")){

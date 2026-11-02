@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 try {
     if(userToken){
-        fetch("http://localhost:8080/cart/ShowCartItems")
+        fetch("/cart/ShowCartItems")
             .then(response => response.json())
             .then(data => {
 
@@ -74,7 +74,7 @@ try {
 
 try {
     if(userToken){
-        fetch("http://localhost:8080/cart/ShowCartItems", {
+        fetch("/cart/ShowCartItems", {
             method : "POST",
             headers : {
             "Content-Type" : "application/json",

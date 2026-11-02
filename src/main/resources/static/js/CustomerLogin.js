@@ -39,7 +39,7 @@ document.getElementById("customerLoginForm").addEventListener("submit",  async f
     localStorage.clear();
     localStorage.removeItem("jwt");
 
-   fetch("http://localhost:8080/auth/custlogin", {
+   fetch("/auth/custlogin", {
     method : "POST",
     headers : {"Content-Type" : "application/json"},
     body : JSON.stringify({

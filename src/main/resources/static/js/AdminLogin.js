@@ -29,7 +29,7 @@ document.getElementById("adminLoginForm").addEventListener("submit",  async func
     localStorage.removeItem("jwt");
 
     try{
-        const loginResponse = await fetch("http://localhost:8080/auth/adminLoginCheckup", {
+        const loginResponse = await fetch("/auth/adminLoginCheckup", {
             method : "POST",
             headers : {"Content-Type" : "application/json"},
             body : JSON.stringify({

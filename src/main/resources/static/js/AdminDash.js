@@ -4,7 +4,7 @@ document.getElementById("showtrendingItems").addEventListener("click",async func
     e.preventDefault();
 
    try {
-        let responseForShowAllItems = await fetch("http://localhost:8080/item/showAllItems");
+        let responseForShowAllItems = await fetch("/item/showAllItems");
             if( !responseForShowAllItems.ok){
                 throw new Error("Failed to fetch items");
             }
