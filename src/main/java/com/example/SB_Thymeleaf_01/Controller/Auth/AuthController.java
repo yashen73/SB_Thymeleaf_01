@@ -1,6 +1,4 @@
 package com.example.SB_Thymeleaf_01.Controller.Auth;
-
-
 import com.example.SB_Thymeleaf_01.Models.Admin;
 import com.example.SB_Thymeleaf_01.Models.Customer;
 import com.example.SB_Thymeleaf_01.Security.JwtUtil;
