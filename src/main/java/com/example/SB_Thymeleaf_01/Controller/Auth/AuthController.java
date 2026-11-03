@@ -68,8 +68,6 @@ public class AuthController {
     public String  AdminSignUp(@RequestBody Admin admin){
         System.out.println("adminSignUp is called");
         try {
-            String adminEncodedPassword = passwordEncoder.encode(admin.getAdminPassword());
-            admin.setAdminPassword(adminEncodedPassword);
             String AdminSignUpResult = adminLoginService.AdminSignUp(admin);
             return AdminSignUpResult;
         }catch (Exception e){
