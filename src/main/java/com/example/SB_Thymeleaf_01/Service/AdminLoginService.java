@@ -31,6 +31,10 @@ public class AdminLoginService {
         System.out.println(admin1);
         System.out.println("Admin Login service in AdminLoginService is called ...");
         try{
+            if(admin1.isEmpty()) {
+                System.out.println("admin doesn't exist using this username....");
+            }
+
             if(passwordEncoder.matches(admin.getAdminPassword(), admin1.get().getAdminPassword())){
                 System.out.println("Admin Login credentials match and return Admin Dashbaord....");
                 return "Successful";
