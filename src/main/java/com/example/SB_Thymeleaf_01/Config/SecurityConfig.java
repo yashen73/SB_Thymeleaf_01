@@ -49,6 +49,7 @@ public class SecurityConfig {
                                 "/auth/AdminSignUp",
                                 "/auth/adminLoginCheckup",
                                 "/adminChat/**",
+                                "/cust/seeCSRF",
                                 "/chat-websocket**"
                         )
                 )
@@ -85,7 +86,6 @@ public class SecurityConfig {
                                 "/CustomerSignup",
                                 "/signup",
                                 "/AboutUs",
-                                "/cust/seeCSRF",
                                 "/product/productdetail/{productid}"
                         )
                         .permitAll()

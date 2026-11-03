@@ -1,5 +1,4 @@
-
-
+//show what are available items
 document.getElementById("showtrendingItems").addEventListener("click",async function(e) {
     e.preventDefault();
 
@@ -35,6 +34,7 @@ document.getElementById("showtrendingItems").addEventListener("click",async func
    }
 })
 
+//sending new item to the back
 document.getElementById("trendingItemsInsertingForm").addEventListener("submit", function(e){
 
     e.preventDefault(); //stoping Relod the page
@@ -69,7 +69,7 @@ document.getElementById("trendingItemsInsertingForm").addEventListener("submit",
     sendingDataForInsertingProduct.append("fileForDetailImg1", fileForDetailImg1);
     sendingDataForInsertingProduct.append("fileForDetailImg2", fileForDetailImg2);
 
-    fetch("http://localhost:8080/item/addProductOnTrendingItems", {
+    fetch("/item/addProductOnTrendingItems", {
         method :"POST",
         body: sendingDataForInsertingProduct
     })
@@ -90,6 +90,7 @@ document.getElementById("trendingItemsInsertingForm").addEventListener("submit",
 });
 
 
+//sending back the edited item
 document.getElementById("trendingItemsEditingForm").addEventListener("submit", function(e){
 
     e.preventDefault();
@@ -120,6 +121,7 @@ document.getElementById("trendingItemsEditingForm").addEventListener("submit", f
     })
 })
 
+//deleting an item
 document.getElementById("trendingItemsDeletingForm").addEventListener("submit", function(e){
     e.preventDefault();
 
@@ -127,7 +129,7 @@ document.getElementById("trendingItemsDeletingForm").addEventListener("submit", 
         item_id : document.getElementById("deleting_item_id").value 
     };
 
-    fetch("http://localhost:8080/item/deleteAnItem", {
+    fetch("/item/deleteAnItem", {
         method :"DELETE",
         headers : {
             "Content-Type" : "Application/json"
