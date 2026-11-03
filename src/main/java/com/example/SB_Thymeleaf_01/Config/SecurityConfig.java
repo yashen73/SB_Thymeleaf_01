@@ -50,7 +50,8 @@ public class SecurityConfig {
                                 "/auth/adminLoginCheckup",
                                 "/adminChat/**",
                                 "/cust/seeCSRF",
-                                "/chat-websocket**"
+                                "/chat-websocket**",
+                                "/item/addProductOnTrendingItems"
                         )
                 )
                 .authorizeHttpRequests(auth -> auth
@@ -59,7 +60,6 @@ public class SecurityConfig {
                                 "/itemsforbrands",
                                 "/item/showAllItems",
                                 "/cust/g",
-                                "/item/addProductOnTrendingItems",
                                 "/item/showAllItems",
                                 "/item/updateAnItem",
                                 "/item/deleteAnItem",
