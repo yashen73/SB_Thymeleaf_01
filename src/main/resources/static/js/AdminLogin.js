@@ -58,7 +58,8 @@ document.getElementById("adminLoginForm").addEventListener("submit",  async func
            }
     }
     catch (error) {
-        console.error(error)
+
+        console.error(error, loginResponse);
     }
 
 
