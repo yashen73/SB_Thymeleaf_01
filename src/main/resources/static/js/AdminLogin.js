@@ -39,12 +39,15 @@ document.getElementById("adminLoginForm").addEventListener("submit",  async func
            })
 
            if(loginResponse.status === 404){
+                console.log(loginResponse);
                 displayErrorMsg("notFoundMsg", 5000);
                 throw new error(`Login failed : ${loginResponse.status}`);
            }else if(loginResponse.status === 409){
+                console.log(loginResponse);
                 displayErrorMsg("invalidMsg", 5000);
                 throw new error(`Login failed : ${loginResponse.status}`);
            }else if(loginResponse.status === 500){
+                console.log(loginResponse);
                 displayErrorMsg("serverErrorMsg", 5000);
                 throw new error(`Login failed : ${loginResponse.status}`);
            }
@@ -59,7 +62,7 @@ document.getElementById("adminLoginForm").addEventListener("submit",  async func
     }
     catch (error) {
 
-        console.error(error, loginResponse);
+        console.error(error);
     }
 
 
