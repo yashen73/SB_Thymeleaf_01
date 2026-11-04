@@ -57,12 +57,6 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 "/",
-                                "/itemsforbrands",
-                                "/item/showAllItems",
-                                "/cust/g",
-                                "/item/showAllItems",
-                                "/item/updateAnItem",
-                                "/item/deleteAnItem",
                                 "/api",
                                 "/admin/AdminLogin",
                                 "/admin/AdminDashboard",
@@ -106,7 +100,17 @@ public class SecurityConfig {
                                 "/auth/adminLoginCheckup"
                         )
                         .permitAll()
-
+                        //Item
+                        .requestMatchers(
+                                "/item/addProductOnTrendingItems",
+                                "/itemsforbrands",
+                                "/item/showAllItems",
+                                "/cust/g",
+                                "/item/showAllItems",
+                                "/item/updateAnItem",
+                                "/item/deleteAnItem"
+                        )
+                        .permitAll()
                         //Payment Requests
                         .requestMatchers(
                                 "/api/payment/checkout"
