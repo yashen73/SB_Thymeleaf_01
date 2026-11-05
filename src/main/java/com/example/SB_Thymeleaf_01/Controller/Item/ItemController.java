@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.http.MediaType;
 
 import java.util.List;
 
@@ -26,14 +28,11 @@ public class ItemController {
                                                                 @RequestParam ("fileForThumbnailImg") MultipartFile thumbnailImg,
                                                                 @RequestParam("fileForDetailImg1") MultipartFile detailimg1,
                                                                 @RequestParam("fileForDetailImg2") MultipartFile detailimg2) {
-            System.out.println(availbleItems+"/n"+thumbnailImg + "/n" + detailimg1 + "/n"+detailimg2);//Show the item sends from JS
+            System.out.println("\n\n"+ "addProductOnTrendingItems in ItemController is called....\n" +availbleItems+"\n"+thumbnailImg + "\n" + detailimg1 + "\n"+detailimg2);//Show the item sends from JS
 
             try{
-
                 String ResponsToSave = serviceForItems.SaveItem(availbleItems, thumbnailImg, detailimg1, detailimg2);    //calling ItemsService.class to save items
-
                 System.out.println("/n"+"All images saved successfully....");
-
                 return ResponseEntity.status(HttpStatus.CREATED).body(ResponsToSave);
 
             }catch (Exception e) {
