@@ -72,13 +72,13 @@ fetch("/item/showAllItems")
 
 
     data.forEach(item =>{
-
+//<img src="images/product-thumbnails/${item.item_thumbnailimg_name}" class="tab-image">
         html += `
                 <div class="col">
                     <div class="product-item" onclick="viewItem(${item.item_id})">
                         <figure>
                             <a href="#">
-                                //<img src="images/product-thumbnails/${item.item_thumbnailimg_name}" class="tab-image">
+                            
                                 <img src="/storage/app/product_thumbnail_images/${item.item_thumbnailimg_name}" class="tab-image">
                             </a>
                         </figure>
