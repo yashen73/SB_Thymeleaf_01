@@ -47,9 +47,9 @@ public class ItemsService {
 
         //Directory path
         //String thumbnailImgPath = "C:/Users/MCTech/Downloads/SB_Thymeleaf_01/SB_Thymeleaf_01/src/main/resources/static/images/product-thumbnails/";
-        String thumbnailImgPath = "../storage/app/product_thumbnail_images/";
+        String thumbnailImgPath = "/storage/app/product_thumbnail_images/";
         //String detailImgPath = "C:/Users/MCTech/Downloads/SB_Thymeleaf_01/SB_Thymeleaf_01/src/main/resources/static/images/detail_images/";
-        String detailImgPath = "../storage/app/detail_images/";
+        String detailImgPath = "/storage/app/detail_images/";
 
 
         File directoryForThumbnailImg = new File(thumbnailImgPath);
