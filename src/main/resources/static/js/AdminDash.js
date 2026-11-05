@@ -69,24 +69,29 @@ document.getElementById("trendingItemsInsertingForm").addEventListener("submit",
     sendingDataForInsertingProduct.append("fileForDetailImg1", fileForDetailImg1);
     sendingDataForInsertingProduct.append("fileForDetailImg2", fileForDetailImg2);
 
-    fetch("/item/addProductOnTrendingItems", {
-        method :"POST",
-        body: sendingDataForInsertingProduct
-    })
-    .then(response => response.text())
-    .then(result =>{
+    try {
+        const insert_item_response = fetch("/item/addProductOnTrendingItems", {
+                                             method :"POST",
+                                             body: sendingDataForInsertingProduct
+                                         });
+        if(!insert_item_response.ok) {
+            throw new Error(Http Error : ${insert_item_response.status})
+        }
 
-    setTimeout(() => {
-                document.getElementById("messageforAddingItem").innerHTML = result;
-    },3000)
-        document.getElementById("messageforAddingItem").innerHTML = result;
-        document.getElementById("trendingItemsInsertingForm").reset();
-        thumbanail_img_preview.src="";
-        detail_img01_preview.src="";
-        detail_img02_preview.src="";
-    })
-    .catch(error=> console.error(error));
+        setTimeout(() => {
+                let succeddItem_name = item_name;
+                document.getElementById("messageforAddingItem").innerHTML = result + " " + succeddItem_name;
+            },3000)
 
+                document.getElementById("trendingItemsInsertingForm").reset();
+                thumbanail_img_preview.src="";
+                detail_img01_preview.src="";
+                detail_img02_preview.src="";
+    }catch (error) {
+        console.error("Poduct insertion failed", error);
+        const failedItem_name = item_name;
+        document.getElementById("messageforAddingItem").innerHTML =  error.status + " " + failedItem_name + " insertion failed...";
+    }
 });
 
 

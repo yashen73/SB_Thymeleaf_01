@@ -3,6 +3,7 @@ package com.example.SB_Thymeleaf_01.Controller.Item;
 import com.example.SB_Thymeleaf_01.Models.Availableitems;
 import com.example.SB_Thymeleaf_01.Service.ItemsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
@@ -34,9 +35,12 @@ public class ItemController {
                 String ResponsToSave = serviceForItems.SaveItem(availbleItems, thumbnailImg, detailimg1, detailimg2);    //calling ItemsService.class to save items
                 System.out.println("/n"+"All images saved successfully....");
                 return ResponseEntity.status(HttpStatus.CREATED).body(ResponsToSave);
-
             }catch (Exception e) {
-                throw new RuntimeException(e);
+                if(e instanceof DataIntegrityViolationException) {
+                    return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+                } else {
+                    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+                }
             }
         }
 

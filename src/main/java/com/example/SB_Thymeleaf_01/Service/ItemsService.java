@@ -5,10 +5,12 @@ import com.example.SB_Thymeleaf_01.Repositories.ItemsRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.*;
 import java.util.List;
 
@@ -43,7 +45,7 @@ public class ItemsService {
         }
     }
 
-    public String SaveItem(Availableitems trendingItem, MultipartFile thumbnailImg, MultipartFile detailImg_1, MultipartFile detailImg_2){
+    public String SaveItem(Availableitems trendingItem, MultipartFile thumbnailImg, MultipartFile detailImg_1, MultipartFile detailImg_2) throws IOException {
 
         //Directory path
         //String thumbnailImgPath = "C:/Users/MCTech/Downloads/SB_Thymeleaf_01/SB_Thymeleaf_01/src/main/resources/static/images/product-thumbnails/";
@@ -75,24 +77,32 @@ public class ItemsService {
         File destinationForThumbnailImg = new File(thumbnailImgPath+newFileNameforThumbnailImg);
 
         try{
-            saveTrendingItem.save(trendingItem);
+            try{
+                saveTrendingItem.save(trendingItem);
+            }catch (DataIntegrityViolationException e) {
+                throw new DataIntegrityViolationException(e.getMessage());
+            }
+
             detailImg_1.transferTo(destinaionForDetailImg_01);
             detailImg_2.transferTo(destinationForDetailImg_02);
             thumbnailImg.transferTo(destinationForThumbnailImg);
             return "success";
-        }catch (DataAccessException e) {
+
+        }catch (IOException e) {
             e.printStackTrace();
-            throw new RuntimeException("DB error Occured");
+            throw new IOException("Can not write this data" + e.getMessage());
+        }catch (IllegalStateException e){
+            e.printStackTrace();
+            throw new IllegalStateException("The multipart file has been moved or operation can not be performed" + e.getMessage());
         }catch (Exception e){
             e.printStackTrace();
-            throw new RuntimeException("Something Went Wrong.");
+            throw new RuntimeException("The multipart file has been moved or operation can not be performed" + e.getMessage());
         }
     }
 
     public Availableitems findSpecificItem(Long item_id){
         Optional<Availableitems> throwProductDetail  = findfromrepo.findById(item_id);
         System.out.println(throwProductDetail);
-
 
         if (throwProductDetail.isPresent()){
             return throwProductDetail.get();
