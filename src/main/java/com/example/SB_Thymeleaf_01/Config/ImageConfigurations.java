@@ -8,8 +8,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class ImageConfigurations implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry regisrty ) {
-        regisrty.addResourceHandler("/images/products/**")
-                .addResourceLocations("file:/storage/app/product_thumbnail_images")
-                .addResourceLocations("file:/storage/app/detail_images");
+        regisrty.addResourceHandler("/storage/app**")
+                .addResourceLocations("file:/product_thumbnail_images")
+                .addResourceLocations("file:/detail_images");
     }
 }
