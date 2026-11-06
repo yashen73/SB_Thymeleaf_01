@@ -116,6 +116,11 @@ public class SecurityConfig {
                                 "/api/payment/checkout"
                         )
                         .permitAll()
+                        //Payment Requests
+                        .requestMatchers(
+                                "/images/products/**"
+                        )
+                        .permitAll()
 
                         .anyRequest()
                         .authenticated()
