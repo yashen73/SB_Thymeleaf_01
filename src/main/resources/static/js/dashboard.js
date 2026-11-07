@@ -79,7 +79,7 @@ fetch("/item/showAllItems")
                         <figure>
                             <a href="#">
 
-                                <img src="/images/${item.item_thumbnailimg_name}.png" class="tab-image">
+                                <img src="images/product_thumbnail_images/${item.item_thumbnailimg_name}.png" class="tab-image">
                             </a>
                         </figure>
                         <span id="itemID" class="itemID">${item.item_id}</span>

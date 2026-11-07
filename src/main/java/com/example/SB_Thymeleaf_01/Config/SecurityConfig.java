@@ -118,7 +118,8 @@ public class SecurityConfig {
                         .permitAll()
                         //Payment Requests
                         .requestMatchers(
-                                "/images/**"
+                                "/images/product_thumbnail_images/**",
+                                "/images/product_detail_images/**"
                         )
                         .permitAll()
 
