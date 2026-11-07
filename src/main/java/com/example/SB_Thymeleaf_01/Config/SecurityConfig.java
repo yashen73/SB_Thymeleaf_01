@@ -118,7 +118,7 @@ public class SecurityConfig {
                         .permitAll()
                         //Payment Requests
                         .requestMatchers(
-                                "/storage/app/**"
+                                "/images/**"
                         )
                         .permitAll()
 
