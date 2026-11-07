@@ -67,7 +67,7 @@ async function pay(){
 async function addtocart(){
 
     let itemIdforAddtoCart = document.getElementById("ProductId").textContent;
-    const tokenforAddtoCart = localStorage.getItem("jwt");
+    const tokenforAddtoCart = localStorage.getItem.("jwt");
     let itemQuantityforAddtoCart = document.getElementById("quantity-no").value;
 
     console.log(itemIdforAddtoCart);
@@ -124,7 +124,7 @@ fetch("/item/showAllItems")
                     <div class="product-item" onclick="viewItem(${item.item_id})">
                         <figure>
                             <a href="#">
-                                <img src="/images/product_detail_images/${item.item_thumbnailimg_name}" class="tab-image">
+                                <img src="/images/product_detail_images/${item.item_thumbnailimg_name}.png" class="tab-image">
                             </a>
                         </figure>
                         <span id="itemID" class="itemID">${item.item_id}</span>
