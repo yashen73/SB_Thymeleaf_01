@@ -11,6 +11,6 @@ public class ImageConfigurations implements WebMvcConfigurer {
         regisrty.addResourceHandler("/images/product_thumbnail_images/**")
                 .addResourceLocations("file:/storage/app/product_thumbnail_images");
         regisrty.addResourceHandler("/images/product_detail_images/**")
-                .addResourceLocations("file:/storage/app/product_thumbnail_images");
+                .addResourceLocations("file:/storage/app/detail_images");
     }
 }
