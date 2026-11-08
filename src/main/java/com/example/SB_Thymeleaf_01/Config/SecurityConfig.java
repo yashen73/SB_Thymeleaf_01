@@ -82,6 +82,7 @@ public class SecurityConfig {
                                 "/AboutUs",
                                 "/product/productdetail/{productid}",
                                 "/Locations",
+                                "/Branches",
                                 "/Privacy_Policies"
                         )
                         .permitAll()
