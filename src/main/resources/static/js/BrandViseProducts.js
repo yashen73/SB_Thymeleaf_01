@@ -8,6 +8,7 @@ function showSearchBox() {
 }
 
 
+
 function Search(){
     const query = document.querySelector(".search-box input").value;
     alert("Searching for: "+query);
