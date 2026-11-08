@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+#cloracontainer .cloracontainer-partition-1{
+    grid-area: 1/ 1/ 2/ 5;
+}
+
+#cloracontainer .cloracontainer-partition-2{
+    grid-area: 1/ 5/ 2/ 9;
+}
+
+.cloracontainer-partition-3 {
+    grid-area: 1/ 9/ 2/ 13;
+}
+
+#cloracontainer {
+    display: grid;
+    background-color: #ebf5f8;
+    border-radius: 100px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+    transform: translateY(-50px);
+    animation: slidedown 3s ease forwards;
+    padding: 10px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+#iconinstrip {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.clora {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 60px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: rgb(118, 118, 118);
+    margin-left: 5px;
+    text-shadow: 2px 4px 0px rgb(58, 58, 58);
+    cursor: pointer;
+}
+
+.clora:hover {
+    transition: all 1s ease;
+    text-shadow: 10px 10px 8px rgb(162, 162, 162);
+}
+
+.cloraintrospace {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+    font-family: "Pacifico", cursive;
+}
+
+.cloraintro{
+    color: rgb(150, 150, 150);
+    text-shadow: 20px 20px 10px rgb(217, 216, 216);
+    letter-spacing: 2px;
+}
+
+.bi.bi-search {
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    margin-right: 10px;
+    padding: 15px;
+    border-radius: 40px;
+}
+
+.bi.bi-person {
+    font-size: 22px;
+    color: rgb(0, 0, 0);
+    margin-right: 20px;
+    padding: 15px;
+    border-radius: 40px;
+    transform: translateY(-50px);
+}
+
+.indicator {
+    position: absolute;
+    top: 40px;
+    right: 105px;
+    width: 10px;
+    height: 10px;
+    background-color: rgb(33, 30, 30);
+    border-radius: 50%;
+}
+
+.search-box {
+    position: absolute;
+    display: none;
+    margin-top: 80px;
+    font-size: 20px;
+    z-index: 2;
+}
+
+.search-box-input{
+    width: 230px;
+    padding: 5px;
+    border-radius: 20px 8px;
+    z-index: 99999;
+}
+
+.bi-arrow-right-circle-fill {
+    position:relative;
+    top: 10px;
+    font-size: 30px;
+}
+
+.bi.bi-person:hover {
+    color: #cacaca;
+    background-color: #7b7b7b;
+    transition: all 0.3s ease;
+}
+
+.bi.bi-search:hover {
+    color: #cacaca;
+     background-color: #7b7b7b;
+     transition: all 0.3s ease;
+}
+
+@media screen and (max-width:1140px) {
+    #cloracontainer .cloracontainer-partition-2{
+        display: none;
+    }
+}
