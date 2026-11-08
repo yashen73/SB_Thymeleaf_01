@@ -44,7 +44,7 @@ async function pay(){
     const amount = document.getElementById("insert-price").textContent;
     const quantity = document.getElementById("quantity-no").value;
     console.log(productid, amount, quantity, " order is heading to the payment.")
-    const res = await fetch("http://localhost:8080/api/payment/checkout", {
+    const res = await fetch("/api/payment/checkout", {
         method : "POST",
         headers: {
             "Content-Type": "application/json",
@@ -67,7 +67,7 @@ async function pay(){
 async function addtocart(){
 
     let itemIdforAddtoCart = document.getElementById("ProductId").textContent;
-    const tokenforAddtoCart = localStorage.getItem.("jwt");
+    const tokenforAddtoCart = localStorage.getItem("jwt");
     let itemQuantityforAddtoCart = document.getElementById("quantity-no").value;
 
     console.log(itemIdforAddtoCart);
