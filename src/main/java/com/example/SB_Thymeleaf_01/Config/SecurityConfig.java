@@ -80,7 +80,9 @@ public class SecurityConfig {
                                 "/CustomerSignup",
                                 "/signup",
                                 "/AboutUs",
-                                "/product/productdetail/{productid}"
+                                "/product/productdetail/{productid}",
+                                "/Locations",
+                                "/Privacy_Policies"
                         )
                         .permitAll()
                         //For cart

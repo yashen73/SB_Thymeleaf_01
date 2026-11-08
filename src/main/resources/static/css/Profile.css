@@ -171,42 +171,6 @@
     transform: translateX(100px);
 }
 
-.footer-container {
-    width: 100%;
-    height:auto;
-    background-color: #fdfdfd;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.clora-footer-Logo {
-    font-family: var(--clora-theme-font);
-    color: #868686;
-    font-size: 50px;
-    font-weight: 800;
-    padding: 10px;
-
-}
-
-.footer-menu-container {
-    display:flex;
-    justify-content: center;
-}
-
-.footer-menu {
-    color: var(--footer-menu-font-color);
-    text-decoration: none;
-    font-family: var(--h2-h3-h4-h5-font);
-    font-size: 20px;
-    margin: 20px;
-}
-
-.footer-menu-container:hover {
-
-}
-
-
 @keyframes slidedown {
     to {
         opacity: 1;

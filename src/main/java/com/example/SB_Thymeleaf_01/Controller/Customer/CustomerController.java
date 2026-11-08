@@ -108,7 +108,17 @@ public class CustomerController {
 
     @GetMapping("/Locations")
     public String Locations(){
-        return "Locations";
+        return "LocationDetails";
+    }
+
+    @GetMapping("/Branches")
+    public String Branches(){
+        return "LocationDetails";
+    }
+
+    @GetMapping("/Privacy_Policies")
+    public String Privacy_Policies(){
+        return "LocationDetails";
     }
 
     @GetMapping("/PaymentSuccess")

@@ -16,5 +16,5 @@ function Search(){
 }
 
 function directToDashboard() {
-    window.location.href="/dashboard";
+    window.location.href="/";
 }
