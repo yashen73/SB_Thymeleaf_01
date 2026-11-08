@@ -124,7 +124,7 @@ fetch("/item/showAllItems")
                     <div class="product-item" onclick="viewItem(${item.item_id})">
                         <figure>
                             <a href="#">
-                                <img src="/images/product_detail_images/${item.item_thumbnailimg_name}.png" class="tab-image">
+                                <img src="/images/product_thumbnail_images/${item.item_thumbnailimg_name}.png" class="tab-image">
                             </a>
                         </figure>
                         <span id="itemID" class="itemID">${item.item_id}</span>
