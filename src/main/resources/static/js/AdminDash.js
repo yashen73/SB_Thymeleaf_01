@@ -75,6 +75,7 @@ document.getElementById("trendingItemsInsertingForm").addEventListener("submit",
                                              body: sendingDataForInsertingProduct
                                          });
         if(!insert_item_response.ok) {
+            console.log(insert_item_response);
             throw new Error(`Http Error : ${insert_item_response.status}`);
         }
 
