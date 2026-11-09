@@ -70,7 +70,7 @@ document.getElementById("trendingItemsInsertingForm").addEventListener("submit",
     sendingDataForInsertingProduct.append("fileForDetailImg2", fileForDetailImg2);
 
     try {
-        const insert_item_response = fetch("/item/addProductOnTrendingItems", {
+        const insert_item_response = await fetch("/item/addProductOnTrendingItems", {
                                              method :"POST",
                                              body: sendingDataForInsertingProduct
                                          });
