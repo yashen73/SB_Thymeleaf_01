@@ -86,6 +86,7 @@ public class ItemsService {
             detailImg_1.transferTo(destinaionForDetailImg_01);
             detailImg_2.transferTo(destinationForDetailImg_02);
             thumbnailImg.transferTo(destinationForThumbnailImg);
+            System.out.println("\nAll Images and item details have been saved successfully in ItemsService class...");
             return "success";
 
         }catch (IOException e) {
