@@ -47,6 +47,7 @@ public class AuthController {
 
         String loginresult = loginService.customerlogincheckup(customer.getMail(), customer.getPassword());
 
+        System.out.println("login result is : "+ loginresult);
         if (loginresult.equals("Login Successful")) {
             System.out.println("Customer Login is successful...");
             String token = jwtUtil.generateToken(customer.getMail());
@@ -67,9 +68,9 @@ public class AuthController {
                     .body("Login Succeed");
 
         } else if (loginresult.equals("user not found")) {
-            throw new RuntimeException("user not Found please sign in first.");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }else {
-            throw new RuntimeException("invalid Credentials");
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
         }
     }
 

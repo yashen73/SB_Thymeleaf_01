@@ -19,6 +19,16 @@ function showSearchBox() {
     }
 }
 
+function displayErrorMsg(elementId, duration =5000){
+    const errormsg = document.getElementById(elementId);
+    errormsg.style.display = "block";
+
+    setTimeout(() => {
+        errormsg.style.display = "none";
+    },duration);
+}
+
+
 
 window.onload= function(){
 let alertBox = document.getElementById("failedmessage");
@@ -39,22 +49,37 @@ document.getElementById("customerLoginForm").addEventListener("submit",  async f
     localStorage.clear();
     localStorage.removeItem("jwt");
 
-   fetch("/auth/custlogin", {
-    method : "POST",
-    headers : {"Content-Type" : "application/json"},
-    body : JSON.stringify({
-        mail : document.getElementById("usermail").value,
-        password : document.getElementById("password").value
-    })
-   })
-   .then(res => res.text())
-   .then(token => {
-                console.log("JWT: ", token);
-                localStorage.setItem("jwt", token);
-                alert("Loged In !");
-                window.location.href = "/index";
-   })
-   .catch ( err => console.error(err));
+    try {
+        const responseforCustLogin = await fetch("/auth/custlogin", {
+         method : "POST",
+         headers : {"Content-Type" : "application/json"},
+         body : JSON.stringify({
+             mail : document.getElementById("usermail").value,
+             password : document.getElementById("password").value
+         })
+        });
+
+       if(responseforCustLogin.status === 404){
+            console.log(responseforCustLogin);
+            displayErrorMsg("notFoundMsg", 5000);
+            throw new error(`Login failed : ${loginResponse.status}`);
+       }else if(responseforCustLogin.status === 401){
+            console.log(responseforCustLogin);
+            displayErrorMsg("invalidMsg", 5000);
+            throw new error(`Login failed : ${loginResponse.status}`);
+       }else if(responseforCustLogin.status === 500){
+            console.log(responseforCustLogin);
+            displayErrorMsg("serverErrorMsg", 5000);
+            throw new error(`Login failed : ${loginResponse.status}`);
+       }
+
+        console.log("JWT: ", token);
+        localStorage.setItem("jwt", token);
+        alert("Loged In !");
+        window.location.href = "/index";
+    }catch (err){
+        console.error(err);
+    }
 
    btn.disabled = false;
    btn.innerText = "Login"

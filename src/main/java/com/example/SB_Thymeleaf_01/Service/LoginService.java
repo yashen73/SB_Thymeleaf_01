@@ -24,10 +24,10 @@ public class LoginService {
 
         if(loginCustomer.isEmpty()){
             return "user not found";
-        } else if (!passwordEncoder.matches(password, loginCustomer.get().getPassword()) ) {
-            return "Invalid login";
-        }else{
+        } else if (passwordEncoder.matches(password, loginCustomer.get().getPassword()) ) {
             return "Login Successful";
+        }else{
+            return "Invalid login";
         }
 
     }

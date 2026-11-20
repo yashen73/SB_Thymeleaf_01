@@ -137,6 +137,21 @@ h2{
 }
 
 
+.server-error-msg{
+    font-size: 22px;
+    display: none;
+}
+
+.notfound-msg{
+    font-size: 22px;
+    display: none;
+}
+
+.invalid-msg{
+    font-size: 22px;
+    display: none;
+}
+
 @keyframes slidedown {
     to {
         opacity: 1;
