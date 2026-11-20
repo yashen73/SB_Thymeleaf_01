@@ -28,8 +28,8 @@ public class StripeService {
             System.out.println("Total Amount: "+amountcalculation);
             SessionCreateParams params = SessionCreateParams.builder()
                     .setMode(SessionCreateParams.Mode.PAYMENT)
-                    .setSuccessUrl("http://localhost:8080/PaymentSuccess")
-                    .setCancelUrl("http://localhost:8080/PaymentUnsuccess")
+                    .setSuccessUrl("/PaymentSuccess")
+                    .setCancelUrl("/PaymentUnsuccess")
                     .setClientReferenceId(request.getProductid().toString())
                     .addLineItem(
                             SessionCreateParams.LineItem.builder()

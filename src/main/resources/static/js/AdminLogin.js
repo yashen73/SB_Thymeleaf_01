@@ -31,9 +31,10 @@ document.getElementById("adminLoginForm").addEventListener("submit",  async func
     try{
         const loginResponse = await fetch("/auth/adminLoginCheckup", {
             method : "POST",
+            credentials : "include",
             headers : {"Content-Type" : "application/json"},
             body : JSON.stringify({
-                adminusername : document.getElementById("username").value,
+                adminUsername : document.getElementById("username").value,
                 adminPassword : document.getElementById("password").value
             })
            })

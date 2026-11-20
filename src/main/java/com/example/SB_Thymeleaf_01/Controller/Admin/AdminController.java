@@ -2,7 +2,7 @@ package com.example.SB_Thymeleaf_01.Controller.Admin;
 
 import com.example.SB_Thymeleaf_01.Config.Password_Configuration;
 import com.example.SB_Thymeleaf_01.Security.JwtUtil;
-import com.example.SB_Thymeleaf_01.Service.AdminLoginService;
+import com.example.SB_Thymeleaf_01.Service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 public class AdminController {
 
     @Autowired
-    public AdminLoginService adminLoginService;
+    public AdminService adminLoginService;
     @Autowired
     private Password_Configuration passwordEncoder;
     @Autowired

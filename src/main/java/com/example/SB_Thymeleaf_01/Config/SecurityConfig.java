@@ -1,20 +1,16 @@
 package com.example.SB_Thymeleaf_01.Config;
 
 import com.example.SB_Thymeleaf_01.Components.JWTLoginHandler;
-import com.example.SB_Thymeleaf_01.Components.JwtFilter;
-import com.example.SB_Thymeleaf_01.Service.AdminUserDetailsService;
+import com.example.SB_Thymeleaf_01.Service.NewUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
-import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.web.filter.OncePerRequestFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -23,14 +19,14 @@ public class SecurityConfig {
     @Autowired
     private JWTLoginHandler jwtLoginHandler;
 
-    private final AdminUserDetailsService adminUserDetailsService;
+    private final NewUserDetailsService adminUserDetailsService;
 
-    public SecurityConfig(AdminUserDetailsService adminUserDetailsService) {
+    public SecurityConfig(NewUserDetailsService adminUserDetailsService) {
         this.adminUserDetailsService = adminUserDetailsService;
     }
 
     @Bean
-    public  DaoAuthenticationProvider authenticationProvider(AdminUserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
+    public  DaoAuthenticationProvider authenticationProvider(NewUserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider(userDetailsService);
 
         provider.setPasswordEncoder(passwordEncoder);
@@ -91,7 +87,8 @@ public class SecurityConfig {
                                 "/cart/Add_to_Cart",
                                 "/cart/RemoveFromCart",
                                 "/cart/ShowCartItems",
-                                "/cart/Cart_Health"
+                                "/cart/Cart_Health",
+                                "/product/productdetail/{productid}"
                         )
                         .permitAll()
 
@@ -100,7 +97,9 @@ public class SecurityConfig {
                                 "/auth/custlogin",
                                 "/auth/custsignup",
                                 "/auth/AdminSignUp",
-                                "/auth/adminLoginCheckup"
+                                "/auth/adminLoginCheckup",
+                                "/auth/Add_Role",
+                                "/cust/seeCSRF"
                         )
                         .permitAll()
                         //Item
@@ -116,7 +115,9 @@ public class SecurityConfig {
                         .permitAll()
                         //Payment Requests
                         .requestMatchers(
-                                "/api/payment/checkout"
+                                "/api/payment/checkout",
+                                "/PaymentSuccess",
+                                "/PaymentUnsuccess"
                         )
                         .permitAll()
                         //Payment Requests

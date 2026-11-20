@@ -1,3 +1,11 @@
+window.addEventListener("load", () => {
+     const token = localStorage.getItem("jwt");
+
+    if(token === null){
+        document.getElementById("login-alert-message-area").style.display = "block";
+    }
+});
+
 //show what are available items
 document.getElementById("showtrendingItems").addEventListener("click",async function(e) {
     e.preventDefault();

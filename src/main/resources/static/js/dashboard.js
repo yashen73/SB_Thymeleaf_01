@@ -74,18 +74,24 @@ fetch("/item/showAllItems")
     data.forEach(item =>{
 //<img src="images/product-thumbnails/${item.item_thumbnailimg_name}" class="tab-image">
         html += `
-                <div class="col">
+                <div class="col product-item-column" id="product-item-column">
                     <div class="product-item" onclick="viewItem(${item.item_id})">
                         <figure>
                             <a href="#">
-
+                                <span class="add-to-cart-button"><i class="bi bi-cart"></i></span>
                                 <img src="images/product_thumbnail_images/${item.item_thumbnailimg_name}.png" class="tab-image">
                             </a>
                         </figure>
-                        <span id="itemID" class="itemID">${item.item_id}</span>
-                        <h3>${item.item_name}</h3>
-                        <span class="qty">${item.item_quantity}pcs</span>
-                        <span class="price">${item.item_price}/=</span>
+                        <div class="item-content-part">
+                            <span id="itemID" class="itemID">${item.item_id}</span>
+                            <h3>${item.item_name}</h3>
+                            <span class="qty">${item.item_quantity}pcs</span>
+                            <span class="price">${item.item_price}/=</span>
+                            <div class="view-item-area">
+                              <div class="p-2">View Item.</div>
+                            </div>
+                        </div>
+
 
                     </div>
                 </div>

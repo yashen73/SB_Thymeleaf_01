@@ -46,9 +46,9 @@ async function pay(){
     console.log(productid, amount, quantity, " order is heading to the payment.")
     const res = await fetch("/api/payment/checkout", {
         method : "POST",
+        credentials: 'include',
         headers: {
-            "Content-Type": "application/json",
-            "Authorization": "bearer " + localStorage.getItem("jwt")
+            "Content-Type": "application/json"
         },
         body: JSON.stringify({
                productid: productid,
@@ -61,7 +61,6 @@ async function pay(){
         window.location.href = url;
     })
     .catch(error=> console.error(error));
-
 }
 
 async function addtocart(){
@@ -77,6 +76,7 @@ async function addtocart(){
     const repondforAddtoCart =await fetch("/cart/AddtoCart",
     {
         method: "POST",
+        credentials: 'include',
         headers: {
             "Content-Type" : "application/json",
             "Authorization" : tokenforAddtoCart

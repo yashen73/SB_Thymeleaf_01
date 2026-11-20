@@ -1,33 +1,31 @@
 package com.example.SB_Thymeleaf_01.Service;
 
-import aj.org.objectweb.asm.commons.TryCatchBlockSorter;
 import com.example.SB_Thymeleaf_01.Models.Admin;
+import com.example.SB_Thymeleaf_01.Models.Roles;
 import com.example.SB_Thymeleaf_01.Repositories.AdminRepo;
+import com.example.SB_Thymeleaf_01.Repositories.RoleRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.server.ResponseStatusException;
-import org.webjars.NotFoundException;
 
-import javax.security.auth.login.CredentialException;
-import java.sql.SQLException;
+import javax.management.relation.Role;
 import java.util.Optional;
 
-import static java.util.regex.Pattern.matches;
-
 @Service
-public class AdminLoginService {
+public class AdminService {
     @Autowired
     public AdminRepo adminRepo;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private RoleRepo roleRepo;
 
 
     public String AdminLoginCheckup(Admin admin) {
-        Optional<Admin> admin1 = adminRepo.findByadminusername(admin.getAdminusername());
+        Optional<Admin> admin1 = adminRepo.findByadminUsername(admin.getAdminUsername());
         System.out.println(admin1);
         System.out.println("Admin Login service in AdminLoginService is called ...");
         try{
@@ -55,6 +53,20 @@ public class AdminLoginService {
             return "Successfull";
         }catch (Exception e){
             throw e;
+        }
+    }
+
+    public String AddingRole(@ModelAttribute Roles role) {
+        roleRepo.save(role);
+        return "Success";
+    }
+
+    public  Admin findAdminByUsername(String username) {
+        Optional<Admin> admin = adminRepo.findByadminUsername(username);
+        if(admin.isPresent()) {
+            return admin.get();
+        }else {
+            return null;
         }
     }
 }

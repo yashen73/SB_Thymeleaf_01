@@ -39,6 +39,7 @@
     transform: translateX(-100px);
     animation: slideside 3s ease forwards;
 }
+
 .block-1:hover {
     transition: all 0.5s ease;
     box-shadow: 0 10px 10px #dfdfdf;
@@ -93,14 +94,15 @@
 }
 
 .banner-blocks {
+    width:100%;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(2, 280px);
-    grid-gap: 10px;
+    grid-template-rows: repeat(2, 250px);
+    grid-gap: 1rem;
     margin-top: 10px;
+    margin-left: 7px;
     height: 100%;
 }
-
 .slide-1 {
     background-image: url('/images/backgroundimages/background4.jpg') !important;
     background-size:cover;
@@ -124,13 +126,17 @@
 
 .slide-1 .banner-description {
     font-family:"Caveat", cursive;
+    font-weight: 600;
 }
 
 .slide-2 .banner-description {
+    font-family:"Caveat", cursive;
+    font-weight: 600;
 }
 
 .slide-3 .banner-description {
     font-family:"Caveat", cursive;
+    font-weight: 600;
 }
 
 .main-swiper .banner-discount {
@@ -140,23 +146,64 @@
     padding: 4px;
     animation: blink 1.5s step-end infinite;
     opacity: 0;
+}
 
+.main-swiper .banner-price {
+    font-family: var(--banner-discount-font);
+    letter-spacing: 1px;
+    font-size: 24px;
+    font-weight: 400;
+    animation: blink 1.5s step-end infinite;
+}
+
+.main-swiper .banner-new-price {
+    color: rgb(249, 61, 61);
 }
 
 .banner2 .banner-discount {
     font-family: var(--banner-discount-font);
-    font-size: 60px;
+    font-size: 45px;
     font-weight: 700;
     padding: 4px;
     font-weight: 800;
+}
 
+.banner2 .banner-price {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.banner2 .banner-new-price {
+    color: rgb(243, 60, 60);
+    border: 3px solid rgb(246, 15, 15);
+    border-radius: 10px;
+    padding: 6px;
 }
 
 .banner3 .banner-discount {
     font-family: var(--banner-discount-font);
-    font-size: 60px;
+    font-size: 45px;
     font-weight: 700;
     padding: 4px;
+}
+
+.banner3 .banner-price {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.banner3 .banner-new-price {
+    color: rgb(243, 60, 60);
+    border: 3px solid rgb(246, 15, 15);
+    border-radius: 10px;
+    padding: 6px;
+}
+
+.block-2-3-description {
+    color: rgb(139, 139, 139);
+    font-weight: 800;
+    font-size: 35px;
+    font-family:"Caveat", cursive;
 }
 
 
@@ -220,27 +267,12 @@
     border: none;
 }
 
-
-@media screen and (max-width:1140px) {
-    .banner-blocks {
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(4, 3fr);
-    }
-    .block-1 {grid-area: 1 / 1 / 3 / 2;}
-    .block-2 {grid-area: 3 / 1 / 4 / 2;}
-    .block-3 {grid-area: 4 / 1 / 5 / 2;}
-
-    .cloracontainer-partition-2 {
-        display: none;
-    }
-}
-
 /* Block 2 & 3 banner*/
 
 .banner2 {
     background-image: url(/images/bannerImages/block2.png) ;
     background-repeat: no-repeat;
-    background-position: 200px 20px;
+    background-position: -60% 10%/*200px 20px*/;
     display: relative;
     width: 100%;
     height: 100%;
@@ -250,16 +282,11 @@
 .banner3 {
     background-image: url(/images/bannerImages/block3.png) ;
     background-repeat: no-repeat;
-    background-position: 150px -100px;
+    background-position: -80% 30%/*150px -100px*/;
     display: relative;
     width: 100%;
     height: 100%;
     padding: 10px;
-}
-
-.block-2-3-description{
-    font-family: var(--block-2-3-description-font);
-    font-size: 25px;
 }
 
 .banner-2-3-btn {
@@ -277,6 +304,28 @@
     background-color: #dfab00;
     border: none;
     transition: all 1s ease;
+}
+
+@media screen and (max-width:1140px) {
+    .banner-blocks {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 3fr);
+    }
+    .block-1 {grid-area: 1 / 1 / 3 / 2;}
+    .block-2 {grid-area: 3 / 1 / 4 / 2;}
+    .block-3 {grid-area: 4 / 1 / 5 / 2;}
+
+    .cloracontainer-partition-2 {
+        display: none;
+    }
+
+    .banner2 {
+            background-position: 90% 8%;
+        }
+
+        .banner3 {
+            background-position: 80% 27%;
+        }
 }
 
 
@@ -327,18 +376,50 @@
     font-family: var(--h2-h3-h4-h5-font);
 }
 
+.product-item-column:hover {
+    transform: translateY(-10px);
+    transition: all 0.7s ease;
+}
+
 .product-item {
     position: relative;
-    padding: 10px;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 2px;
     background-color: #FFFFFF;
     border: 1px solid #FBFBFB;
     border-radius: 20px;
     margin: 20px;
+    width: fit-content;
 }
 
 .product-item:hover {
     transition: all 0.3s ease-in;
     box-shadow: 0px 21px 44px rgba(0, 0, 0, 0.1);
+}
+
+.add-to-cart-button {
+    position: absolute;
+    display: flex;
+    justify-self:baseline;
+    border-radius: 48%;
+}
+
+.add-to-cart-button:hover {
+    position: absolute;
+    display: flex;
+    justify-self:baseline;
+    background-color: #d3d1d182;
+    border-radius: 45%;
+}
+
+.bi.bi-cart {
+    font-size: 24px;
+    color: rgb(0, 0, 0);
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 7px;
+    padding-right: 7px;
 }
 
 .tab-image {
@@ -363,6 +444,28 @@
     display: none;
 }
 
+.item-content-part {
+    position: relative;
+    height: 70px;
+    overflow: hidden;
+}
+
+.view-item-area {
+    display: flex;
+    height: 70px;
+    color: wheat;
+    font-size: 22px;
+    font-weight: 400;
+    justify-content: center;
+    align-items: end;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #ff758c 100%);
+    border-radius: 7px;
+}
+
+.product-item-column:hover .view-item-area {
+    transition: all 0.3s ease;
+    transform: translateY(-70px);
+}
 
 /* Freaquantly searching categories  . . .. */
 .freq-searching-category h2 {
@@ -371,17 +474,20 @@
 }
 
 .btn-warning{
-    background-color: #f8f8f8;
+    background-color: #01db99;
+    color: black;
+    border-radius: 30px;
     border: none;
     font-size: 20px;
+    font-weight: 600;
     margin: 5px;
 }
 .btn-warning:hover {
-    background-color: #f1efef;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
-    transform: scale(1.1);
+    color: black;
+    background: linear-gradient(135deg, #22ffbd 0%, #02f5ac 50%, #01694a 100%);
+    box-shadow: 0px 50px 40px rgba(165, 165, 165, 0.383);
+    transform: translateY(-5px);
     transition: all 0.3s ease;
-    margin: 8px;
 }
 
 /*Card Body*/

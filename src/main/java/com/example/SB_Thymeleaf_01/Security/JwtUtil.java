@@ -1,8 +1,10 @@
 package com.example.SB_Thymeleaf_01.Security;
 
+import com.example.SB_Thymeleaf_01.Models.Customer;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
@@ -21,11 +23,11 @@ public class JwtUtil {
     //This where Generate Token
     public String generateToken(String username) {
 
-        return "access_token " + Jwts.builder()
+        return "access_token_" + Jwts.builder()
                 .setClaims(claims)
                 .setSubject(username)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis()+1000*60*3)) // for 1 hour
+                .setExpiration(new Date(System.currentTimeMillis()+1000L * 60 * 60 * 24 * 2)) // for 1 hour
                 .signWith(key)
                 .compact();
     }
@@ -41,4 +43,30 @@ public class JwtUtil {
                 .getBody()
                 .getSubject();
     }
+
+    private Claims extractAllClaims(String token) {
+        return Jwts.parserBuilder()
+                .setSigningKey(key)
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
+    }
+
+    private boolean isTokenExpired(String token) {
+        Date tokenExpirationDate = extractAllClaims(token).getExpiration();
+
+        return tokenExpirationDate.before(new Date());
+    }
+
+    public Boolean validateToken(String token, UserDetails userDetails) {
+        try{
+            String username = extractUsername(token);
+
+            return username.equals(userDetails.getUsername()) && !isTokenExpired(token);
+        } catch (JwtException | IllegalArgumentException e) {
+            return false;
+        }
+    }
+
+
 }
