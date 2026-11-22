@@ -27,12 +27,19 @@ document.getElementById("adminLoginForm").addEventListener("submit",  async func
     btn.innerText = "Processing";
     localStorage.clear();
     localStorage.removeItem("jwt");
+    const csrfToken = document.querySelector(
+            'meta[name="_csrf"]'
+        ).content;
+
 
     try{
         const loginResponse = await fetch("/auth/adminLoginCheckup", {
             method : "POST",
             credentials : "include",
-            headers : {"Content-Type" : "application/json"},
+            headers : {
+            "Content-Type" : "application/json",
+            "X-CSRF-TOKEN" : csrfToken
+            },
             body : JSON.stringify({
                 adminUsername : document.getElementById("username").value,
                 adminPassword : document.getElementById("password").value
@@ -48,6 +55,10 @@ document.getElementById("adminLoginForm").addEventListener("submit",  async func
                 displayErrorMsg("invalidMsg", 5000);
                 throw new error(`Login failed : ${loginResponse.status}`);
            }else if(loginResponse.status === 500){
+                console.log(loginResponse);
+                displayErrorMsg("serverErrorMsg", 5000);
+                throw new error(`Login failed : ${loginResponse.status}`);
+           }else if(!loginResponse.ok) {
                 console.log(loginResponse);
                 displayErrorMsg("serverErrorMsg", 5000);
                 throw new error(`Login failed : ${loginResponse.status}`);

@@ -2,8 +2,6 @@ package com.example.SB_Thymeleaf_01.Models;
 
 
 import jakarta.persistence.*;
-
-import javax.management.relation.Role;
 import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
@@ -25,7 +23,9 @@ public class Admin {
     private Instant createdAt;
 
     @Column(length = 30)
-    private Set<Role> roles = new HashSet<>();
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "roles", joinColumns = @JoinColumn(name = "admin_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Roles> roles = new HashSet<>();
 
 
 
@@ -61,11 +61,11 @@ public class Admin {
         this.adminPassword = adminPassword;
     }
 
-    public Set<Role> getRoles() {
+    public Set<Roles> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public void setRoles(Set<Roles> roles) {
         this.roles = roles;
     }
 

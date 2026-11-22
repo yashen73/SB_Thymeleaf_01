@@ -41,9 +41,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf
                         .ignoringRequestMatchers(
                                 "/auth/custsignup",
-                                "/auth/custlogin",
                                 "/auth/AdminSignUp",
-                                "/auth/adminLoginCheckup",
                                 "/adminChat/**",
                                 "/cust/seeCSRF",
                                 "/chat-websocket**",

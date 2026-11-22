@@ -48,11 +48,17 @@ document.getElementById("customerLoginForm").addEventListener("submit",  async f
     btn.innerText = "Processing";
     localStorage.clear();
     localStorage.removeItem("jwt");
+    const csrfToken = document.querySelector(
+        'meta[name="_csrf"]'
+    ).content;
 
     try {
         const responseforCustLogin = await fetch("/auth/custlogin", {
          method : "POST",
-         headers : {"Content-Type" : "application/json"},
+         headers : {
+            "Content-Type" : "application/json",
+            "X-CSRF-TOKEN" : csrfToken
+            },
          body : JSON.stringify({
              mail : document.getElementById("usermail").value,
              password : document.getElementById("password").value
@@ -73,10 +79,10 @@ document.getElementById("customerLoginForm").addEventListener("submit",  async f
             throw new error(`Login failed : ${loginResponse.status}`);
        }
 
-        console.log("JWT: ", token);
-        localStorage.setItem("jwt", token);
-        alert("Loged In !");
+        localStorage.removeItem("jwt");
+        localStorage.setItem("jwt", "Login succeded");
         window.location.href = "/index";
+
     }catch (err){
         console.error(err);
     }

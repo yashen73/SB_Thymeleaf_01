@@ -1,5 +1,7 @@
 package com.example.SB_Thymeleaf_01.Service;
 
+import com.example.SB_Thymeleaf_01.Converters.AdminDTOFEMapper;
+import com.example.SB_Thymeleaf_01.DTO.AdminDTO;
 import com.example.SB_Thymeleaf_01.Models.Admin;
 import com.example.SB_Thymeleaf_01.Models.Roles;
 import com.example.SB_Thymeleaf_01.Repositories.AdminRepo;
@@ -22,18 +24,20 @@ public class AdminService {
     private PasswordEncoder passwordEncoder;
     @Autowired
     private RoleRepo roleRepo;
+    @Autowired
+    private AdminDTOFEMapper adminDTOFEMapper;
 
+    public String AdminLoginCheckup(AdminDTO adminDTO) {
 
-    public String AdminLoginCheckup(Admin admin) {
-        Optional<Admin> admin1 = adminRepo.findByadminUsername(admin.getAdminUsername());
+        Optional<Admin> admin1 = adminRepo.findByadminUsername(adminDTO.getAdminUsername());
         System.out.println(admin1);
         System.out.println("Admin Login service in AdminLoginService is called ...");
         try{
             if(admin1.isEmpty()) {
-                System.out.println("admin doesn't exist using this username....");
+                System.out.println("admin doesn't exist using this username...." + adminDTO.getAdminUsername());
             }
 
-            if(passwordEncoder.matches(admin.getAdminPassword(), admin1.get().getAdminPassword())){
+            if(passwordEncoder.matches(adminDTO.getAdminPassword(), admin1.get().getAdminPassword())){
                 System.out.println("Admin Login credentials match and return Admin Dashbaord....");
                 return "Successful";
             }else {

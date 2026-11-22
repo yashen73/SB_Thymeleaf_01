@@ -1,4 +1,5 @@
 package com.example.SB_Thymeleaf_01.Controller.Auth;
+import com.example.SB_Thymeleaf_01.DTO.AdminDTO;
 import com.example.SB_Thymeleaf_01.Models.Admin;
 import com.example.SB_Thymeleaf_01.Models.Customer;
 import com.example.SB_Thymeleaf_01.Models.Roles;
@@ -9,10 +10,7 @@ import com.example.SB_Thymeleaf_01.Service.CustomerSerivce;
 import com.example.SB_Thymeleaf_01.Service.LoginService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseCookie;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -100,12 +98,23 @@ public class AuthController {
     }
 
     @PostMapping("/adminLoginCheckup")
-    public String adminLoginCheckup(@RequestBody Admin admin){
+    public ResponseEntity<?> adminLoginCheckup(@RequestBody AdminDTO adminDTO){
         System.out.println("Admin Loging Checkup is called ....");
-        String loginCheckUpResult =  adminService.AdminLoginCheckup(admin);
+        String loginCheckUpResult =  adminService.AdminLoginCheckup(adminDTO);
         if(loginCheckUpResult.equals("Successful")){
-            String token = jwtUtil.generateToken(admin.getAdminUsername());
-            return token;
+            String token = jwtUtil.generateToken(adminDTO.getAdminUsername());
+            ResponseCookie cookie = ResponseCookie.from("access_token", token)
+                    .httpOnly(true)
+                    .secure(true)
+                    .path("/")
+                    .sameSite("Lax")
+                    .maxAge(Duration.ofDays(2))
+                    .build();
+
+            return ResponseEntity.ok()
+                    .header(HttpHeaders.SET_COOKIE, cookie.toString())
+                    .body("Login Succeed");
+
         } else if (loginCheckUpResult.equals("Invalid Credentials")) {
             throw new ResponseStatusException(HttpStatus.CONFLICT);
         }
