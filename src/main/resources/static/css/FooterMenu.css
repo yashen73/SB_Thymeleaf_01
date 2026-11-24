@@ -42,3 +42,19 @@
 .footer-menu-container:hover {
 
 }
+
+@media (max-width:740px) {
+        .footer-menu-container {
+            display:block !important;
+            justify-content:baseline !important;
+        }
+
+        .footer-menu {
+            display: block;
+            color: "Bebas Neue", sans-serif;
+            text-decoration: none;
+            font-family: var(--h2-h3-h4-h5-font);
+            font-size: 16px;
+            margin: 5px !important;
+        }
+}
